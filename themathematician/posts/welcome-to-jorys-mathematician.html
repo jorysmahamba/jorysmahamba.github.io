@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Jorys, The Mathematician | Jorys, The Mathematician</title>
+    <meta name="description" content="Meet Jorys - a Franco-Congolese mathematician exploring the intersection of rigorous thinking and human experience. Welcome to a space where freedom meets mathematics.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      body {
+        background: linear-gradient(135deg, #fdf6e3 0%, #fcefe2 50%, #fff5e6 100%);
+        font-family: Georgia, 'Times New Roman', serif;
+        min-height: 100vh;
+      }
+      
+      .gradient-text-warm {
+        background: linear-gradient(135deg, #FF6B35, #FFD700);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .article-content {
+        font-size: 1.125rem;
+        line-height: 1.8;
+      }
+      
+      .article-content p {
+        margin-bottom: 1.5rem;
+      }
+      
+      .article-content blockquote {
+        border-left: 4px solid #FF6B35;
+        padding-left: 1.5rem;
+        font-style: italic;
+        color: #666;
+        margin: 2rem 0;
+        background: rgba(255, 107, 53, 0.05);
+        padding: 1rem 1.5rem;
+        border-radius: 0 8px 8px 0;
+      }
+      
+      .drop-cap {
+        float: left;
+        font-size: 4rem;
+        line-height: 3rem;
+        padding-right: 0.5rem;
+        margin-top: 0.25rem;
+        color: #FF6B35;
+        font-weight: bold;
+      }
+      
+      .highlight-box {
+        background: linear-gradient(135deg, #fff5f5 0%, #fef5e7 100%);
+        border-left: 4px solid #f59e0b;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+      
+      .vision-box {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border: 2px solid #0ea5e9;
+        padding: 2rem;
+        margin: 2rem 0;
+        border-radius: 12px;
+        text-align: center;
+      }
+      
+      .mobile-menu {
+        display: none;
+      }
+      
+      .mobile-menu.active {
+        display: block;
+      }
+      
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+        
+        .article-content {
+          font-size: 1rem;
+        }
+        
+        .drop-cap {
+          font-size: 3rem;
+          line-height: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-yellow-100 to-orange-50 shadow-md sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <a href="../index.html" class="text-2xl font-extrabold gradient-text-warm">Jorys, The Mathematician</a>
+          
+          <!-- Desktop Navigation -->
+          <nav class="desktop-nav flex space-x-6 items-center text-orange-800">
+            <a href="../index.html" class="hover:text-orange-600">Home</a>
+            <a href="../about.html" class="hover:text-orange-600">About Me</a>
+            <a href="../posts.html" class="hover:text-orange-600">All Posts</a>
+            <a href="../research.html" class="hover:text-orange-600">Research</a>
+            <a href="../contact.html" class="hover:text-orange-600">Contact</a>
+            <a href="../../index.html" class="px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium hover:bg-blue-800 transition-colors">Academic Site</a>
+          </nav>
+          
+          <!-- Mobile menu button -->
+          <button class="md:hidden p-2" id="mobile-menu-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-menu pb-4 text-orange-800" id="mobile-menu">
+          <a href="../index.html" class="block py-2 hover:text-orange-600">Home</a>
+          <a href="../about.html" class="block py-2 hover:text-orange-600">About Me</a>
+          <a href="../posts.html" class="block py-2 hover:text-orange-600">All Posts</a>
+          <a href="../research.html" class="block py-2 hover:text-orange-600">Research</a>
+          <a href="../contact.html" class="block py-2 hover:text-orange-600">Contact</a>
+          <a href="../../index.html" class="inline-block mt-2 px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium">Academic Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 py-12">
+      <!-- Article Header -->
+      <article>
+        <header class="mb-12 text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text-warm">
+            Welcome to Jorys, The Mathematician
+          </h1>
+          <p class="text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
+            A multicultural mathematician's journey through freedom, knowledge, and the beautiful intersection 
+            of rigorous thinking with human experience
+          </p>
+          <div class="text-sm text-gray-600 space-y-1">
+            <p>June 16, 2025 • 8 min read</p>
+            <div class="flex flex-wrap justify-center gap-2 mt-4">
+              <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs">Welcome</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">Personal</span>
+              <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">Philosophy</span>
+              <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">Vision</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Article Content -->
+        <div class="article-content">
+          <p>
+            <span class="drop-cap">B</span>onjour, and welcome to what I hope will become a meaningful corner of the internet. 
+            My name is Jorys A. Mahamba, and this space — "Jorys, The Mathematician" — represents something I've been 
+            dreaming about for years: a place where mathematical rigor meets human curiosity, where abstract theorems 
+            dance with lived experience, and where the pursuit of truth becomes an act of liberation.
+          </p>
+
+          <p>
+            At 20 years old, I'm French, from a Portuguese born mother and a Congolese father, a student preparing for my MSc in Mathematical and Theoretical Physics 
+            at the University of Oxford, in England, and someone who believes deeply that mathematics is not just about solving equations — 
+            it's about understanding the very fabric of reality and our place within it.
+          </p>
+
+          <div class="vision-box">
+            <h3 class="text-xl font-bold mb-3 text-blue-700">My Vision for This Space</h3>
+            <p class="text-lg">
+              "Mathematics is the language in which God has written the universe, but it's also a language 
+              in which we can write our freedom."
+            </p>
+          </div>
+
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">Why "Jorys, The Mathematician"?</h2>
+
+          <p>
+            Actually, it's nothing more than a reference to one of my favorite musical artists, Tyler, The Creator. 
+            I hesitated for long between "The Mathematician", "The Curious Mind", "The Explorer", or other such denominations, 
+            but I finally chose the most simple, which is I believe, also all-encompassing in some sense.
+          </p>
+
+          <p>
+            This blog is where I bring together all the pieces of who I am: the rigorous thinker who loves the 
+            elegance of geometry, and find great comfort in the abstraction of category theory, the dreamer who sees mathematics as a form of 
+            emancipation, the 20-year-old who finished high school at 15 and sometimes still feels like he's 
+            catching up to his own ambitions...
+          </p>
+
+          <blockquote>
+            "Mathematics is not just what I do — it's how I see the world. Every pattern in nature, every 
+            symmetry in art, every structure in society can be understood through the lens of mathematical thinking."
+          </blockquote>
+
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">What You'll Find Here</h2>
+
+          <p>
+            This isn't your typical academic blog, nor is it purely personal. It's something in between — 
+            a space where I can explore ideas without the constraints of formal publication, where I can 
+            make connections between seemingly disparate fields, and where I can share the wonder I feel 
+            when mathematics reveals its secrets.
+          </p>
+
+          <h3 class="text-2xl font-semibold mt-8 mb-4 text-orange-600">🔢 Mathematics & Physics</h3>
+          <p>
+            From accessible explanations of complex concepts to deep dives into cutting-edge research, 
+            I'll share the mathematical ideas that fascinate me. You'll find posts about:
+          </p>
+          <ul class="list-disc pl-6 mb-6 space-y-1">
+            <li>The poetry hidden in differential forms and how geometry speaks to the soul</li>
+            <li>Quantum gravity and our quest to understand the fundamental nature of space and time</li>
+            <li>Category theory as the "mathematics of mathematics"</li>
+            <li>The beautiful connections between physics and artificial intelligence</li>
+          </ul>
+
+          <h3 class="text-2xl font-semibold mt-8 mb-4 text-orange-600">📚 Education & Outreach</h3>
+          <p>
+            I believe knowledge should be shared, not hoarded. You'll find:
+          </p>
+          <ul class="list-disc pl-6 mb-6 space-y-1">
+            <li>Explanations that make complex ideas accessible without dumbing them down</li>
+            <li>Thoughts on effective teaching and learning strategies</li>
+            <li>Resources for students navigating advanced mathematics</li>
+            <li>Reflections on democratizing mathematical knowledge</li>
+          </ul>
+
+          <h3 class="text-2xl font-semibold mt-8 mb-4 text-orange-600">✨ Personal Journey</h3>
+          <p>
+            The human side of mathematics — the struggles, triumphs, and everything in between:
+          </p>
+          <ul class="list-disc pl-6 mb-6 space-y-1">
+            <li>Stories from my academic path and what I've learned along the way</li>
+            <li>The challenges and joys of being a young mathematician</li>
+            <li>Cultural reflections and how they inform my work</li>
+            <li>Dreams for the future and what drives me forward</li>
+          </ul>
+
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">A Different Kind of Mathematics Blog</h2>
+
+          <p>
+            What makes this space different? It's the recognition that mathematics is fundamentally human. 
+            Every theorem was discovered by a person with hopes, fears, and cultural context. Every equation 
+            represents someone's attempt to understand something about our universe.
+          </p>
+
+          <div class="highlight-box">
+            <p class="font-semibold mb-2">🎯 My Promise to You</p>
+            <p>
+              I promise to never talk down to you, to always credit the human stories behind mathematical ideas, 
+              and to show that mathematics is not just for a select few — it's for anyone curious enough to ask 
+              "why?" and patient enough to seek answers.
+            </p>
+          </div>
+
+          <p>
+            Whether you're a fellow mathematician, a curious student, someone who "hates math" but loves 
+            beautiful ideas, or just someone who believes in the power of knowledge to transform lives — 
+            this space is for you.
+          </p>
+
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">My Journey So Far</h2>
+
+          <p>
+            Let me share a bit about the path that brought me here. I finished high school at 15 — not because 
+            I was trying to rush through life, but because I was hungry for knowledge and the French system 
+            allowed me to accelerate. After three years in the most intensive French scientific program, the <em>Classes Préparatoires aux Grandes Ecoles</em>, 
+            I completed dual BSc degrees in Mathematics and Physics as valedictorian 
+            at UPEC, all while maintaining my training as a competitive karateka and handball player: 
+            I hold a 1st Dan Shotokan karate black belt and won multiple competitions, up to international level, in both handball and karate 
+            (I also played badminton up to international level before finishing high-school).
+          </p>
+
+          <p>
+            After an exploratory break into the world of AI and data sciences, as I prepare to begin my MSc at Oxford in October 2025, I'm at an exciting crossroads. 
+            I'm old enough to have developed my own perspectives on mathematics and physics, but young enough 
+            to still feel the wonder of discovery. I'm experienced enough to engage with cutting-edge research, 
+            but still remember what it feels like to struggle with new concepts.
+          </p>
+
+          <p>
+            This combination — of rigorous training and maintained curiosity, of academic achievement and 
+            human empathy — is what I bring to this blog.
+          </p>
+
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">Freedom as My North Star</h2>
+
+          <p>
+            You'll notice the word "freedom" appears often in my writing. It's not just rhetoric — it's the 
+            philosophical foundation of everything I do. I see the pursuit of knowledge as fundamentally an 
+            act of liberation: liberation from ignorance, from limited perspectives, from fear, from the constraints 
+            that others might try to place on our thinking, or even from death...
+          </p>
+
+          <p>
+            When I understand a new theorem, when I make a connection 
+            between previously separate ideas — I become a little more free. And when I share that knowledge, 
+            when I help others see these connections, I'm participating in the collective liberation of human 
+            understanding.
+          </p>
+
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">What's Coming Next</h2>
+
+          <p>
+            In the coming months, you can expect:
+          </p>
+
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Deep dives into current research:</strong> I'll explain my fascination with quantum gravity, string theory, and category theory in accessible terms</li>
+            <li><strong>Educational content:</strong> Making complex mathematical ideas accessible to anyone willing to think deeply</li>
+            <li><strong>Personal insights:</strong> The joys and challenges of life as a young mathematician</li>
+          </ul>
+
+          <p>
+            I'll also be sharing my journey as I prepare for Oxford, reflecting on what it means to study 
+            mathematical and theoretical physics at one of the world's leading universities, and exploring 
+            how this experience shapes my understanding of mathematics and my place in the scientific community.
+          </p>
+
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">Join the Journey</h2>
+
+          <p>
+            This isn't just my blog — it's a conversation. I want to hear from you: your questions, your 
+            insights, your own connections between mathematics and life. Whether you're a seasoned researcher 
+            or someone who's never thought about mathematics as beautiful, your perspective matters.
+          </p>
+
+          <p>
+            You can connect with me through the comments on posts, via email, or on social media. I'm particularly 
+            interested in hearing from:
+          </p>
+
+          <ul class="list-disc pl-6 mb-6 space-y-1">
+            <li>Students navigating mathematics or physics and looking for guidance or encouragement</li>
+            <li>Fellow (aspiring) researchers interested in interdisciplinary connections</li>
+            <li>Anyone curious about how mathematical thinking can illuminate other fields</li>
+            <li>Educators looking for new ways to make mathematics engaging and accessible</li>
+            <li>Anyone who believes, like I do, that knowledge is a path to freedom</li>
+          </ul>
+
+          <div class="vision-box">
+            <h3 class="text-xl font-bold mb-3 text-orange-700">A Final Thought</h3>
+            <p class="text-lg">
+              "Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding." 
+              — William Paul Thurston
+            </p>
+            <p class="mt-3">
+              Welcome to a space dedicated to understanding — of mathematics, of ourselves, and of the beautiful 
+              connections that bind them together.
+            </p>
+          </div>
+
+          <p>
+            Thank you for being here. Thank you for being curious. And thank you for joining me on this journey 
+            toward greater understanding and freedom.
+          </p>
+
+          <p class="text-center mt-8 font-italic text-gray-600">
+            <em>
+              Avec toute ma gratitude,<br>
+              Jorys A. Mahamba<br>
+              Créteil, June 16, 2025
+            </em>
+          </p>
+        </div>
+
+        <!-- Author Bio -->
+        <div class="border-t border-gray-300 mt-12 pt-8">
+          <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-6">
+            <h3 class="font-bold text-lg mb-3">About the Author</h3>
+            <p class="text-sm mb-4">
+              Jorys A. Mahamba is a 20-year-old multicultural mathematician and physicist in training, preparing for his MSc in 
+              Mathematical and Theoretical Physics at Oxford. When not immersed in equations, he can be found 
+              playing chess or basketball, learning new languages, reading a manga (One Piece), or dreaming about the future of science...
+            </p>
+            <div class="flex gap-4">
+              <a href="../about.html" class="text-orange-600 hover:underline text-sm">Full Biography</a>
+              <a href="../more.html" class="text-orange-600 hover:underline text-sm">The Deeper Story</a>
+              <a href="../../index.html" class="text-blue-600 hover:underline text-sm">Academic Work</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="mt-12">
+          <h3 class="text-2xl font-bold mb-6">Start Exploring</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <a href="hopfield-nobel-physics-2024.html" class="block bg-white rounded-lg p-6 shadow hover:shadow-lg transition-shadow">
+              <h4 class="font-semibold mb-2">🏆 The 2024 Nobel Prize in Physics</h4>
+              <p class="text-sm text-gray-600">Dive into my analysis of Hopfield Networks and their beautiful connection to statistical physics...</p>
+            </a>
+            <a href="../research.html" class="block bg-white rounded-lg p-6 shadow hover:shadow-lg transition-shadow">
+              <h4 class="font-semibold mb-2">🔬 Research, Simplified</h4>
+              <p class="text-sm text-gray-600">Explore my current work in quantum gravity and category theory, explained for curious minds...</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- Subscribe Section -->
+        <div class="mt-12 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-8 text-center shadow">
+          <h3 class="text-2xl font-bold mb-4">Stay Connected</h3>
+          <p class="mb-6 text-gray-700">
+            Be the first to know when I publish new thoughts, discoveries, or reflections. 
+            Join a community of curious minds exploring the intersection of mathematics and human experience.
+          </p>
+          <form class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+            <input type="email" placeholder="your.email@example.com" 
+                   class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-orange-500 flex-1">
+            <button type="submit" class="px-6 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-medium">
+              Subscribe
+            </button>
+          </form>
+          <p class="text-xs text-gray-500 mt-4">
+            No spam, just genuine content from my mathematical journey.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-yellow-100 to-orange-50 py-8 px-4 mt-12">
+      <div class="max-w-6xl mx-auto text-center">
+        <p class="text-sm text-gray-600">&copy; 2025 Jorys, The Mathematician. All rights reserved.</p>
+        <div class="mt-4 flex justify-center gap-6 text-sm">
+          <a href="../index.html" class="text-orange-600 hover:underline">Blog Home</a>
+          <a href="../posts.html" class="text-orange-600 hover:underline">All Posts</a>
+          <a href="../../index.html" class="text-blue-600 hover:underline">Academic Site</a>
+        </div>
+        <p class="text-xs text-gray-500 mt-4 italic">
+          "The important thing is not to stop questioning." — Albert Einstein
+        </p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('active');
+      });
+      
+      // Newsletter form
+      document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for subscribing! Newsletter functionality will be activated soon.');
+        this.reset();
+      });
+    </script>
+  </body>
+</html>

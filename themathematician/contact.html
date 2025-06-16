@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Jorys, The Mathematician</title>
+    <meta name="description" content="Get in touch with Jorys - whether you're a curious student, fellow dreamer, or someone who loves deep thoughts.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      body {
+        background: linear-gradient(135deg, #fdf6e3 0%, #fcefe2 50%, #fff5e6 100%);
+        font-family: Georgia, 'Times New Roman', serif;
+        min-height: 100vh;
+      }
+      
+      .gradient-text-warm {
+        background: linear-gradient(135deg, #FF6B35, #FFD700);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .contact-method {
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+      }
+      
+      .contact-method:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+      
+      .social-link {
+        transition: all 0.2s ease;
+      }
+      
+      .social-link:hover {
+        transform: scale(1.1);
+      }
+      
+      .mobile-menu {
+        display: none;
+      }
+      
+      .mobile-menu.active {
+        display: block;
+      }
+      
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-yellow-100 to-orange-50 shadow-md sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <a href="index.html" class="text-2xl font-extrabold gradient-text-warm">Jorys, The Mathematician</a>
+          
+          <!-- Desktop Navigation -->
+          <nav class="desktop-nav flex space-x-6 items-center text-orange-800">
+            <a href="index.html" class="hover:text-orange-600">Home</a>
+            <a href="about.html" class="hover:text-orange-600">About Me</a>
+            <a href="posts.html" class="hover:text-orange-600">All Posts</a>
+            <a href="research.html" class="hover:text-orange-600">Research</a>
+            <a href="contact.html" class="hover:text-orange-600 font-semibold">Contact</a>
+            <a href="../index.html" class="px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium hover:bg-blue-800 transition-colors">Academic Site</a>
+          </nav>
+          
+          <!-- Mobile menu button -->
+          <button class="md:hidden p-2" id="mobile-menu-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-menu pb-4 text-orange-800" id="mobile-menu">
+          <a href="index.html" class="block py-2 hover:text-orange-600">Home</a>
+          <a href="about.html" class="block py-2 hover:text-orange-600">About Me</a>
+          <a href="posts.html" class="block py-2 hover:text-orange-600">All Posts</a>
+          <a href="research.html" class="block py-2 hover:text-orange-600">Research</a>
+          <a href="contact.html" class="block py-2 hover:text-orange-600 font-semibold">Contact</a>
+          <a href="../index.html" class="inline-block mt-2 px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium">Academic Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+      <h1 class="text-4xl font-bold mb-4 gradient-text-warm text-center">Get in Touch</h1>
+      <p class="text-lg text-center mb-12 text-gray-600 max-w-2xl mx-auto">
+        Whether you're a curious student, a fellow dreamer, or someone who just loves deep thoughts — 
+        I'd love to hear from you.
+      </p>
+
+      <!-- Contact Methods -->
+      <section class="grid md:grid-cols-2 gap-6 mb-12">
+        <!-- Email -->
+        <a href="mailto:jorys.the.mathematician@gmail.com" class="contact-method rounded-lg p-6 shadow-lg text-center block">
+          <div class="text-4xl mb-3">📧</div>
+          <h3 class="font-semibold text-lg mb-2">Email</h3>
+          <p class="text-sm text-gray-600 mb-2">jorys.the.mathematician@gmail.com</p>
+          <p class="text-xs text-gray-500">For thoughtful conversations and collaborations</p>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://instagram.com/jorys_the_mathematician" target="_blank" rel="noopener noreferrer" class="contact-method rounded-lg p-6 shadow-lg text-center block">
+          <div class="text-4xl mb-3">📸</div>
+          <h3 class="font-semibold text-lg mb-2">Instagram</h3>
+          <p class="text-sm text-gray-600 mb-2">@jorys_the_mathematician</p>
+          <p class="text-xs text-gray-500">Visual moments from my journey</p>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://youtube.com/@JorysTheMathematician" target="_blank" rel="noopener noreferrer" class="contact-method rounded-lg p-6 shadow-lg text-center block">
+          <div class="text-4xl mb-3">📹</div>
+          <h3 class="font-semibold text-lg mb-2">YouTube</h3>
+          <p class="text-sm text-gray-600 mb-2">@JorysTheMathematician</p>
+          <p class="text-xs text-gray-500">Video explorations (coming soon)</p>
+        </a>
+
+        <!-- Academic Site -->
+        <a href="../contact.html" class="contact-method rounded-lg p-6 shadow-lg text-center block">
+          <div class="text-4xl mb-3">🎓</div>
+          <h3 class="font-semibold text-lg mb-2">Academic Inquiries</h3>
+          <p class="text-sm text-gray-600 mb-2">For research & formal matters</p>
+          <p class="text-xs text-gray-500">Visit my academic contact page</p>
+        </a>
+      </section>
+
+      <!-- What to Reach Out About -->
+      <section class="bg-white rounded-lg p-8 shadow-lg mb-12">
+        <h2 class="text-2xl font-bold mb-6 text-orange-700">What Can We Talk About?</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold mb-3">I'd Love to Hear About:</h3>
+            <ul class="space-y-2 text-sm">
+              <li>✨ Your mathematical "aha!" moments</li>
+              <li>🤔 Questions about my blog posts</li>
+              <li>💡 Ideas for future topics</li>
+              <li>🌍 Your own journey with math/physics</li>
+              <li>📚 Book recommendations</li>
+              <li>🎨 Creative collaborations</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold mb-3">I Can Help With:</h3>
+            <ul class="space-y-2 text-sm">
+              <li>📖 Understanding complex concepts</li>
+              <li>🎯 Academic/career guidance</li>
+              <li>✍️ Guest posts or interviews</li>
+              <li>🗣️ Speaking at your event</li>
+              <li>🤝 Mentorship (limited availability)</li>
+              <li>💭 Philosophical discussions</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Message Form -->
+      <section class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-8 shadow-lg mb-12">
+        <h2 class="text-2xl font-bold mb-6 text-center">Send a Message</h2>
+        <form id="contact-form" class="space-y-4 max-w-2xl mx-auto">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+            <input type="text" id="name" name="name" required 
+                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-500"
+                   placeholder="How should I address you?">
+          </div>
+          
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <input type="email" id="email" name="email" required 
+                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-500"
+                   placeholder="your.email@example.com">
+          </div>
+          
+          <div>
+            <label for="topic" class="block text-sm font-medium text-gray-700 mb-1">What's on your mind?</label>
+            <select id="topic" name="topic" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-500">
+              <option>Question about a blog post</option>
+              <option>Collaboration idea</option>
+              <option>Just saying hi!</option>
+              <option>Academic/career advice</option>
+              <option>Other</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+            <textarea id="message" name="message" rows="5" required 
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-500"
+                      placeholder="Share your thoughts, questions, or just introduce yourself..."></textarea>
+          </div>
+          
+          <div class="text-center">
+            <button type="submit" 
+                    class="px-8 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-medium">
+              Send Message
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Newsletter Signup -->
+      <section class="text-center">
+        <h2 class="text-2xl font-bold mb-4">Stay Connected</h2>
+        <p class="mb-6 text-gray-600">
+          Want to receive updates when I publish new posts? Join the newsletter!
+        </p>
+        <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+          <input type="email" placeholder="your.email@example.com" required
+                 class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-orange-500 flex-1">
+          <button type="submit" 
+                  class="px-6 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-medium">
+            Subscribe
+          </button>
+        </form>
+      </section>
+
+      <!-- Response Time Note -->
+      <div class="mt-12 text-center text-sm text-gray-600">
+        <p>
+          I read every message personally and try to respond within a week. 
+          During exam periods, it might take a bit longer — thanks for your patience!
+        </p>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-yellow-100 to-orange-50 py-8 px-4 mt-12">
+      <div class="max-w-6xl mx-auto text-center">
+        <p class="text-sm text-gray-600">&copy; 2025 Jorys, The Mathematician. All rights reserved.</p>
+        <div class="mt-4 flex justify-center gap-6 text-sm">
+          <a href="index.html" class="text-orange-600 hover:underline">Blog Home</a>
+          <a href="../index.html" class="text-blue-600 hover:underline">Academic Site</a>
+        </div>
+        <p class="text-xs text-gray-500 mt-4 italic">
+          "Connection is why we're here; it is what gives purpose and meaning to our lives." — Brené Brown
+        </p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('active');
+      });
+      
+      // Contact form
+      document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for your message! I\'ll get back to you soon. For now, please email me directly at jorys.mahamba@proton.me');
+        this.reset();
+      });
+      
+      // Newsletter form
+      document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for subscribing! Newsletter functionality coming soon. For now, check back regularly for new posts.');
+        this.reset();
+      });
+    </script>
+  </body>
+</html>

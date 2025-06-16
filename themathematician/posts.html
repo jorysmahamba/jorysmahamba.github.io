@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Posts | Jorys, The Mathematician</title>
+    <meta name="description" content="All blog posts by Jorys A. Mahamba - exploring mathematics, physics, philosophy, and the human experience.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      body {
+        background: linear-gradient(135deg, #fdf6e3 0%, #fcefe2 50%, #fff5e6 100%);
+        font-family: Georgia, 'Times New Roman', serif;
+        min-height: 100vh;
+      }
+      
+      .gradient-text-warm {
+        background: linear-gradient(135deg, #FF6B35, #FFD700);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .post-card {
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+        background: rgba(255, 255, 255, 0.8);
+      }
+      
+      .post-card:hover {
+        transform: translateX(10px);
+        border-left-color: var(--accent-orange);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+      
+      .category-filter {
+        transition: all 0.2s ease;
+      }
+      
+      .category-filter:hover {
+        transform: scale(1.05);
+      }
+      
+      .category-filter.active {
+        background-color: #FF6B35;
+        color: white;
+      }
+      
+      .mobile-menu {
+        display: none;
+      }
+      
+      .mobile-menu.active {
+        display: block;
+      }
+      
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-yellow-100 to-orange-50 shadow-md sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <a href="index.html" class="text-2xl font-extrabold gradient-text-warm">Jorys, The Mathematician</a>
+          
+          <!-- Desktop Navigation -->
+          <nav class="desktop-nav flex space-x-6 items-center text-orange-800">
+            <a href="index.html" class="hover:text-orange-600">Home</a>
+            <a href="about.html" class="hover:text-orange-600">About Me</a>
+            <a href="posts.html" class="hover:text-orange-600 font-semibold">All Posts</a>
+            <a href="research.html" class="hover:text-orange-600">Research</a>
+            <a href="contact.html" class="hover:text-orange-600">Contact</a>
+            <a href="../index.html" class="px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium hover:bg-blue-800 transition-colors">Academic Site</a>
+          </nav>
+          
+          <!-- Mobile menu button -->
+          <button class="md:hidden p-2" id="mobile-menu-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-menu pb-4 text-orange-800" id="mobile-menu">
+          <a href="index.html" class="block py-2 hover:text-orange-600">Home</a>
+          <a href="about.html" class="block py-2 hover:text-orange-600">About Me</a>
+          <a href="posts.html" class="block py-2 hover:text-orange-600 font-semibold">All Posts</a>
+          <a href="research.html" class="block py-2 hover:text-orange-600">Research</a>
+          <a href="contact.html" class="block py-2 hover:text-orange-600">Contact</a>
+          <a href="../index.html" class="inline-block mt-2 px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium">Academic Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+      <h1 class="text-4xl font-bold mb-8 gradient-text-warm text-center">All Blog Posts</h1>
+      
+      <!-- Introduction -->
+      <section class="mb-8 text-center">
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Welcome to my collection of thoughts on mathematics, physics, philosophy, and the human experience. 
+          Each post is a step in my journey toward understanding the beautiful connections that bind science and life together.
+        </p>
+      </section>
+
+      <!-- Category Filters -->
+      <section class="mb-8">
+        <h2 class="text-lg font-semibold mb-4 text-center">Filter by Category</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+          <button class="category-filter px-4 py-2 bg-gray-200 rounded-full text-sm font-medium hover:bg-gray-300 active" data-category="all">
+            All Posts (2)
+          </button>
+          <button class="category-filter px-4 py-2 bg-yellow-100 rounded-full text-sm font-medium hover:bg-yellow-200" data-category="mathematics">
+            ∫ Mathematics
+          </button>
+          <button class="category-filter px-4 py-2 bg-blue-100 rounded-full text-sm font-medium hover:bg-blue-200" data-category="physics">
+            ψ Physics
+          </button>
+          <button class="category-filter px-4 py-2 bg-purple-100 rounded-full text-sm font-medium hover:bg-purple-200" data-category="philosophy">
+            ∃ Philosophy
+          </button>
+          <button class="category-filter px-4 py-2 bg-green-100 rounded-full text-sm font-medium hover:bg-green-200" data-category="personal">
+            ✨ Personal
+          </button>
+        </div>
+      </section>
+
+      <!-- Posts List -->
+      <section class="space-y-6">
+        <!-- Post 2: Welcome -->
+        <article class="post-card rounded-lg p-6 shadow" data-categories="personal philosophy">
+          <a href="posts/welcome-to-jorys-mathematician.html" class="block">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="text-xl font-semibold text-gray-900">Welcome to Jorys, The Mathematician</h3>
+              <span class="text-sm text-gray-500 whitespace-nowrap ml-4">June 16, 2025</span>
+            </div>
+            <p class="text-gray-600 mb-3">
+              Meet the person behind this blog and discover the vision that drives this journey. From Franco-Congolese 
+              identity to Oxford dreams, from karate competitions to quantum gravity — this is my story and my 
+              invitation to explore mathematics as a path to freedom.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-orange-100 text-orange-700 rounded text-xs">Welcome</span>
+                <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">Personal</span>
+                <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">Philosophy</span>
+                <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">Vision</span>
+              </div>
+              <span class="text-sm text-orange-600">8 min read →</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Post 1: Nobel Prize -->
+        <article class="post-card rounded-lg p-6 shadow" data-categories="physics mathematics">
+          <a href="posts/hopfield-nobel-physics-2024.html" class="block">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="text-xl font-semibold text-gray-900">The 2024 Nobel Prize in Physics: When Neural Networks Met Statistical Physics</h3>
+              <span class="text-sm text-gray-500 whitespace-nowrap ml-4">October 19, 2024</span>
+            </div>
+            <p class="text-gray-600 mb-3">
+              Understanding Hopfield Networks and their profound connection to the Ising model — the physics behind 
+              the AI revolution that earned Hopfield and Hinton the Nobel Prize. A deep dive into how magnetic 
+              materials inspired the neural networks powering today's AI revolution.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">Physics</span>
+                <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">AI</span>
+                <span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-xs">Mathematics</span>
+                <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">Nobel Prize</span>
+              </div>
+              <span class="text-sm text-orange-600">12 min read →</span>
+            </div>
+          </a>
+        </article>
+      </section>
+
+      <!-- Coming Soon -->
+      <div class="mt-12 text-center bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-8 shadow">
+        <h2 class="text-2xl font-bold mb-4 text-orange-700">More Coming Soon</h2>
+        <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+          This is just the beginning of my blogging journey. I'm working on posts about differential geometry, 
+          quantum gravity, cultural reflections, and the mathematical beauty that surrounds us every day.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="contact.html" class="px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-medium">
+            Suggest a Topic
+          </a>
+          <a href="../research.html" class="px-6 py-3 border-2 border-orange-600 text-orange-600 rounded-lg hover:bg-orange-600 hover:text-white transition-colors font-medium">
+            Explore My Research
+          </a>
+        </div>
+      </div>
+
+      <!-- Subscribe Section -->
+      <section class="mt-12 bg-white rounded-lg p-8 shadow-lg text-center">
+        <h2 class="text-2xl font-bold mb-4">Never Miss a Post</h2>
+        <p class="text-gray-600 mb-6 max-w-md mx-auto">
+          Subscribe to get notified when I publish new explorations in mathematics, physics, and philosophy.
+        </p>
+        <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+          <input type="email" placeholder="your.email@example.com" required
+                 class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-orange-500 flex-1">
+          <button type="submit" 
+                  class="px-6 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-medium">
+            Subscribe
+          </button>
+        </form>
+        <p class="text-xs text-gray-500 mt-4">
+          No spam, just genuine mathematical insights and reflections.
+        </p>
+      </section>
+
+      <!-- Archive Note -->
+      <div class="mt-12 text-center text-sm text-gray-600">
+        <p>
+          <strong>Archive:</strong> This blog launched in October 2024. All posts are listed above in reverse chronological order.
+        </p>
+        <p class="mt-2">
+          Looking for something specific? Use the category filters above or <a href="contact.html" class="text-orange-600 hover:underline">reach out</a> with questions.
+        </p>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-yellow-100 to-orange-50 py-8 px-4 mt-12">
+      <div class="max-w-6xl mx-auto text-center">
+        <p class="text-sm text-gray-600">&copy; 2024 Jorys, The Mathematician. All rights reserved.</p>
+        <div class="mt-4 flex justify-center gap-6 text-sm">
+          <a href="index.html" class="text-orange-600 hover:underline">Blog Home</a>
+          <a href="../index.html" class="text-blue-600 hover:underline">Academic Site</a>
+        </div>
+        <p class="text-xs text-gray-500 mt-4 italic">
+          "The important thing is not to stop questioning." — Albert Einstein
+        </p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('active');
+      });
+
+      // Category filtering
+      const categoryButtons = document.querySelectorAll('.category-filter');
+      const posts = document.querySelectorAll('.post-card');
+
+      categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Update active button
+          categoryButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+
+          const selectedCategory = this.dataset.category;
+
+          // Filter posts
+          posts.forEach(post => {
+            if (selectedCategory === 'all') {
+              post.style.display = 'block';
+            } else {
+              const postCategories = post.dataset.categories.split(' ');
+              if (postCategories.includes(selectedCategory)) {
+                post.style.display = 'block';
+              } else {
+                post.style.display = 'none';
+              }
+            }
+          });
+
+          // Update count in "All Posts" button
+          const allButton = document.querySelector('[data-category="all"]');
+          const visiblePosts = Array.from(posts).filter(post => post.style.display !== 'none').length;
+          if (selectedCategory === 'all') {
+            allButton.textContent = `All Posts (${posts.length})`;
+          } else {
+            allButton.textContent = `All Posts (${posts.length})`;
+          }
+        });
+      });
+      
+      // Newsletter form
+      document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for subscribing! Newsletter functionality coming soon. For now, check back regularly for new posts.');
+        this.reset();
+      });
+    </script>
+  </body>
+</html>

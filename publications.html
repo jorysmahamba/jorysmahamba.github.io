@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Publications | Jorys A. Mahamba</title>
+    <meta name="description" content="Academic publications, papers, and presentations by Jorys A. Mahamba in mathematical physics, quantum gravity, and AI applications.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      :root {
+        --oxford-blue: #002147;
+        --accent-blue: #4A90E2;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      
+      .font-serif {
+        font-family: Georgia, 'Times New Roman', serif;
+      }
+      
+      .gradient-text {
+        background: linear-gradient(135deg, var(--oxford-blue), var(--accent-blue));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .publication-card {
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+      }
+      
+      .publication-card:hover {
+        border-left-color: var(--accent-blue);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+      
+      .status-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 500;
+      }
+      
+      .status-published {
+        background-color: #10B981;
+        color: white;
+      }
+      
+      .status-review {
+        background-color: #F59E0B;
+        color: white;
+      }
+      
+      .status-preparation {
+        background-color: #6B7280;
+        color: white;
+      }
+      
+      .mobile-menu {
+        display: none;
+      }
+      
+      .mobile-menu.active {
+        display: block;
+      }
+      
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <a href="index.html" class="text-2xl font-bold gradient-text">Jorys A. Mahamba</a>
+          
+          <!-- Desktop Navigation -->
+          <nav class="desktop-nav flex space-x-6 items-center">
+            <a href="index.html" class="hover:text-blue-600 transition-colors">Home</a>
+            <a href="about.html" class="hover:text-blue-600 transition-colors">About</a>
+            <a href="research.html" class="hover:text-blue-600 transition-colors">Research</a>
+            <a href="publications.html" class="font-semibold text-blue-600">Publications</a>
+            <a href="contact.html" class="hover:text-blue-600 transition-colors">Contact</a>
+            <a href="themathematician/index.html" class="px-3 py-1 bg-yellow-400 text-black rounded-full text-sm font-medium hover:bg-yellow-500 transition-colors">Personal Blog</a>
+          </nav>
+          
+          <!-- Mobile menu button -->
+          <button class="md:hidden p-2" id="mobile-menu-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-menu pb-4" id="mobile-menu">
+          <a href="index.html" class="block py-2 hover:text-blue-600">Home</a>
+          <a href="about.html" class="block py-2 hover:text-blue-600">About</a>
+          <a href="research.html" class="block py-2 hover:text-blue-600">Research</a>
+          <a href="publications.html" class="block py-2 font-semibold text-blue-600">Publications</a>
+          <a href="contact.html" class="block py-2 hover:text-blue-600">Contact</a>
+          <a href="themathematician/index.html" class="inline-block mt-2 px-3 py-1 bg-yellow-400 text-black rounded-full text-sm font-medium">Personal Blog</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+      <h1 class="text-4xl font-bold mb-8 gradient-text">Publications & Academic Work</h1>
+      
+      <!-- Publication Stats -->
+      <div class="grid grid-cols-3 gap-4 mb-12 text-center">
+        <div class="bg-white rounded-lg p-4 shadow">
+          <div class="text-2xl font-bold text-blue-600">1</div>
+          <div class="text-sm text-gray-600">Under Review</div>
+        </div>
+        <div class="bg-white rounded-lg p-4 shadow">
+          <div class="text-2xl font-bold text-green-600">4+</div>
+          <div class="text-sm text-gray-600">Research Projects</div>
+        </div>
+        <div class="bg-white rounded-lg p-4 shadow">
+          <div class="text-2xl font-bold text-purple-600">1</div>
+          <div class="text-sm text-gray-600">Presentation</div>
+        </div>
+      </div>
+
+      <!-- Journal Articles & Papers -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          📄 Journal Articles & Papers
+        </h2>
+        
+        <div class="space-y-6">
+          <!-- Paper 1 -->
+          <div class="publication-card bg-white rounded-lg p-6 shadow">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-lg font-semibold">
+                The Nobel Prize in Physics 2024: A Celebration of Machine Learning's Foundations in Physics
+              </h3>
+              <span class="status-badge status-review">Under review</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-2">
+              <strong>J. A. Mahamba</strong><br>
+              Submitted to: <em>La Gazette des Mathématiciens</em>, Société Mathématique de France
+            </p>
+            <p class="text-sm mb-3 font-serif">
+              A comprehensive mathematical review exploring the deep connections between Hopfield Networks and the Ising model, 
+              demonstrating how statistical physics provides the theoretical foundation for modern neural network architectures. 
+              This survey celebrates the 2024 Nobel Prize awarded to John J. Hopfield and Geoffrey E. Hinton for their foundational 
+              contributions to machine learning through physics-inspired models.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs">Statistical Physics</span>
+              <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">Neural Networks</span>
+              <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs">Mathematical Physics</span>
+              <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs">Survey Article</span>
+            </div>
+            <div class="flex gap-4 text-sm">
+              <a href="/assets/papers/hopfield-survey.pdf" class="text-blue-600 hover:underline">Preprint (PDF)</a>
+              <span class="text-gray-400">arXiv (coming soon)</span>
+            </div>
+          </div>
+
+          <!-- Paper 2 -->
+          <div class="publication-card bg-white rounded-lg p-6 shadow">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-lg font-semibold">
+                Machine Learning Framework for Commercial Paper Valuation
+              </h3>
+              <span class="status-badge status-preparation">In Preparation</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-2">
+              <strong>J. A. Mahamba</strong>, et al.<br>
+              BRED Banque Populaire Research Team
+            </p>
+            <p class="text-sm mb-3 font-serif">
+              Development of novel statistical features for machine learning models in financial valuation, specifically targeting 
+              Commercial Paper pricing in trading environments. The framework introduces mathematical enhancements that improve 
+              prediction accuracy and model interpretability.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">Machine Learning</span>
+              <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs">Quantitative Finance</span>
+              <span class="px-2 py-1 bg-orange-100 text-orange-800 rounded text-xs">Applied Mathematics</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technical Reports -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          📊 Technical Reports
+        </h2>
+
+        <div class="space-y-6">
+          <div class="publication-card bg-white rounded-lg p-6 shadow">
+            <h3 class="text-lg font-semibold mb-2">
+              From classical Differential Geometry to Alexandrov spaces...
+            </h3>
+            <p class="text-sm text-gray-600 mb-2">
+              <strong>J. A. Mahamba</strong><br>
+              MSc Research Report, LAMA Laboratory, Université Paris XII (2025)<br>
+              Supervisor: Dr. Ilaria Mondello
+            </p>
+            <p class="text-sm mb-3 font-serif">
+              TBD.
+            </p>
+            <div class="flex gap-4 text-sm">
+              <span class="text-gray-400">PDF, Slides (coming soon)</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="publication-card bg-white rounded-lg p-6 shadow">
+            <h3 class="text-lg font-semibold mb-2">
+              Machine Learning Framework for Commercial Paper Valuation
+            </h3>
+            <p class="text-sm text-gray-600 mb-2">
+              <strong>J. A. Mahamba</strong><br>
+              Technical Report, BRED Banque Populaire (2024)<br>
+              Supervisor: Dr. Clément Moreau
+            </p>
+            <p class="text-sm mb-3 font-serif">
+              Development of a novel ML framework incorporating advanced statistical features for improved 
+              Commercial Paper valuation in trading environments. The project included data visualization 
+              concepts for real-time trading interfaces.
+            </p>
+            <div class="text-sm text-gray-500">
+              * Proprietary work - details available upon request
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="publication-card bg-white rounded-lg p-6 shadow">
+            <h3 class="text-lg font-semibold mb-2">
+              Mathematical Exploration of Phase Transitions in the Ising Model
+            </h3>
+            <p class="text-sm text-gray-600 mb-2">
+              <strong>J. A. Mahamba</strong><br>
+              BSc Research Report, LAMA Laboratory, Université Paris XII (2024)<br>
+              Supervisor: Dr. Paul Dario
+            </p>
+            <p class="text-sm mb-3 font-serif">
+              A rigorous mathematical treatment of phase transitions in the Ising model using measure theory, 
+              correlation inequalities (GKS), and thermodynamic limits. The report demonstrates the absence of 
+              phase transitions in one dimension versus their existence in two dimensions, with applications 
+              to statistical physics education.
+            </p>
+            <div class="flex gap-4 text-sm">
+              <a href="/assets/papers/ising-report.pdf" class="text-blue-600 hover:underline">PDF (French)</a>
+              <a href="/assets/papers/ising-slides.pdf" class="text-blue-600 hover:underline">Slides</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Presentations -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          🎤 Presentations & Talks
+        </h2>
+        
+        <div class="space-y-4">
+          <div class="bg-white rounded-lg p-4 shadow">
+            <h4 class="font-semibold">From classical Differential Geometry to Alexandrov spaces...</h4>
+            <p class="text-sm text-gray-600">
+              LAMA Seminar, Université Paris XII • September 2025 • 
+              <span class="text-gray-400">Slides (coming soon)</span>
+            </p>
+          </div>
+          <div class="bg-white rounded-lg p-4 shadow">
+            <h4 class="font-semibold">Phase Transitions in Statistical Mechanics: A Mathematical Perspective</h4>
+            <p class="text-sm text-gray-600">
+              BSc examination, Université Paris XII • June 2024 • 
+              <a href="/assets/papers/ising-slides.pdf" class="text-blue-600 hover:underline">Slides</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Academic Writing -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          ✍️ Other Academic Writing
+        </h2>
+        
+        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-6">
+          <h3 class="font-semibold mb-3"><a href="/themathematician/">Blog</a> Jorys, The Mathematician</h3>
+          <p class="text-sm mb-4">
+            I maintain a personal blog where I explore mathematical and physical concepts in an accessible way, 
+            sharing insights from my research journey and reflections on the intersection of mathematics, 
+            physics, and philosophy.
+          </p>
+          <a href="themathematician/index.html" class="inline-block px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700 transition-colors text-sm font-medium">
+            Visit Blog
+          </a>
+        </div>
+      </section>
+
+      <!-- Citation -->
+      <section class="bg-gray-100 rounded-lg p-6">
+        <h3 class="font-semibold mb-3">How to Cite</h3>
+        <p class="text-sm mb-3">If you would like to cite my work, please use the following format:</p>
+        <div class="bg-white rounded p-4 font-mono text-xs overflow-x-auto">
+          @article{mahamba2025nobel,<br>
+          &nbsp;&nbsp;title={The Nobel Prize in Physics 2024: A Celebration of Machine Learning's Foundations in Physics},<br>
+          &nbsp;&nbsp;author={Mahamba, Jorys A.},<br>
+          &nbsp;&nbsp;journal={La Gazette des Mathématiciens},<br>
+          &nbsp;&nbsp;year={2025},<br>
+          &nbsp;&nbsp;note={Under review}<br>
+          }
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 px-4 mt-12">
+      <div class="max-w-6xl mx-auto text-center">
+        <p>&copy; 2025 Jorys A. Mahamba. All rights reserved.</p>
+        <p class="mt-2">
+          <a href="themathematician/index.html" class="text-yellow-400 hover:text-yellow-300">Visit my personal blog →</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('active');
+      });
+    </script>
+  </body>
+</html>

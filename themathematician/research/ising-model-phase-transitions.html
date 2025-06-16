@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematical Exploration of Phase Transitions in the Ising Model | Research | Jorys, The Mathematician</title>
+    <meta name="description" content="BSc research internship exploring the Ising model's phase transitions using rigorous mathematical proofs - bridging physics and mathematics for pedagogical advancement.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
+    </script>
+    <style>
+      body {
+        background: linear-gradient(135deg, #fdf6e3 0%, #fcefe2 50%, #fff5e6 100%);
+        font-family: Georgia, 'Times New Roman', serif;
+        min-height: 100vh;
+      }
+      
+      .gradient-text-warm {
+        background: linear-gradient(135deg, #FF6B35, #FFD700);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .research-content {
+        font-size: 1.125rem;
+        line-height: 1.8;
+      }
+      
+      .research-content p {
+        margin-bottom: 1.5rem;
+      }
+      
+      .equation-box {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+      
+      .research-section {
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+      
+      .key-result {
+        background: linear-gradient(135deg, #fff5f5 0%, #fef5e7 100%);
+        border-left: 4px solid #f59e0b;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+      
+      .mobile-menu {
+        display: none;
+      }
+      
+      .mobile-menu.active {
+        display: block;
+      }
+      
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+        
+        .research-content {
+          font-size: 1rem;
+        }
+      }
+      
+      .download-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: linear-gradient(135deg, #FF6B35, #FFD700);
+        color: white;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: transform 0.2s ease;
+        text-decoration: none;
+      }
+      
+      .download-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+      }
+      
+      .research-figure {
+        margin: 2rem 0;
+        text-align: center;
+      }
+      
+      .research-figure img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .figure-caption {
+        font-size: 0.9rem;
+        color: #666;
+        font-style: italic;
+        margin-top: 0.75rem;
+        padding: 0 1rem;
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-yellow-100 to-orange-50 shadow-md sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <a href="../index.html" class="text-2xl font-extrabold gradient-text-warm">Jorys, The Mathematician</a>
+          
+          <!-- Desktop Navigation -->
+          <nav class="desktop-nav flex space-x-6 items-center text-orange-800">
+            <a href="../index.html" class="hover:text-orange-600">Home</a>
+            <a href="../about.html" class="hover:text-orange-600">About Me</a>
+            <a href="../posts.html" class="hover:text-orange-600">All Posts</a>
+            <a href="../research.html" class="hover:text-orange-600 font-semibold">Research</a>
+            <a href="../contact.html" class="hover:text-orange-600">Contact</a>
+            <a href="../../index.html" class="px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium hover:bg-blue-800 transition-colors">Academic Site</a>
+          </nav>
+          
+          <!-- Mobile menu button -->
+          <button class="md:hidden p-2" id="mobile-menu-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-menu pb-4 text-orange-800" id="mobile-menu">
+          <a href="../index.html" class="block py-2 hover:text-orange-600">Home</a>
+          <a href="../about.html" class="block py-2 hover:text-orange-600">About Me</a>
+          <a href="../posts.html" class="block py-2 hover:text-orange-600">All Posts</a>
+          <a href="../research.html" class="block py-2 hover:text-orange-600 font-semibold">Research</a>
+          <a href="../contact.html" class="block py-2 hover:text-orange-600">Contact</a>
+          <a href="../../index.html" class="inline-block mt-2 px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium">Academic Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+      <!-- Research Header -->
+      <header class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text-warm">
+          Mathematical Exploration of Phase Transitions in the Ising Model
+        </h1>
+        <p class="text-xl text-gray-600 mb-6">
+          BSc Research Internship • Laboratory of Analysis and Applied Mathematics (LAMA) • UPEC
+        </p>
+        <div class="flex flex-wrap gap-4 mb-6">
+          <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Statistical Physics</span>
+          <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Probability Theory</span>
+          <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">Phase Transitions</span>
+          <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Mathematical Physics</span>
+        </div>
+        <div class="text-sm text-gray-600">
+          <p>Supervisor: Dr. Paul DARIO • Duration: 6 weeks (April-May 2024)</p>
+        </div>
+      </header>
+
+      <!-- Research Content -->
+      <div class="research-content">
+        <!-- Executive Summary -->
+        <section class="research-section">
+          <h2 class="text-2xl font-bold mb-4 text-orange-700">Executive Summary</h2>
+          <p>
+            This research internship aimed to bridge a pedagogical gap in the teaching of statistical physics by providing 
+            a mathematically rigorous exploration of the Ising model. Working under the supervision of Dr. Paul DARIO at 
+            LAMA, I investigated the fundamental properties of this cornerstone model in statistical mechanics, focusing 
+            on phase transitions in one and two dimensions.
+          </p>
+          <p>
+            The work demonstrates the absence of phase transitions in 1D and proves their existence in 2D using 
+            advanced mathematical techniques rarely presented at the undergraduate level. This research serves as 
+            an ambitious pedagogical resource for motivated students seeking to understand the deep connections 
+            between mathematics and physics.
+          </p>
+        </section>
+
+        <!-- Key Contributions -->
+        <section class="research-section">
+          <h2 class="text-2xl font-bold mb-4 text-orange-700">Key Contributions</h2>
+          <ul class="list-disc pl-6 space-y-3">
+            <li>
+              <strong>Rigorous Mathematical Framework:</strong> Developed a formal presentation of the Ising model using 
+              measure theory and probability, making abstract concepts accessible to advanced undergraduates.
+            </li>
+            <li>
+              <strong>GKS Inequalities:</strong> Provided detailed proofs of the Griffiths-Kelly-Sherman inequalities, 
+              establishing fundamental correlation properties in the model.
+            </li>
+            <li>
+              <strong>Dimensional Analysis:</strong> Contrasted the behavior in 1D (no phase transition) with 2D 
+              (phase transition exists) through careful mathematical analysis.
+            </li>
+            <li>
+              <strong>Pedagogical Innovation:</strong> Created a resource that fills the gap between physics intuition 
+              and mathematical rigor, suitable for ambitious science education.
+            </li>
+          </ul>
+        </section>
+
+        <!-- Mathematical Framework -->
+        <section class="research-section">
+          <h2 class="text-2xl font-bold mb-4 text-orange-700">Mathematical Framework</h2>
+          <p>
+            The Ising model describes a system of interacting spins on a lattice, where each spin can be in one of two 
+            states: +1 (up) or -1 (down). The system's behavior is governed by the Hamiltonian:
+          </p>
+          
+          <div class="equation-box">
+            <p class="text-lg mb-2">$$H(\sigma) = -\sum_{\{i,j\}} \sigma_i \sigma_j$$</p>
+            <p class="text-sm text-gray-600">
+              where the sum is over nearest-neighbor pairs and $\sigma_i \in \{-1, +1\}$
+            </p>
+          </div>
+
+          <p>
+            The probability of a configuration follows the Gibbs measure:
+          </p>
+          
+          <div class="equation-box">
+            <p class="text-lg mb-2">$$\mu_\beta(\sigma) = \frac{e^{-\beta H(\sigma)}}{Z(\beta)}$$</p>
+            <p class="text-sm text-gray-600">
+              where $\beta = 1/(k_B T)$ is the inverse temperature and $Z(\beta)$ is the partition function
+            </p>
+          </div>
+
+          <div class="research-figure">
+            <img src="/assets/images/Ising_model_D2.jpg" alt="2D Ising Model Representation">
+            <p class="figure-caption">
+              <strong>Figure 1:</strong> Representation of the 2D Ising model with nearest-neighbor interactions. 
+              Blue arrows represent spin up (+1) and red arrows represent spin down (-1).
+            </p>
+          </div>
+        </section>
+
+        <!-- Main Results -->
+        <section class="research-section">
+          <h2 class="text-2xl font-bold mb-4 text-orange-700">Main Results</h2>
+          
+          <h3 class="text-xl font-semibold mb-3 text-orange-600">1. Correlation Inequalities (GKS)</h3>
+          <div class="key-result">
+            <p class="font-semibold mb-2">Theorem (Griffiths-Kelly-Sherman):</p>
+            <p>For any finite subset $\Lambda \subset \mathbb{Z}^d$ and any $A, B \subseteq \Lambda$:</p>
+            <p class="text-center mt-2">$$\langle \sigma_A \sigma_B \rangle_\beta^+ \geq \langle \sigma_A \rangle_\beta^+ \langle \sigma_B \rangle_\beta^+$$</p>
+            <p class="mt-2 text-sm">This establishes that spins are positively correlated in the ferromagnetic Ising model.</p>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-3 mt-6 text-orange-600">2. One-Dimensional Case</h3>
+          <div class="key-result">
+            <p class="font-semibold mb-2">Theorem (Absence of Phase Transition in 1D):</p>
+            <p>For the 1D Ising model, for all $\beta > 0$:</p>
+            <p class="text-center mt-2">$$\langle \sigma_0 \rangle_\beta^+ = 0$$</p>
+            <p class="mt-2 text-sm">
+              This means there is no spontaneous magnetization at any finite temperature, 
+              hence no phase transition in one dimension.
+            </p>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-3 mt-6 text-orange-600">3. Two-Dimensional Case</h3>
+          <div class="key-result">
+            <p class="font-semibold mb-2">Theorem (Peierls' Argument):</p>
+            <p>For the 2D Ising model, there exists a critical inverse temperature $\beta_c > 0$ such that:</p>
+            <ul class="list-disc pl-6 mt-2">
+              <li>For $\beta < \beta_c$: $\langle \sigma_0 \rangle_\beta^+ = 0$ (disordered phase)</li>
+              <li>For $\beta > \beta_c$: $\langle \sigma_0 \rangle_\beta^+ > 0$ (ordered phase)</li>
+            </ul>
+            <p class="mt-2 text-sm">
+              This demonstrates the existence of a phase transition in two dimensions, 
+              consistent with experimental observations of ferromagnetic materials.
+            </p>
+          </div>
+
+          <div class="research-figure">
+            <img src="/assets/images/magnetization-temperature.png" alt="Magnetization vs Temperature">
+            <p class="figure-caption">
+              <strong>Figure 2:</strong> Magnetization as a function of inverse temperature β, 
+              showing the sharp transition at the critical point β_c in the 2D Ising model.
+            </p>
+          </div>
+        </section>
+
+        <!-- Methodological Approach -->
+        <section class="research-section">
+          <h2 class="text-2xl font-bold mb-4 text-orange-700">Methodological Innovation</h2>
+          <p>
+            This work's primary contribution lies in its pedagogical approach. By employing rigorous mathematical 
+            proofs typically reserved for graduate-level courses, I aimed to create a resource that:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 mt-4">
+            <li>Bridges the gap between physics intuition and mathematical formalism</li>
+            <li>Provides complete, detailed proofs accessible to motivated undergraduates</li>
+            <li>Systematically connects abstract mathematical results to physical phenomena</li>
+            <li>Serves as a model for mathematically ambitious science education</li>
+          </ul>
+          
+          <p class="mt-4">
+            The use of modern AI tools (ChatGPT, Jenni.ai) was judiciously integrated into the research process, 
+            demonstrating how these technologies can enhance academic productivity while maintaining rigor.
+          </p>
+        </section>
+
+        <!-- Resources -->
+        <section class="research-section">
+          <h2 class="text-2xl font-bold mb-4 text-orange-700">Research Documents</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-lg p-6 shadow hover:shadow-lg transition-shadow">
+              <h3 class="font-semibold mb-2">Research Memoir (v1.1)</h3>
+              <p class="text-sm text-gray-600 mb-4">
+                Complete 35-page research report including all proofs, figures, and references. 
+                Written in French with detailed mathematical demonstrations.
+              </p>
+              <a href="/assets/papers/ising-report.pdf" class="download-button">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Download PDF (2.3 MB)
+              </a>
+            </div>
+            
+            <div class="bg-white rounded-lg p-6 shadow hover:shadow-lg transition-shadow">
+              <h3 class="font-semibold mb-2">Defense Presentation</h3>
+              <p class="text-sm text-gray-600 mb-4">
+                13-slide presentation delivered at UPEC on June 3, 2024. 
+                Summarizes key results and methodological approach.
+              </p>
+              <a href="/assets/papers/ising-slides.pdf" class="download-button">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                </svg>
+                Download Slides (1.1 MB)
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Impact and Recognition -->
+        <section class="research-section">
+          <h2 class="text-2xl font-bold mb-4 text-orange-700">Impact and Recognition</h2>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Grade received: 15/20 (French scale)</li>
+            <li>Contributed to successful applications to prestigious master's programs</li>
+            <li>Received commendations from professors for pedagogical innovation</li>
+            <li>Manuscript being prepared for publication in pedagogical physics journals</li>
+          </ul>
+          
+          <p class="mt-4">
+            This work particularly impressed the selection committee for the Centrale-ESSEC Data Sciences & 
+            Business Analytics Master's program, where I was accepted for 2024-2025.
+          </p>
+        </section>
+
+        <!-- Future Directions -->
+        <section class="research-section">
+          <h2 class="text-2xl font-bold mb-4 text-orange-700">Future Directions</h2>
+          <p>
+            Building on this foundation, several research directions present themselves:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 mt-4">
+            <li>Extension to three-dimensional systems and comparison with experimental data</li>
+            <li>Application of similar rigorous approaches to other spin models (Potts, XY)</li>
+            <li>Development of computational tools for visualizing phase transitions</li>
+            <li>Creation of a comprehensive textbook bridging physics and mathematics</li>
+          </ul>
+        </section>
+
+        <!-- Acknowledgments -->
+        <section class="research-section">
+          <h2 class="text-2xl font-bold mb-4 text-orange-700">Acknowledgments</h2>
+          <p>
+            I express my sincere gratitude to Dr. Paul DARIO for his invaluable guidance throughout this project, 
+            and to Professors Amine ASSELAH, Frédéric CHARVE, and Galina PERELMAN for their support and 
+            recommendation letters. Special thanks to the LAMA laboratory for providing an excellent research environment.
+          </p>
+        </section>
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-12 flex justify-between items-center">
+        <a href="../research.html" class="text-orange-600 hover:underline flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Back to Research
+        </a>
+        <a href="hopfield-networks-research.html" class="text-orange-600 hover:underline flex items-center gap-2">
+          Next: Hopfield Networks
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-yellow-100 to-orange-50 py-8 px-4 mt-12">
+      <div class="max-w-6xl mx-auto text-center">
+        <p class="text-sm text-gray-600">&copy; 2025 Jorys, The Mathematician. All rights reserved.</p>
+        <div class="mt-4 flex justify-center gap-6 text-sm">
+          <a href="../index.html" class="text-orange-600 hover:underline">Blog Home</a>
+          <a href="../research.html" class="text-orange-600 hover:underline">Research</a>
+          <a href="../../index.html" class="text-blue-600 hover:underline">Academic Site</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('active');
+      });
+    </script>
+  </body>
+</html>

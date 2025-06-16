@@ -1,0 +1,335 @@
+<main class="max-w-4xl mx-auto px-4 py-12">
+      <!-- Hero Section -->
+      <section class="mb-12">
+        <h1 class="text-4xl font-bold mb-6 gradient-text">About Me</h1>
+        <div class="grid md:grid-cols-3 gap-8 items-start">
+          <div class="md:col-span-1">
+            <img src="assets/images/profile.jpg" alt="Jorys A. Mahamba" class="w-full rounded-lg shadow-lg mb-4">
+            <div class="bg-gray-50 rounded-lg p-4">
+              <h3 class="font-semibold mb-2">Quick Facts</h3>
+              <ul class="text-sm space-y-1">
+                <li><strong>Age:</strong> 20</li>
+                <li><strong>Nationality:</strong> French (Franco-Congolese)</li>
+                <li><strong>Languages:</strong> French, English (C1), Spanish</li>
+                <li><strong>Current:</strong> Paris, France</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="md:col-span-2 font-serif">
+            <p class="text-lg mb-4">
+              I'm Jorys A. Mahamba, a French student in the MSc in Mathematical and Theoretical Physics at the University of Oxford. 
+              My passion lies at the intersection of pure mathematics and theoretical physics, 
+              driven by the ambition of developing new mathematical frameworks for quantum gravity.
+            </p>
+            <p class="mb-4">
+              I hold a dual BSc in Mathematics and Physics, having graduated valedictorian from Université Paris-Est Créteil after three years of Classe Préparatoire (PCSI/PC/PC*) in France, where I finished high school at age 15. 
+              I hope to work on higher category theory as a foundational tool for non-perturbative quantum field theory for my master's dissertation at Oxford, framing it as a technical precursor to my doctoral project.
+            </p>
+            <p class="mb-4">
+              My broader research interests include the role of <strong>quantum information</strong> in spacetime emergence from entanglement, <strong>derived algebraic geometry</strong> and quantum spacetime, condensed mathematics, and mirror symmetry. 
+              I am also pursuing a side project combining <strong>AI and string theory</strong> for landscape and swampland analysis, using tools from data science to identify geometric patterns across vacua.
+            </p>
+            <p class="mb-4">
+              Beyond research, I am deeply committed to education and outreach. Under the name 
+              <a href="themathematician/index.html" class="text-blue-600 hover:underline font-medium">"Jorys, The Mathematician"</a>, 
+              I write accessible blog posts on mathematics and physics and document my academic journey.
+            </p>
+            <p>
+              At the heart of my journey is a belief that science should be rigorous but human, abstract yet grounded. 
+              My work is guided by a deep sense of wonder, a passion for unity across disciplines, and a lifelong commitment to learning.
+            </p>
+          </div>
+        </div>
+      </section>
+              
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | Jorys A. Mahamba</title>
+    <meta name="description" content="About Jorys A. Mahamba - MSc student at Oxford, researcher in mathematical physics, quantum gravity, and AI applications in string theory.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      :root {
+        --oxford-blue: #002147;
+        --accent-blue: #4A90E2;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      
+      .font-serif {
+        font-family: Georgia, 'Times New Roman', serif;
+      }
+      
+      .gradient-text {
+        background: linear-gradient(135deg, var(--oxford-blue), var(--accent-blue));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .timeline-dot {
+        width: 12px;
+        height: 12px;
+        background: var(--oxford-blue);
+        border-radius: 50%;
+        position: absolute;
+        left: -6px;
+        top: 6px;
+      }
+      
+      .timeline-line {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--oxford-blue), transparent);
+      }
+      
+      .mobile-menu {
+        display: none;
+      }
+      
+      .mobile-menu.active {
+        display: block;
+      }
+      
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <a href="index.html" class="text-2xl font-bold gradient-text">Jorys A. Mahamba</a>
+          
+          <!-- Desktop Navigation -->
+          <nav class="desktop-nav flex space-x-6 items-center">
+            <a href="index.html" class="hover:text-blue-600 transition-colors">Home</a>
+            <a href="about.html" class="font-semibold text-blue-600">About</a>
+            <a href="research.html" class="hover:text-blue-600 transition-colors">Research</a>
+            <a href="publications.html" class="hover:text-blue-600 transition-colors">Publications</a>
+            <a href="contact.html" class="hover:text-blue-600 transition-colors">Contact</a>
+            <a href="themathematician/index.html" class="px-3 py-1 bg-yellow-400 text-black rounded-full text-sm font-medium hover:bg-yellow-500 transition-colors">Personal Blog</a>
+          </nav>
+          
+          <!-- Mobile menu button -->
+          <button class="md:hidden p-2" id="mobile-menu-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-menu pb-4" id="mobile-menu">
+          <a href="index.html" class="block py-2 hover:text-blue-600">Home</a>
+          <a href="about.html" class="block py-2 font-semibold text-blue-600">About</a>
+          <a href="research.html" class="block py-2 hover:text-blue-600">Research</a>
+          <a href="publications.html" class="block py-2 hover:text-blue-600">Publications</a>
+          <a href="contact.html" class="block py-2 hover:text-blue-600">Contact</a>
+          <a href="themathematician/index.html" class="inline-block mt-2 px-3 py-1 bg-yellow-400 text-black rounded-full text-sm font-medium">Personal Blog</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+      <!-- Hero Section -->
+      <section class="mb-12">
+        <h1 class="text-4xl font-bold mb-6 gradient-text">About Me</h1>
+        <div class="grid md:grid-cols-3 gap-8 items-start">
+          <div class="md:col-span-1">
+            <img src="assets/images/profile.jpg" alt="Jorys A. Mahamba" class="w-full rounded-lg shadow-lg mb-4">
+            <div class="bg-gray-50 rounded-lg p-4">
+              <h3 class="font-semibold mb-2">Quick Facts</h3>
+              <ul class="text-sm space-y-1">
+                <li><strong>Age:</strong> 20</li>
+                <li><strong>Nationality:</strong> French</li>
+                <li><strong>Languages:</strong> French (native), English (fluent), Portuguese (conversational), Mandarin (learning)</li>
+                <li><strong>Current:</strong> Créteil, France</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="md:col-span-2 font-serif">
+            <p class="text-lg mb-4">
+              I'm Jorys A. Mahamba, a French student in the MSc in Mathematical and Theoretical Physics at the University of Oxford. 
+              My passion lies at the intersection of pure mathematics and theoretical physics, 
+              driven by the ambition of developing new mathematical frameworks for quantum gravity.
+            </p>
+            <p class="mb-4">
+              I hold a dual BSc in Mathematics and Physics, having graduated valedictorian from Université Paris-Est Créteil 
+              after three years of Classe Préparatoire (PCSI/PC/PC*) in France, where I finished high school at age 15. 
+            </p>
+            <p class="mb-4">
+              My research interests center on <strong>higher category theory</strong> as a foundational tool for non-perturbative quantum field theory, 
+              exploring how (∞,1)-categories might provide new insights into quantum gravity and string theory dualities. 
+              I'm also pursuing an independent project combining <strong>AI and string theory</strong> to analyze the landscape/swampland distinction 
+              through machine learning on Calabi-Yau manifolds.
+            </p>
+            <p class="mb-4">
+              Currently, I'm interning at LAMA under Dr. Ilaria Mondello, working on differential geometry and Alexandrov spaces 
+              as preparation for my Oxford coursework. Beyond research, I'm deeply committed to education and outreach. 
+              Through my blog <a href="themathematician/index.html" class="text-blue-600 hover:underline font-medium">"Jorys, The Mathematician"</a>, 
+              I write accessible posts on mathematics and physics, documenting my academic journey.
+            </p>
+            <p>
+              At the heart of my journey is a belief that science should be rigorous but human, abstract yet grounded. 
+              My work is guided by a deep sense of wonder, a passion for unity across disciplines, and a lifelong commitment to learning.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Academic Timeline -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold mb-8">Academic Journey</h2>
+        <div class="relative pl-8">
+          <div class="timeline-line"></div>
+          
+          <div class="relative mb-8">
+            <div class="timeline-dot"></div>
+            <h3 class="font-semibold text-lg mb-1">2025 - 2026</h3>
+            <p class="text-blue-600 font-medium">MSc Mathematical & Theoretical Physics</p>
+            <p class="text-gray-600">University of Oxford (Starting October)</p>
+            <p class="text-sm mt-2">Focus: Higher category theory, quantum field theory, geometric approaches to quantum gravity</p>
+          </div>
+          
+          <div class="relative mb-8">
+            <div class="timeline-dot"></div>
+            <h3 class="font-semibold text-lg mb-1">2023 - 2024</h3>
+            <p class="text-blue-600 font-medium">Dual BSc Mathematics & Physics (Valedictorian)</p>
+            <p class="text-gray-600">Université Paris-Est Créteil</p>
+            <p class="text-sm mt-2">Research on Ising model phase transitions, Hopfield networks survey article</p>
+          </div>
+          
+          <div class="relative mb-8">
+            <div class="timeline-dot"></div>
+            <h3 class="font-semibold text-lg mb-1">2020 - 2023</h3>
+            <p class="text-blue-600 font-medium">Classes Préparatoires (PCSI/PC/PC*)</p>
+            <p class="text-gray-600">Lycée Marcelin Berthelot</p>
+            <p class="text-sm mt-2">Intensive preparation in mathematics, physics, and chemistry (ranked 9th/83 in mathematics)</p>
+          </div>
+          
+          <div class="relative">
+            <div class="timeline-dot"></div>
+            <h3 class="font-semibold text-lg mb-1">2019</h3>
+            <p class="text-blue-600 font-medium">High School Graduation at 15</p>
+            <p class="text-gray-600">Early academic acceleration</p>
+            <p class="text-sm mt-2">Accelerated path driven by passion for mathematics and sciences</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Awards & Recognition -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold mb-6">Awards & Recognition</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h3 class="font-semibold text-lg mb-2">🏆 Valedictorian</h3>
+            <p class="text-gray-600">Université Paris-Est Créteil, 2024</p>
+            <p class="text-sm mt-2">Graduated 1st in dual BSc Mathematics and Physics</p>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h3 class="font-semibold text-lg mb-2">💰 Excellence Scholarship</h3>
+            <p class="text-gray-600">ESSEC Business School, 2024</p>
+            <p class="text-sm mt-2">Merit-based scholarship for MSc program</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Personal Interests -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold mb-6">Beyond Academia</h2>
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8">
+          <p class="mb-4">
+            While my academic work focuses on the mathematical structures of reality, I'm equally passionate about 
+            the human side of science. I believe in making mathematics accessible and showing how abstract concepts 
+            connect to our lived experiences.
+          </p>
+          <div class="grid md:grid-cols-3 gap-6 mt-6">
+            <div>
+              <h3 class="font-semibold mb-2">🥋 Martial Arts & Sports</h3>
+              <ul class="text-sm space-y-1">
+                <li>• 1st Dan Black Belt in Karate</li>
+                <li>• Up to international level karate, handball and badminton competitor</li>
+                <li>• Volunteer karate coach</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2">📖 Languages & Culture</h3>
+              <ul class="text-sm space-y-1">
+                <li>• French (native)</li>
+                <li>• English (fluent)</li>
+                <li>• Portuguese (conversational)</li>
+                <li>• Learning Mandarin</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2">💡 Outreach</h3>
+              <ul class="text-sm space-y-1">
+                <li>• Math education blog</li>
+                <li>• AI research popularization</li>
+                <li>• Mentoring students</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="text-center bg-gray-50 rounded-lg p-8">
+        <h2 class="text-2xl font-semibold mb-4">Let's Connect</h2>
+        <p class="mb-6 text-gray-600">
+          I'm always eager to discuss research ideas, collaborate on projects, or simply chat about 
+          the beauty of mathematics and physics.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="contact.html" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            Get in Touch
+          </a>
+          <a href="assets/cv.pdf" class="px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-colors font-medium">
+            Download CV
+          </a>
+          <a href="themathematician/index.html" class="px-6 py-3 bg-yellow-400 text-black rounded-lg hover:bg-yellow-500 transition-colors font-medium">
+            Read My Blog
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 px-4 mt-12">
+      <div class="max-w-6xl mx-auto text-center">
+        <p>&copy; 2025 Jorys A. Mahamba. All rights reserved.</p>
+        <p class="mt-2">
+          <a href="themathematician/index.html" class="text-yellow-400 hover:text-yellow-300">Visit my personal blog →</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('active');
+      });
+    </script>
+  </body>
+</html>
+      
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+      }

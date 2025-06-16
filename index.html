@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jorys A. Mahamba | Mathematical Physicist & Researcher</title>
+    <meta name="description" content="MSc Mathematical and Theoretical Physics student at Oxford University. Research focus on higher category theory, quantum gravity, and AI applications in string theory.">
+    <meta name="keywords" content="mathematical physics, quantum gravity, Oxford University, category theory, string theory, AI research">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Jorys A. Mahamba - Mathematical Physicist">
+    <meta property="og:description" content="Oxford MSc student researching quantum gravity through higher category theory and AI-assisted theoretical physics.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jorysmahamba.github.io">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://jorysmahamba.github.io">
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+      :root {
+        --oxford-blue: #002147;
+        --oxford-blue-light: #003366;
+        --accent-gold: #FFD700;
+        --accent-blue: #4A90E2;
+        --warm-yellow: #FFA500;
+        --text-primary: #1a1a1a;
+        --text-secondary: #666;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      
+      .font-serif {
+        font-family: Georgia, 'Times New Roman', serif;
+      }
+      
+      .animate-fade-in {
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
+      
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .gradient-text {
+        background: linear-gradient(135deg, var(--oxford-blue), var(--accent-blue));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      
+      .research-highlight {
+        background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(0, 33, 71, 0.1));
+        border-left: 4px solid var(--accent-blue);
+      }
+      
+      /* Mobile menu styles */
+      .mobile-menu {
+        display: none;
+      }
+      
+      .mobile-menu.active {
+        display: block;
+      }
+      
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50 backdrop-blur-sm bg-opacity-95">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <h1 class="text-2xl font-bold gradient-text">Jorys A. Mahamba</h1>
+          
+          <!-- Desktop Navigation -->
+          <nav class="desktop-nav flex space-x-6 items-center">
+            <a href="#about" class="hover:text-blue-600 transition-colors">About</a>
+            <a href="#research" class="hover:text-blue-600 transition-colors">Research</a>
+            <a href="#publications" class="hover:text-blue-600 transition-colors">Publications</a>
+            <a href="#contact" class="hover:text-blue-600 transition-colors">Contact</a>
+            <a href="themathematician/index.html" class="px-3 py-1 bg-yellow-400 text-black rounded-full text-sm font-medium hover:bg-yellow-500 transition-colors">Personal Blog</a>
+          </nav>
+          
+          <!-- Mobile menu button -->
+          <button class="md:hidden p-2" id="mobile-menu-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-menu pb-4" id="mobile-menu">
+          <a href="#about" class="block py-2 hover:text-blue-600 transition-colors">About</a>
+          <a href="#research" class="block py-2 hover:text-blue-600 transition-colors">Research</a>
+          <a href="#publications" class="block py-2 hover:text-blue-600 transition-colors">Publications</a>
+          <a href="#contact" class="block py-2 hover:text-blue-600 transition-colors">Contact</a>
+          <a href="themathematician/index.html" class="inline-block mt-2 px-3 py-1 bg-yellow-400 text-black rounded-full text-sm font-medium">Personal Blog</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="py-20 px-4 text-center bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div class="max-w-4xl mx-auto animate-fade-in">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">
+            Mathematical Physicist & Aspiring Researcher
+          </h2>
+          <p class="text-xl mb-4 text-gray-700">
+            Incoming MSc in Mathematical and Theoretical Physics, University of Oxford
+          </p>
+          <p class="text-lg mb-8 max-w-3xl mx-auto text-gray-600">
+            Exploring the deep mathematical structures underlying quantum gravity through higher category theory, 
+            derived algebraic geometry, and AI-assisted theoretical physics.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#research" class="px-6 py-3 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition-colors font-medium">
+              Explore My Research
+            </a>
+            <a href="#contact" class="px-6 py-3 border-2 border-blue-900 text-blue-900 rounded-lg hover:bg-blue-900 hover:text-white transition-colors font-medium">
+              Get in Touch
+            </a>
+            <a href="assets/cv.pdf" class="px-6 py-3 bg-gray-200 text-gray-900 rounded-lg hover:bg-gray-300 transition-colors font-medium">
+              Download CV
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Stats -->
+      <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid md:grid-cols-4 gap-8 text-center">
+            <div class="card-hover p-6 rounded-lg bg-gray-50">
+              <div class="text-3xl font-bold text-blue-600 mb-2">5</div>
+              <div class="text-sm text-gray-600">Research Projects</div>
+            </div>
+            <div class="card-hover p-6 rounded-lg bg-gray-50">
+              <div class="text-3xl font-bold text-green-600 mb-2">1</div>
+              <div class="text-sm text-gray-600">Article Under Review</div>
+            </div>
+            <div class="card-hover p-6 rounded-lg bg-gray-50">
+              <div class="text-3xl font-bold text-purple-600 mb-2">15</div>
+              <div class="text-sm text-gray-600">Age at HS Graduation</div>
+            </div>
+            <div class="card-hover p-6 rounded-lg bg-gray-50">
+              <div class="text-3xl font-bold text-orange-600 mb-2">1st</div>
+              <div class="text-sm text-gray-600">Valedictorian at UPEC</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="py-20 px-4 bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+          <h3 class="text-3xl font-bold mb-8 text-center">About Me</h3>
+          <div class="grid md:grid-cols-3 gap-8 items-center">
+            <div class="md:col-span-1 text-center">
+              <img src="assets/images/profile.jpg" alt="Jorys A. Mahamba" class="w-64 h-64 mx-auto rounded-full object-cover shadow-lg">
+            </div>
+            <div class="md:col-span-2 font-serif">
+              <p class="text-lg mb-4">
+                I'm a 20-year-old French student preparing to begin my MSc in Mathematical and Theoretical Physics 
+                at the University of Oxford this October. My passion lies in discovering the mathematical frameworks underlying the laws of the universe.
+              </p>
+              <p class="mb-4">
+                I graduated valedictorian from Université Paris-Est Créteil with a dual BSc in Mathematics and Physics, 
+                ranking 1st in mathematics and 3rd in physics. My unique academic journey began with finishing high school at 15, followed by 
+                three years of intensive Classes Préparatoires (PCSI/PC/PC*) at Lycée Marcelin Berthelot, along with a high-level youth athlete career in handball, karaté and badminton.
+              </p>
+              <div class="research-highlight p-4 rounded-lg mb-4">
+                <p class="font-medium text-blue-800 mb-2">Research Vision:</p>
+                <p class="text-sm">
+                  Developing higher categorical structures in non-perturbative quantum field theory, exploring how 
+                  (∞,1)-categories might provide new mathematical frameworks for understanding quantum gravity and string theory dualities.
+                </p>
+              </div>
+              <p class="text-sm text-gray-600">
+                Currently interning at LAMA under Dr. Ilaria Mondello on differential geometry, preparing for Oxford 
+                while pursuing an independent project on AI applications to string theory. Through my blog 
+                <a href="themathematician/index.html" class="text-yellow-600 hover:underline font-medium">"Jorys, The Mathematician"</a>, 
+                I share accessible insights into mathematics and physics.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Research Highlights -->
+      <section id="research" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+          <h3 class="text-3xl font-bold mb-12 text-center">Research Highlights</h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="card-hover bg-white rounded-xl p-6 shadow-lg">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                🎓
+              </div>
+              <h4 class="text-xl font-semibold mb-3">MSc Dissertation (Oxford)</h4>
+              <p class="text-sm text-gray-600 mb-3">Starting October 2025</p>
+              <p class="mb-4">Planning to explore higher categorical structures in quantum field theory, potentially focusing on derived moduli stacks and their applications to the geometric Langlands program.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs">Category Theory</span>
+                <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs">QFT</span>
+              </div>
+            </div>
+
+            <div class="card-hover bg-white rounded-xl p-6 shadow-lg">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                🤖
+              </div>
+              <h4 class="text-xl font-semibold mb-3">AI for String Theory</h4>
+              <p class="text-sm text-gray-600 mb-3">Independent Research • 2025-2026</p>
+              <p class="mb-4">Developing machine learning frameworks to analyze geometric patterns in Calabi-Yau manifolds, aiming to identify constraints distinguishing the landscape from the swampland.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">Machine Learning</span>
+                <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs">String Theory</span>
+              </div>
+            </div>
+
+            <div class="card-hover bg-white rounded-xl p-6 shadow-lg">
+              <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                📐
+              </div>
+              <h4 class="text-xl font-semibold mb-3">Differential Geometry</h4>
+              <p class="text-sm text-gray-600 mb-3">LAMA, UPEC • Current</p>
+              <p class="mb-4">Working with Dr. Ilaria Mondello on Alexandrov spaces, preparing a report on theorem proofs in this geometric context as preparation for Oxford coursework.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded text-xs">Differential Geometry</span>
+                <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded text-xs">Alexandrov Spaces</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="text-center mt-8">
+            <a href="research.html" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+              View Full Research Portfolio
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Publications -->
+      <section id="publications" class="py-20 px-4 bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+          <h3 class="text-3xl font-bold mb-8 text-center">Publications & Academic Work</h3>
+          <div class="space-y-6">
+            <div class="bg-white rounded-lg p-6 shadow-lg">
+              <h4 class="text-lg font-semibold mb-2">
+                "The Nobel Prize in Physics 2024: A Celebration of Machine Learning's Foundations in Physics"
+              </h4>
+              <p class="text-sm text-gray-600 mb-2">
+                Survey Article • La Gazette des Mathématiciens, Société Mathématique de France • Under Review
+              </p>
+              <p class="mb-3 font-serif">
+                Comprehensive mathematical review of Hopfield Networks and their deep connections to the Ising model, 
+                exploring the statistical physics foundations of neural network architectures. Written to celebrate 
+                the 2024 Nobel Prize awarded to Hopfield and Hinton.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs">Statistical Physics</span>
+                <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">Neural Networks</span>
+                <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs">Survey</span>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 shadow-lg">
+              <h4 class="text-lg font-semibold mb-2">
+                "Exploration mathématique des transitions de phase du modèle d'Ising pour son intérêt dans l'enseignement universitaire de la physique statistique"
+              </h4>
+              <p class="text-sm text-gray-600 mb-2">
+                BSc Research Report • LAMA, Université Paris XII • June 2024
+              </p>
+              <p class="mb-3 font-serif">
+                Rigorous mathematical treatment of phase transitions using measure theory, correlation inequalities (GKS), 
+                and thermodynamic limits. Demonstrated absence of phase transitions in 1D versus existence in 2D using 
+                Peierls arguments. Presented at UPEC research seminar.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-red-100 text-red-800 rounded text-xs">Phase Transitions</span>
+                <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs">Mathematical Physics</span>
+                <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs">Educational Research</span>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 shadow-lg">
+              <h4 class="text-lg font-semibold mb-2">
+                "Machine Learning Framework for Commercial Paper Valuation"
+              </h4>
+              <p class="text-sm text-gray-600 mb-2">
+                Co-authored Research Paper • BRED Banque Populaire • In Preparation
+              </p>
+              <p class="mb-3 font-serif">
+                Developed novel statistical features for ML models in financial valuation, improving prediction accuracy 
+                for Commercial Paper pricing in trading environments.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">Machine Learning</span>
+                <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs">Quantitative Finance</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="text-center mt-8">
+            <a href="publications.html" class="text-blue-600 hover:underline">View All Publications →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="py-20 px-4">
+        <div class="max-w-2xl mx-auto text-center">
+          <h3 class="text-3xl font-bold mb-8">Let's Connect</h3>
+          <p class="text-lg mb-8 text-gray-600 font-serif">
+            I'm always interested in discussing research collaborations, academic opportunities, 
+            or simply connecting with fellow researchers and students.
+          </p>
+          
+          <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <a href="mailto:mahambajorys@gmail.com" class="card-hover p-6 bg-white rounded-lg shadow-lg block">
+              <div class="text-2xl mb-2">📧</div>
+              <div class="font-medium">Email</div>
+              <div class="text-sm text-gray-600">mahambajorys@gmail.com</div>
+            </a>
+            
+            <a href="https://www.linkedin.com/in/jorys-mahamba" target="_blank" rel="noopener noreferrer" class="card-hover p-6 bg-white rounded-lg shadow-lg block">
+              <div class="text-2xl mb-2">💼</div>
+              <div class="font-medium">LinkedIn</div>
+              <div class="text-sm text-gray-600">Professional Network</div>
+            </a>
+            
+            <a href="https://github.com/jorys-mahamba" target="_blank" rel="noopener noreferrer" class="card-hover p-6 bg-white rounded-lg shadow-lg block">
+              <div class="text-2xl mb-2">💻</div>
+              <div class="font-medium">GitHub</div>
+              <div class="text-sm text-gray-600">Code & Projects</div>
+            </a>
+          </div>
+
+          <div class="research-highlight p-6 rounded-lg">
+            <h4 class="font-semibold mb-2">Looking for PhD Opportunities</h4>
+            <p class="text-sm">
+              I'm actively seeking PhD positions in mathematical physics, particularly in programs 
+              that support interdisciplinary research combining pure mathematics with theoretical physics.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="md:col-span-2">
+            <h4 class="text-lg font-semibold mb-4">Jorys A. Mahamba</h4>
+            <p class="text-sm text-gray-400 mb-4">
+              Mathematical physicist exploring the deep structures of reality through mathematics, 
+              one equation at a time.
+            </p>
+            <div class="flex space-x-4">
+              <a href="https://www.linkedin.com/in/jorys-mahamba" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">LinkedIn</a>
+              <a href="https://github.com/jorys-mahamba" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">GitHub</a>
+              <a href="themathematician/index.html" class="text-yellow-400 hover:text-yellow-300">Personal Blog</a>
+            </div>
+          </div>
+          
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#about" class="text-gray-400 hover:text-white">About Me</a></li>
+              <li><a href="research.html" class="text-gray-400 hover:text-white">Research</a></li>
+              <li><a href="publications.html" class="text-gray-400 hover:text-white">Publications</a></li>
+              <li><a href="assets/cv.pdf" class="text-gray-400 hover:text-white">Download CV</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Research Areas</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li>Quantum Gravity</li>
+              <li>Category Theory</li>
+              <li>String Theory</li>
+              <li>AI for Physics</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+          <p>&copy; 2025 Jorys A. Mahamba. All rights reserved.</p>
+          <p class="mt-2">
+            <a href="themathematician/index.html" class="text-yellow-400 hover:text-yellow-300">Visit my personal blog →</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('active');
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.remove('active');
+          }
+        });
+      });
+
+      // Intersection observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+          }
+        });
+      }, observerOptions);
+
+      // Add animation class to elements
+      document.querySelectorAll('section').forEach(el => {
+        el.style.opacity = '0';
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

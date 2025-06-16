@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Research | Jorys A. Mahamba</title>
+    <meta name="description" content="Research portfolio of Jorys A. Mahamba - quantum gravity, higher category theory, AI for string theory, and mathematical physics.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Research - Jorys A. Mahamba">
+    <meta property="og:description" content="Exploring mathematical foundations of quantum gravity through category theory and AI-assisted physics.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      :root {
+        --oxford-blue: #002147;
+        --accent-blue: #4A90E2;
+        --warm-yellow: #FFA500;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      
+      .font-serif {
+        font-family: Georgia, 'Times New Roman', serif;
+      }
+      
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      
+      .research-card {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+      
+      .research-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      
+      .timeline-item {
+        position: relative;
+        padding-left: 2rem;
+      }
+      
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.5rem;
+        width: 0.75rem;
+        height: 0.75rem;
+        background: var(--oxford-blue);
+        border-radius: 50%;
+      }
+      
+      .timeline-item::after {
+        content: '';
+        position: absolute;
+        left: 0.375rem;
+        top: 1.25rem;
+        width: 2px;
+        height: calc(100% - 1rem);
+        background: linear-gradient(to bottom, var(--oxford-blue), rgba(0, 33, 71, 0.3));
+      }
+      
+      .timeline-item:last-child::after {
+        display: none;
+      }
+      
+      .gradient-text {
+        background: linear-gradient(135deg, var(--oxford-blue), var(--accent-blue));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .mobile-menu {
+        display: none;
+      }
+      
+      .mobile-menu.active {
+        display: block;
+      }
+      
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <a href="index.html" class="text-2xl font-bold gradient-text">Jorys A. Mahamba</a>
+          
+          <!-- Desktop Navigation -->
+          <nav class="desktop-nav flex space-x-6 items-center">
+            <a href="index.html" class="hover:text-blue-600 transition-colors">Home</a>
+            <a href="about.html" class="hover:text-blue-600 transition-colors">About</a>
+            <a href="research.html" class="font-semibold text-blue-600">Research</a>
+            <a href="publications.html" class="hover:text-blue-600 transition-colors">Publications</a>
+            <a href="contact.html" class="hover:text-blue-600 transition-colors">Contact</a>
+            <a href="themathematician/index.html" class="px-3 py-1 bg-yellow-400 text-black rounded-full text-sm font-medium hover:bg-yellow-500 transition-colors">Personal Blog</a>
+          </nav>
+          
+          <!-- Mobile menu button -->
+          <button class="md:hidden p-2" id="mobile-menu-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-menu pb-4" id="mobile-menu">
+          <a href="index.html" class="block py-2 hover:text-blue-600">Home</a>
+          <a href="about.html" class="block py-2 hover:text-blue-600">About</a>
+          <a href="research.html" class="block py-2 font-semibold text-blue-600">Research</a>
+          <a href="publications.html" class="block py-2 hover:text-blue-600">Publications</a>
+          <a href="contact.html" class="block py-2 hover:text-blue-600">Contact</a>
+          <a href="themathematician/index.html" class="inline-block mt-2 px-3 py-1 bg-yellow-400 text-black rounded-full text-sm font-medium">Personal Blog</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+      <!-- Hero Section -->
+      <div class="gradient-bg rounded-2xl p-8 mb-10 text-white">
+        <h1 class="text-4xl font-bold mb-4">Research Overview</h1>
+        <p class="text-lg leading-relaxed font-serif">
+          My research interests lie in the deep connections between mathematics and theoretical physics, with particular emphasis on 
+          the geometric and categorical foundations of quantum field theory. I am passionate about applying cutting-edge 
+          mathematical techniques to fundamental questions in physics, while also leveraging AI and machine learning to 
+          discover new insights in theoretical frameworks.
+        </p>
+      </div>
+
+      <!-- Current & Future Work -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold mb-6 flex items-center">
+          🎯 Current & Future Research
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="research-card rounded-xl p-6">
+            <h3 class="text-xl font-semibold mb-3 text-blue-600">
+              🎓 MSc Dissertation (Oxford, 2025–2026)
+            </h3>
+            <p class="text-sm text-gray-600 mb-3">Mathematical & Theoretical Physics</p>
+            <p class="mb-3">
+              <strong>Planned Focus:</strong> Higher categorical structures in quantum field theory, potentially exploring 
+              derived moduli stacks and their applications to the geometric Langlands program.
+            </p>
+            <p class="text-sm">
+              Building on my current differential geometry preparation at LAMA under Dr. Ilaria Mondello, 
+              with particular interest in Alexandrov spaces and their geometric properties.
+            </p>
+          </div>
+
+          <div class="research-card rounded-xl p-6">
+            <h3 class="text-xl font-semibold mb-3 text-purple-600">
+              🤖 AI for Swampland Physics
+            </h3>
+            <p class="text-sm text-gray-600 mb-3">Independent Side Project</p>
+            <p class="mb-3">
+              Investigating how machine learning can identify geometric patterns in Calabi-Yau manifolds 
+              that correlate with swampland conjectures in string theory.
+            </p>
+            <div class="text-sm">
+              <strong>Approach:</strong> Using interpretable ML on the CICY dataset to discover new constraints 
+              distinguishing physical "landscape" from "swampland" theories.
+            </div>
+          </div>
+        </div>
+
+        <div class="research-card rounded-xl p-6">
+          <h3 class="text-xl font-semibold mb-3 text-green-600">
+            🎯 Doctoral Research Vision
+          </h3>
+          <p class="mb-3">
+            <strong>Target Start:</strong> Fall 2026 (PhD programs)
+          </p>
+          <p class="mb-3">
+            <strong>Proposed Focus:</strong> "Higher Categorical Structures in Non-Perturbative Quantum Field Theory"
+          </p>
+          <p class="text-sm">
+            Developing new mathematical frameworks using (∞,1)-categories to understand dualities in string theory 
+            and propose categorical foundations for non-perturbative QFT completions.
+          </p>
+        </div>
+      </section>
+
+      <!-- Research Timeline -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold mb-6 flex items-center">
+          📅 Research Timeline
+        </h2>
+        
+        <div class="space-y-6">
+          <div class="timeline-item">
+            <div class="bg-white rounded-lg p-6 shadow-lg">
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="text-lg font-semibold">Current: Graduate Research Internship</h3>
+                <span class="text-sm text-gray-500">June - September 2025</span>
+              </div>
+              <p class="text-blue-600 font-medium mb-2">LAMA, Université Paris XII</p>
+              <p class="text-sm text-gray-600 mb-2">Supervisor: Dr. Ilaria Mondello</p>
+              <p class="mb-2">Differential geometry preparation for Oxford, exploring Alexandrov spaces</p>
+              <p class="text-sm italic">Writing a 20-page report on theorem proofs in the context of Alexandrov spaces.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="bg-white rounded-lg p-6 shadow-lg">
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="text-lg font-semibold">Teaching Assistant</h3>
+                <span class="text-sm text-gray-500">Oct - December 2024</span>
+              </div>
+              <p class="text-orange-600 font-medium mb-2">CentraleSupélec, Université Paris-Saclay</p>
+              <p class="mb-2">Tutored my own M1 DSBA cohort in calculus and linear algebra</p>
+              <div class="text-sm">
+                <strong>Impact:</strong> 40+ students (over 56 total) manifested interest.
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="bg-white rounded-lg p-6 shadow-lg">
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="text-lg font-semibold">Corporate Research Internship</h3>
+                <span class="text-sm text-gray-500">May - Aug 2024</span>
+              </div>
+              <p class="text-purple-600 font-medium mb-2">Trading Room, BRED Banque Populaire</p>
+              <p class="text-sm text-gray-600 mb-2">Supervisor: Dr. Clément Moreau</p>
+              <p class="mb-2">Developed ML framework for Commercial Paper valuation</p>
+              <div class="text-sm">
+                <strong>Contributions:</strong> Proposed new statistical features to improve existing models; 
+                co-authoring research paper for peer review.
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="bg-white rounded-lg p-6 shadow-lg">
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="text-lg font-semibold">BSc Research Internship</h3>
+                <span class="text-sm text-gray-500">Feb - June 2024</span>
+              </div>
+              <p class="text-green-600 font-medium mb-2">LAMA, Université Paris XII</p>
+              <p class="text-sm text-gray-600 mb-2">Supervisor: Dr. Paul Dario</p>
+              <p class="mb-2">Mathematical exploration of phase transitions in 1D and 2D Ising models</p>
+              <div class="text-sm">
+                <strong>Focus:</strong> Rigorous mathematical treatment for university-level statistical physics education. 
+                Demonstrated absence of phase transitions in 1D vs. existence in 2D using correlation inequalities and thermodynamic limits.
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="bg-white rounded-lg p-6 shadow-lg">
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="text-lg font-semibold">Academic Tutor</h3>
+                <span class="text-sm text-gray-500">Oct 2023 - May 2024</span>
+              </div>
+              <p class="text-orange-600 font-medium mb-2">Mathematics Department, Université Paris XII</p>
+              <p class="mb-2">Tutored my own 3rd-year BSc in Mathematics cohort in topology, measure theory, probability theory, and differential calculus</p>
+              <div class="text-sm">
+                <strong>Impact:</strong> Improved cohort passing rate by 20% through weekly sessions.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Research Interests & Expertise -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold mb-6 flex items-center">
+          🔬 Research Interests
+        </h2>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="research-card rounded-xl p-6">
+            <h3 class="text-lg font-semibold mb-3 text-blue-600">Mathematical Physics</h3>
+            <ul class="text-sm space-y-1">
+              <li>• Statistical mechanics & phase transitions</li>
+              <li>• Quantum field theory foundations</li>
+              <li>• Differential geometry</li>
+              <li>• Higher category theory</li>
+            </ul>
+          </div>
+
+          <div class="research-card rounded-xl p-6">
+            <h3 class="text-lg font-semibold mb-3 text-purple-600">Theoretical Physics</h3>
+            <ul class="text-sm space-y-1">
+              <li>• String theory & M-theory</li>
+              <li>• Swampland conjectures</li>
+              <li>• Calabi-Yau geometry</li>
+              <li>• Holographic correspondences</li>
+            </ul>
+          </div>
+
+          <div class="research-card rounded-xl p-6">
+            <h3 class="text-lg font-semibold mb-3 text-green-600">AI & Computation</h3>
+            <ul class="text-sm space-y-1">
+              <li>• Machine learning for physics</li>
+              <li>• Neural networks & statistical physics</li>
+              <li>• Financial modeling & ML</li>
+              <li>• Symbolic regression</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technical Skills -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">🛠️ Technical Skills</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-semibold mb-2">Mathematical Tools</h3>
+            <p class="text-sm text-gray-600">
+              LaTeX, Mathematica, measure theory, probability, differential geometry, 
+              algebraic topology, category theory
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-semibold mb-2">Programming & ML</h3>
+            <p class="text-sm text-gray-600">
+              Python, PyTorch, scikit-learn, pandas, symbolic regression (PySR), 
+              data visualization, financial modeling
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="text-center bg-blue-50 rounded-lg p-8">
+        <p class="mb-4">
+          <a href="assets/cv.pdf" class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            Download Full CV (PDF)
+          </a>
+        </p>
+        <p class="text-sm text-gray-600">
+          Interested in collaboration or discussing research? 
+          <a href="contact.html" class="text-blue-600 hover:underline">Get in touch</a>
+        </p>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 px-4 mt-12">
+      <div class="max-w-6xl mx-auto text-center">
+        <p>&copy; 2025 Jorys A. Mahamba. All rights reserved.</p>
+        <p class="mt-2">
+          <a href="themathematician/index.html" class="text-yellow-400 hover:text-yellow-300">Visit my personal blog →</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('active');
+      });
+    </script>
+  </body>
+</html>

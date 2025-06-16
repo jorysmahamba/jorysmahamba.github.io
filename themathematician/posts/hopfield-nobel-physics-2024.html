@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 2024 Nobel Prize in Physics: When Neural Networks Met Statistical Physics | Jorys, The Mathematician</title>
+    <meta name="description" content="Understanding Hopfield Networks and their connection to the Ising model - the physics behind the AI revolution that earned Hopfield and Hinton the Nobel Prize.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
+    </script>
+    <style>
+      body {
+        background: linear-gradient(135deg, #fdf6e3 0%, #fcefe2 50%, #fff5e6 100%);
+        font-family: Georgia, 'Times New Roman', serif;
+        min-height: 100vh;
+      }
+      
+      .gradient-text-warm {
+        background: linear-gradient(135deg, #FF6B35, #FFD700);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .article-content {
+        font-size: 1.125rem;
+        line-height: 1.8;
+      }
+      
+      .article-content p {
+        margin-bottom: 1.5rem;
+      }
+      
+      .article-content blockquote {
+        border-left: 4px solid #FF6B35;
+        padding-left: 1.5rem;
+        font-style: italic;
+        color: #666;
+        margin: 2rem 0;
+        background: rgba(255, 107, 53, 0.05);
+        padding: 1rem 1.5rem;
+        border-radius: 0 8px 8px 0;
+      }
+      
+      .equation-box {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+      
+      .figure-container {
+        margin: 2rem 0;
+        text-align: center;
+      }
+      
+      .figure-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .figure-caption {
+        font-size: 0.9rem;
+        color: #666;
+        font-style: italic;
+        margin-top: 0.5rem;
+        padding: 0 1rem;
+      }
+      
+      .mobile-menu {
+        display: none;
+      }
+      
+      .mobile-menu.active {
+        display: block;
+      }
+      
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+        
+        .article-content {
+          font-size: 1rem;
+        }
+      }
+      
+      .highlight-box {
+        background: linear-gradient(135deg, #fff5f5 0%, #fef5e7 100%);
+        border-left: 4px solid #f59e0b;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+      
+      .physics-analogy {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border-left: 4px solid #0ea5e9;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-yellow-100 to-orange-50 shadow-md sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <a href="../index.html" class="text-2xl font-extrabold gradient-text-warm">Jorys, The Mathematician</a>
+          
+          <!-- Desktop Navigation -->
+          <nav class="desktop-nav flex space-x-6 items-center text-orange-800">
+            <a href="../index.html" class="hover:text-orange-600">Home</a>
+            <a href="../about.html" class="hover:text-orange-600">About Me</a>
+            <a href="../posts.html" class="hover:text-orange-600">All Posts</a>
+            <a href="../research.html" class="hover:text-orange-600">Research</a>
+            <a href="../contact.html" class="hover:text-orange-600">Contact</a>
+            <a href="../../index.html" class="px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium hover:bg-blue-800 transition-colors">Academic Site</a>
+          </nav>
+          
+          <!-- Mobile menu button -->
+          <button class="md:hidden p-2" id="mobile-menu-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-menu pb-4 text-orange-800" id="mobile-menu">
+          <a href="../index.html" class="block py-2 hover:text-orange-600">Home</a>
+          <a href="../about.html" class="block py-2 hover:text-orange-600">About Me</a>
+          <a href="../posts.html" class="block py-2 hover:text-orange-600">All Posts</a>
+          <a href="../research.html" class="block py-2 hover:text-orange-600">Research</a>
+          <a href="../contact.html" class="block py-2 hover:text-orange-600">Contact</a>
+          <a href="../../index.html" class="inline-block mt-2 px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium">Academic Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+      <!-- Article Header -->
+      <article>
+        <header class="mb-12 text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text-warm">
+            The 2024 Nobel Prize in Physics: When Neural Networks Met Statistical Physics
+          </h1>
+          <p class="text-xl text-gray-600 mb-6 max-w-3xl mx-auto">
+            Understanding Hopfield Networks and their profound connection to the Ising model — 
+            the physics behind the AI revolution that earned Hopfield and Hinton the Nobel Prize
+          </p>
+          <div class="text-sm text-gray-600 space-y-1">
+            <p>October 19, 2024 • 12 min read</p>
+            <div class="flex flex-wrap justify-center gap-2 mt-4">
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">Physics</span>
+              <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">AI</span>
+              <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs">Mathematics</span>
+              <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">Nobel Prize</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Article Content -->
+        <div class="article-content">
+          <div class="highlight-box">
+            <p class="font-semibold mb-2">🏆 Nobel Prize 2024 in Physics</p>
+            <p>
+              The 2024 Nobel Prize in Physics was awarded to <strong>John J. Hopfield</strong> and <strong>Geoffrey E. Hinton</strong> 
+              "for foundational discoveries and inventions that enable machine learning with artificial neural networks."
+              This recognition celebrates not just their individual contributions, but the profound interdisciplinary bridge 
+              they built between physics and artificial intelligence.
+            </p>
+          </div>
+
+          <p>
+            When the Nobel Committee announced this year's physics prize, it marked a historic moment — 
+            the first time the prestigious award explicitly recognized the foundations of modern artificial intelligence. 
+            But this wasn't just about computer science breaking into physics; it was about celebrating one of the most 
+            beautiful examples of how physics concepts can illuminate completely different fields.
+          </p>
+
+          <p>
+            As someone who lives at the intersection of mathematics and physics, I find this story particularly compelling. 
+            It's a perfect example of how seemingly abstract theoretical work can eventually revolutionize our world. 
+            Let me take you through the fascinating journey of how magnetic materials inspired the neural networks 
+            that power today's AI revolution.
+          </p>
+
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">The Pioneers: Hopfield and Hinton</h2>
+
+          <p>
+            The story begins in the 1980s with two visionaries who saw connections others missed. 
+            <strong>John Hopfield</strong>, a physicist at Princeton, was fascinated by how biological neural networks 
+            could store and retrieve memories. Meanwhile, <strong>Geoffrey Hinton</strong>, working at the intersection 
+            of computer science and cognitive psychology, was exploring how machines might learn and think.
+          </p>
+
+          <p>
+            Hopfield's breakthrough came in 1982 with his paper "Neural networks and physical systems with emergent 
+            collective computational abilities." This wasn't just another computer science paper — it was a physicist's 
+            approach to understanding computation. Hopfield saw that the brain's memory system might work like a 
+            magnetic material, with neurons playing the role of magnetic spins.
+          </p>
+
+          <div class="figure-container">
+            <img src="/assets/images/energy landscape.png" alt="Memory storage and retrieval in Hopfield Networks" class="mx-auto">
+            <p class="figure-caption">
+              <strong>Figure 1:</strong> Memory storage and retrieval in Hopfield Networks. The network starts with a 
+              corrupted pattern (high energy) and "rolls down" to the nearest stored memory (low energy valley). 
+              Source: The Nobel Prize
+            </p>
+          </div>
+
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">Understanding Hopfield Networks: The Basics</h2>
+
+          <p>
+            Imagine trying to remember a song from just a few notes, or recognizing a friend's face even when half of it 
+            is hidden. This is <em>associative memory</em> — the remarkable ability to reconstruct complete patterns from 
+            partial information. Hopfield Networks are artificial systems designed to mimic this behavior.
+          </p>
+
+          <h3 class="text-2xl font-semibold mt-8 mb-4 text-orange-600">The Architecture</h3>
+
+          <p>
+            A Hopfield Network is beautifully simple in its architecture, yet profound in its implications. 
+            Unlike the feedforward neural networks you might be familiar with (where information flows in one direction), 
+            Hopfield Networks are <em>recurrent</em> — every neuron connects to every other neuron, and information 
+            can flow in cycles.
+          </p>
+
+          <div class="figure-container">
+            <img src="/assets/images/Feed-forward-and-recurrent-ANN-architecture-RG.png" alt="Feedforward vs Recurrent Neural Networks" class="mx-auto">
+            <p class="figure-caption">
+              <strong>Figure 2:</strong> The fundamental difference between feedforward and recurrent neural networks. 
+              In recurrent networks, connections can cycle back on themselves, creating a form of memory. 
+              Source: ResearchGate
+            </p>
+          </div>
+
+          <p>
+            The network consists of three key components:
+          </p>
+
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Neurons:</strong> Binary units that can be either "on" (+1) or "off" (-1), like switches</li>
+            <li><strong>Weights:</strong> The strength of connections between neurons, determining how they influence each other</li>
+            <li><strong>Patterns:</strong> The memories we want to store, represented as specific configurations of neuron states</li>
+          </ul>
+
+          <div class="figure-container">
+            <img src="/assets/images/HAM_Full_Connect.png" alt="Hopfield Network Architecture" class="mx-auto">
+            <p class="figure-caption">
+              <strong>Figure 3:</strong> A Hopfield Network where every neuron connects to every other neuron. 
+              The connections are symmetric (if A influences B with strength w, then B influences A with the same strength w). 
+              Source: Wikipedia
+            </p>
+          </div>
+
+          <h3 class="text-2xl font-semibold mt-8 mb-4 text-orange-600">Learning: How Memories Get Stored</h3>
+
+          <p>
+            The magic happens in how the network learns to store patterns. Hopfield used a principle called 
+            <em>Hebbian learning</em>, often summarized as "neurons that fire together, wire together." 
+            When we want to store a pattern, we strengthen the connections between neurons that are in the same state.
+          </p>
+
+          <div class="equation-box">
+            <p class="text-lg mb-2">The Hopfield Learning Rule:</p>
+            <p class="text-xl">$$w_{ij} = \frac{1}{N} \sum_{\mu=1}^{p} \xi_i^\mu \xi_j^\mu$$</p>
+            <p class="text-sm mt-2 text-gray-600">
+              For $p$ patterns, each connection weight $w_{ij}$ depends on how often neurons $i$ and $j$ 
+              are in the same state across all stored patterns.
+            </p>
+          </div>
+
+          <h3 class="text-2xl font-semibold mt-8 mb-4 text-orange-600">The Energy Landscape: How Memories Get Retrieved</h3>
+
+          <p>
+            Here's where the physics becomes beautiful. Hopfield realized that the network's behavior could be described 
+            using an <em>energy function</em> — just like in statistical mechanics. The network naturally evolves 
+            toward states with lower energy, and these low-energy states correspond to stored memories.
+          </p>
+
+          <div class="equation-box">
+            <p class="text-lg mb-2">The Hopfield Energy Function:</p>
+            <p class="text-xl">$$E = -\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} w_{ij} s_i s_j - \sum_{i=1}^{N} \theta_i s_i$$</p>
+            <p class="text-sm mt-2 text-gray-600">
+              Like a physical system minimizing its energy, the network "rolls downhill" toward stored patterns.
+            </p>
+          </div>
+
+          <p>
+            The retrieval process is elegant: when you present a noisy or incomplete pattern to the network, 
+            it starts in a high-energy state. Through a series of neuron updates, it gradually "falls" into 
+            the nearest energy minimum — which corresponds to the most similar stored memory.
+          </p>
+
+          <div class="figure-container">
+            <img src="/assets/images/neural networks.png" alt="Natural vs Artificial Neurons" class="mx-auto">
+            <p class="figure-caption">
+              <strong>Figure 4:</strong> The analogy between biological neurons (left) and artificial neurons (right). 
+              Both can be "on" or "off," and both strengthen connections when they're active together. 
+              Source: The Nobel Prize
+            </p>
+          </div>
+
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">The Physics Connection: Enter the Ising Model</h2>
+
+          <p>
+            This is where Hopfield's physics background became crucial. He recognized that his neural network was 
+            mathematically identical to something physicists had been studying for decades: the <em>Ising model</em> 
+            of magnetism.
+          </p>
+
+          <div class="physics-analogy">
+            <h4 class="font-semibold mb-3">🧲 The Ising Model: A Physics Refresher</h4>
+            <p>
+              Imagine a material made of tiny magnets (spins) that can point either up (+1) or down (-1). 
+              These spins interact with their neighbors — they "prefer" to align in the same direction to minimize energy. 
+              The Ising model describes how these systems evolve toward ordered, low-energy configurations.
+            </p>
+          </div>
+
+          <div class="figure-container">
+            <img src="/assets/images/Ising_model_D2.jpg" alt="2D Ising Model" class="mx-auto">
+            <p class="figure-caption">
+              <strong>Figure 5:</strong> A 2D Ising model showing magnetic spins. Blue spins point up (+1), 
+              red spins point down (-1). The system evolves to minimize energy by aligning neighboring spins.
+            </p>
+          </div>
+
+          <p>
+            The mathematical parallel is striking:
+          </p>
+
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse border border-gray-300 my-6">
+              <thead>
+                <tr class="bg-gray-100">
+                  <th class="border border-gray-300 px-4 py-2 text-left">Hopfield Networks</th>
+                  <th class="border border-gray-300 px-4 py-2 text-left">Ising Model</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="border border-gray-300 px-4 py-2">Neurons (+1/-1)</td>
+                  <td class="border border-gray-300 px-4 py-2">Magnetic spins (up/down)</td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <td class="border border-gray-300 px-4 py-2">Synaptic weights</td>
+                  <td class="border border-gray-300 px-4 py-2">Interaction strengths</td>
+                </tr>
+                <tr>
+                  <td class="border border-gray-300 px-4 py-2">Stored memories</td>
+                  <td class="border border-gray-300 px-4 py-2">Ordered magnetic states</td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <td class="border border-gray-300 px-4 py-2">Energy minimization</td>
+                  <td class="border border-gray-300 px-4 py-2">Thermodynamic equilibrium</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            This connection revealed something profound: the principles governing magnetic materials — systems physicists 
+            had studied for over a century — could also explain how brains might store and retrieve memories. 
+            It was a beautiful example of what physicists call <em>universality</em>: the same mathematical structures 
+            appearing in completely different physical contexts.
+          </p>
+
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">The Limitations and Solutions</h2>
+
+          <p>
+            Like any foundational work, Hopfield Networks had limitations that sparked further innovation:
+          </p>
+
+          <h3 class="text-2xl font-semibold mt-8 mb-4 text-orange-600">The Storage Problem</h3>
+
+          <p>
+            Hopfield Networks can only store about 0.138N patterns (where N is the number of neurons) before 
+            they become unreliable. Try to store too many memories, and the network gets confused — 
+            it starts "remembering" things that were never stored (called <em>spurious states</em>).
+          </p>
+
+          <h3 class="text-2xl font-semibold mt-8 mb-4 text-orange-600">Enter Boltzmann Machines</h3>
+
+          <p>
+            This is where Geoffrey Hinton made his crucial contribution. In 1985, he introduced 
+            <em>Boltzmann Machines</em>, which added a key element from statistical physics: <em>randomness</em>. 
+            Instead of always moving to lower energy, these networks could occasionally "jump uphill" — 
+            like thermal fluctuations in a physical system.
+          </p>
+
+          <blockquote>
+            "By adding controlled randomness, Boltzmann Machines could escape from local minima and explore 
+            the energy landscape more effectively. This was inspired by the concept of temperature in physics — 
+            higher temperature means more random motion, lower temperature means settling into stable states."
+          </blockquote>
+
+          <p>
+            This seemingly simple addition solved major problems and opened the door to more sophisticated learning algorithms. 
+            Boltzmann Machines became predecessors to many modern deep learning techniques.
+          </p>
+
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">The Modern Legacy</h2>
+
+          <p>
+            Today, the influence of Hopfield and Hinton's work extends far beyond their original models. 
+            Modern AI systems — from GPT to image recognition algorithms — can trace their conceptual DNA back to these 
+            energy-based approaches. The idea that learning can be viewed as energy minimization remains central to 
+            machine learning theory.
+          </p>
+
+          <h3 class="text-2xl font-semibold mt-8 mb-4 text-orange-600">Recent Developments</h3>
+
+          <p>
+            The story doesn't end in the 1980s. Recent innovations include:
+          </p>
+
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Modern Hopfield Networks:</strong> Extensions that can handle continuous values and store exponentially more patterns</li>
+            <li><strong>Attention Mechanisms:</strong> The "attention" in transformer models (like GPT) has connections to associative memory principles</li>
+            <li><strong>Quantum Hopfield Networks:</strong> Exploring how quantum mechanics might enhance associative memory</li>
+          </ul>
+
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">Why This Matters for Physics</h2>
+
+          <p>
+            The 2024 Nobel Prize recognizes something important about modern science: the boundaries between disciplines 
+            are increasingly artificial. The most profound insights often come from applying concepts from one field 
+            to problems in another.
+          </p>
+
+          <p>
+            Hopfield and Hinton didn't just create better computer algorithms — they showed how physical principles 
+            could illuminate the nature of memory, learning, and intelligence itself. Their work demonstrates that 
+            physics isn't just about understanding particles and forces; it's about discovering universal principles 
+            that govern complex systems, whether they're made of atoms or silicon.
+          </p>
+
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">Looking Forward</h2>
+
+          <p>
+            As we stand on the brink of even more powerful AI systems, the lessons from Hopfield and Hinton remain 
+            relevant. The current excitement around large language models and artificial general intelligence draws 
+            on the same fundamental insights: that intelligence might emerge from the collective behavior of simple, 
+            interacting units.
+          </p>
+
+          <p>
+            Perhaps future Nobel Prizes will recognize other beautiful connections between physics and intelligence. 
+            Quantum computing, thermodynamics of computation, and the physics of information all hold promise for 
+            revolutionary insights.
+          </p>
+
+          <blockquote>
+            "The most beautiful thing about this story is how it exemplifies the unity of knowledge. 
+            A physicist studying magnetism, a computer scientist exploring learning, and a neuroscientist 
+            investigating memory might all be working on the same deep mathematical structures — 
+            they just don't know it yet."
+          </blockquote>
+
+          <p>
+            The 2024 Nobel Prize in Physics celebrates not just two remarkable scientists, but the power of 
+            interdisciplinary thinking. In a world facing complex challenges that span traditional academic boundaries, 
+            Hopfield and Hinton's approach offers a powerful lesson: sometimes the most profound insights come from 
+            looking at familiar problems through completely different lenses.
+          </p>
+
+          <p class="text-center mt-8 font-italic text-gray-600">
+            <em>As I write this in Paris, preparing for my MSc at Oxford, I'm reminded that the best mathematics and physics 
+            often emerge from curiosity about connections others haven't yet seen. Who knows what beautiful bridges 
+            await discovery between the fields we think we understand?</em>
+          </p>
+        </div>
+
+        <!-- Author Bio -->
+        <div class="border-t border-gray-300 mt-12 pt-8">
+          <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-6">
+            <h3 class="font-bold text-lg mb-3">About the Author</h3>
+            <p class="text-sm mb-4">
+              This article is adapted from my survey paper reviewed, but not published, in the Gazette of the French Mathematical Society (SMF). 
+              I was enrolled in a Data Sciences master's degree at CentraleSupélec when I wrote this survey, putting me in a unique position at the intersection of artificial intelligence and mathematical physics, building on my earlier internship work on the Ising model.
+            </p>
+            <div class="flex gap-4">
+              <a href="../about.html" class="text-orange-600 hover:underline text-sm">More about me</a>
+              <a href="../../index.html" class="text-blue-600 hover:underline text-sm">Academic Work</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Posts -->
+        <div class="mt-12">
+          <h3 class="text-2xl font-bold mb-6">Explore More</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <a href="welcome-to-jorys-mathematician.html" class="block bg-white rounded-lg p-6 shadow hover:shadow-lg transition-shadow">
+              <h4 class="font-semibold mb-2">Welcome to Jorys, The Mathematician</h4>
+              <p class="text-sm text-gray-600">Meet the person behind the blog and discover what drives this journey through mathematics, physics, and human experience...</p>
+            </a>
+            <a href="../research.html" class="block bg-white rounded-lg p-6 shadow hover:shadow-lg transition-shadow">
+              <h4 class="font-semibold mb-2">Research, Simplified</h4>
+              <p class="text-sm text-gray-600">Explore my current research in mathematical physics, from quantum gravity to category theory, explained for curious minds...</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- Comments Section -->
+        <div class="mt-12 bg-white rounded-lg p-6 shadow">
+          <h3 class="text-xl font-bold mb-4">Join the Discussion</h3>
+          <p class="text-sm text-gray-600 mb-4">
+            What connections do you see between physics and other fields? Have you encountered other beautiful examples 
+            of interdisciplinary insights? Share your thoughts below.
+          </p>
+          <form id="comment-form" class="space-y-4">
+            <div>
+              <input type="text" placeholder="Your name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-500">
+            </div>
+            <div>
+              <textarea placeholder="Your thoughts on physics and AI..." rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-500"></textarea>
+            </div>
+            <button type="submit" class="px-6 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-medium">
+              Share Your Thoughts
+            </button>
+          </form>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-yellow-100 to-orange-50 py-8 px-4 mt-12">
+      <div class="max-w-6xl mx-auto text-center">
+        <p class="text-sm text-gray-600">&copy; 2025 Jorys, The Mathematician. All rights reserved.</p>
+        <div class="mt-4 flex justify-center gap-6 text-sm">
+          <a href="../index.html" class="text-orange-600 hover:underline">Blog Home</a>
+          <a href="../posts.html" class="text-orange-600 hover:underline">All Posts</a>
+          <a href="../../index.html" class="text-blue-600 hover:underline">Academic Site</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('active');
+      });
+      
+      // Comment form
+      document.getElementById('comment-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for your comment! It will appear after moderation.');
+        this.reset();
+      });
+    </script>
+  </body>
+</html>

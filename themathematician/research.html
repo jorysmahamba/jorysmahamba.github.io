@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research, Simplified | Jorys, The Mathematician</title>
+    <meta name="description" content="Making complex research in mathematical physics accessible - from category theory to quantum gravity, explained for curious minds.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      body {
+        background: linear-gradient(135deg, #fdf6e3 0%, #fcefe2 50%, #fff5e6 100%);
+        font-family: Georgia, 'Times New Roman', serif;
+        min-height: 100vh;
+      }
+      
+      .gradient-text-warm {
+        background: linear-gradient(135deg, #FF6B35, #FFD700);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .research-card {
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+      }
+      
+      .research-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+      
+      .complexity-meter {
+        width: 100%;
+        height: 8px;
+        background: #e5e5e5;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      
+      .complexity-fill {
+        height: 100%;
+        background: linear-gradient(to right, #10B981, #F59E0B, #EF4444);
+        transition: width 0.3s ease;
+      }
+      
+      .mobile-menu {
+        display: none;
+      }
+      
+      .mobile-menu.active {
+        display: block;
+      }
+      
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-yellow-100 to-orange-50 shadow-md sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <a href="index.html" class="text-2xl font-extrabold gradient-text-warm">Jorys, The Mathematician</a>
+          
+          <!-- Desktop Navigation -->
+          <nav class="desktop-nav flex space-x-6 items-center text-orange-800">
+            <a href="index.html" class="hover:text-orange-600">Home</a>
+            <a href="about.html" class="hover:text-orange-600">About Me</a>
+            <a href="posts.html" class="hover:text-orange-600">All Posts</a>
+            <a href="research.html" class="hover:text-orange-600 font-semibold">Research</a>
+            <a href="contact.html" class="hover:text-orange-600">Contact</a>
+            <a href="../index.html" class="px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium hover:bg-blue-800 transition-colors">Academic Site</a>
+          </nav>
+          
+          <!-- Mobile menu button -->
+          <button class="md:hidden p-2" id="mobile-menu-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-menu pb-4 text-orange-800" id="mobile-menu">
+          <a href="index.html" class="block py-2 hover:text-orange-600">Home</a>
+          <a href="about.html" class="block py-2 hover:text-orange-600">About Me</a>
+          <a href="posts.html" class="block py-2 hover:text-orange-600">All Posts</a>
+          <a href="research.html" class="block py-2 hover:text-orange-600 font-semibold">Research</a>
+          <a href="contact.html" class="block py-2 hover:text-orange-600">Contact</a>
+          <a href="../index.html" class="inline-block mt-2 px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium">Academic Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+      <h1 class="text-4xl font-bold mb-4 gradient-text-warm text-center">Research, Simplified</h1>
+      <p class="text-lg text-center mb-12 text-gray-600">
+        This is where I make my academic research accessible — breaking down complex ideas in geometry, 
+        category theory, and quantum gravity into clear, meaningful narratives.
+      </p>
+
+      <!-- Research Timeline -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 text-orange-700">Research Timeline</h2>
+        
+        <div class="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-8 shadow-lg">
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-32 text-right text-sm text-gray-600">2024 (BSc)</div>
+              <div class="flex-grow border-l-4 border-orange-400 pl-4">
+                <h4 class="font-semibold">Ising Model Phase Transitions</h4>
+                <p class="text-sm text-gray-600">2+ months undergraduate research internship at LAMA, UPEC</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-32 text-right text-sm text-gray-600">2024 (MSc)</div>
+              <div class="flex-grow border-l-4 border-orange-400 pl-4">
+                <h4 class="font-semibold">Hopfield Networks Survey</h4>
+                <p class="text-sm text-gray-600">Autonomous research survey during Data Sciences Master's at CentraleSupélec</p>
+              </div>
+            </div>
+            <div class="flex gap-4 opacity-75">
+              <div class="flex-shrink-0 w-32 text-right text-sm text-gray-600">2025</div>
+              <div class="flex-grow border-l-4 border-gray-300 pl-4">
+                <h4 class="font-semibold">Exploration of Alexandrov Spaces (MSc)</h4>
+                <p class="text-sm text-gray-600">3 months graduate research internship at LAMA, UPEC</p>
+              </div>
+            <div class="flex gap-4 opacity-50">
+              <div class="flex-shrink-0 w-32 text-right text-sm text-gray-600">2025</div>
+              <div class="flex-grow border-l-4 border-gray-300 pl-4">
+                <h4 class="font-semibold">Future Research</h4>
+                <p class="text-sm text-gray-600">MSc in Mathematical and Theoretical Physics at Oxford (and beyond)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Current Research Projects -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 text-orange-700">Completed Research</h2>
+        <!-- Project 3: Coming Soon -->
+        <article class="research-card rounded-lg p-6 mb-6 shadow-lg opacity-75">
+          <h3 class="text-xl font-semibold mb-2">From classical Differential Geometry to Alexandrov <Spaces class=""></Spaces></h3>
+          <div class="mb-3">
+            <span class="text-sm text-gray-600">Complexity:</span>
+            <div class="complexity-meter mt-1">
+              <div class="complexity-fill" style="width: 67%"></div>
+            </div>
+          </div>
+          <p class="mb-4 text-gray-600">
+            <em>Coming soon...</em>
+          </p>
+          <span class="text-gray-400">Research in progress →</span>
+        </article>
+
+        <!-- Project 2: Hopfield Networks -->
+        <article class="research-card rounded-lg p-6 mb-6 shadow-lg">
+          <h3 class="text-xl font-semibold mb-2">The Physics Behind Hopfield Networks: From Ising Models to Neural Computation</h3>
+          <div class="mb-3">
+            <span class="text-sm text-gray-600">Complexity:</span>
+            <div class="complexity-meter mt-1">
+              <div class="complexity-fill" style="width: 33%"></div>
+            </div>
+          </div>
+          <p class="mb-4">
+            The 2024 Nobel Prize in Physics recognized how magnetic materials inspired artificial neural networks. 
+            My research survey explores Hopfield networks — systems that store memories like magnets store magnetic states.
+          </p>
+          <p class="mb-4">
+            <strong>Key insight:</strong> The same mathematics describing phase transitions in magnets explains how 
+            neural networks learn and remember, bridging 1920s physics with 2020s AI.
+          </p>
+          <a href="/themathematician/research/hopfield-networks-research.html" class="text-orange-600 hover:underline">Explore this research →</a>
+        </article>
+
+        <!-- Project 1: Ising Model -->
+        <article class="research-card rounded-lg p-6 shadow-lg">
+          <h3 class="text-xl font-semibold mb-2">Mathematical Exploration of Phase Transitions in the Ising Model</h3>
+          <div class="mb-3">
+            <span class="text-sm text-gray-600">Complexity:</span>
+            <div class="complexity-meter mt-1">
+              <div class="complexity-fill" style="width: 50%"></div>
+            </div>
+          </div>
+          <p class="mb-4">
+            The Ising model is a cornerstone of statistical physics that explains how magnets work at the atomic level. 
+            My BSc research internship provided a mathematically rigorous exploration of phase transitions — why materials 
+            suddenly change properties at critical temperatures.
+          </p>
+          <p class="mb-4">
+            <strong>Key findings:</strong> Using advanced probability theory, I proved there's no phase transition in 1D 
+            but demonstrated its existence in 2D, bridging abstract mathematics with observable physics.
+          </p>
+          <a href="research/ising-model-phase-transitions.html" class="text-orange-600 hover:underline">Explore this research →</a>
+        </article>
+      </section>
+
+      <!-- Big Questions -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 text-orange-700">The Big Questions I'm Tackling</h2>
+        
+        <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-8 shadow-lg">
+          <h3 class="text-xl font-semibold mb-4">1. What is the true nature of space and time?</h3>
+          <p class="mb-6">
+            Are they fundamental, or do they emerge from something deeper? My work on quantum gravity suggests space and time 
+            might be like temperature — useful concepts that arise from more fundamental ingredients.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-4">2. Can mathematics predict new physics?</h3>
+          <p class="mb-6">
+            History says yes! Maxwell's equations predicted radio waves; Dirac's equation predicted antimatter. I'm using 
+            advanced mathematics to predict what might lie beyond our current understanding.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-4">3. How can AI accelerate theoretical physics?</h3>
+          <p class="mb-6">
+            Machine learning isn't just for recommendations and chatbots. I'm exploring how AI can help us navigate the 
+            vast mathematical landscapes of modern physics.
+          </p>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="text-center bg-white rounded-lg p-8 shadow-lg">
+        <h2 class="text-2xl font-bold mb-4">Want the Full Technical Details?</h2>
+        <p class="mb-6">
+          If you're ready for the complete mathematical formalism, proofs, and technical discussions, 
+          visit my academic research page.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="../research.html" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            View Academic Research
+          </a>
+          <a href="posts.html?category=mathematics" class="px-6 py-3 border-2 border-orange-600 text-orange-600 rounded-lg hover:bg-orange-600 hover:text-white transition-colors font-medium">
+            Read Math Posts
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-yellow-100 to-orange-50 py-8 px-4 mt-12">
+      <div class="max-w-6xl mx-auto text-center">
+        <p class="text-sm text-gray-600">&copy; 2025 Jorys, The Mathematician. All rights reserved.</p>
+        <p class="text-xs text-gray-500 mt-2 italic">
+          "The important thing is not to stop questioning." — Albert Einstein
+        </p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('active');
+      });
+    </script>
+  </body>
+</html>

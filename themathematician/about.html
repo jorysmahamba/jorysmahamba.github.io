@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Jorys, The Mathematician</title>
+    <meta name="description" content="About Jorys A. Mahamba - A young mathematician exploring the intersection of rigorous thinking and human experience.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      body {
+        background: linear-gradient(135deg, #fdf6e3 0%, #fcefe2 50%, #fff5e6 100%);
+        font-family: Georgia, 'Times New Roman', serif;
+        min-height: 100vh;
+      }
+      
+      .gradient-text-warm {
+        background: linear-gradient(135deg, #FF6B35, #FFD700);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .content-section {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+      }
+      
+      .mobile-menu {
+        display: none;
+      }
+      
+      .mobile-menu.active {
+        display: block;
+      }
+      
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-yellow-100 to-orange-50 shadow-md sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <a href="index.html" class="text-2xl font-extrabold gradient-text-warm">Jorys, The Mathematician</a>
+          
+          <!-- Desktop Navigation -->
+          <nav class="desktop-nav flex space-x-6 items-center text-orange-800">
+            <a href="index.html" class="hover:text-orange-600">Home</a>
+            <a href="about.html" class="hover:text-orange-600 font-semibold">About Me</a>
+            <a href="posts.html" class="hover:text-orange-600">All Posts</a>
+            <a href="research.html" class="hover:text-orange-600">Research</a>
+            <a href="contact.html" class="hover:text-orange-600">Contact</a>
+            <a href="../index.html" class="px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium hover:bg-blue-800 transition-colors">Academic Site</a>
+          </nav>
+          
+          <!-- Mobile menu button -->
+          <button class="md:hidden p-2" id="mobile-menu-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-menu pb-4 text-orange-800" id="mobile-menu">
+          <a href="index.html" class="block py-2 hover:text-orange-600">Home</a>
+          <a href="about.html" class="block py-2 hover:text-orange-600 font-semibold">About Me</a>
+          <a href="posts.html" class="block py-2 hover:text-orange-600">All Posts</a>
+          <a href="research.html" class="block py-2 hover:text-orange-600">Research</a>
+          <a href="contact.html" class="block py-2 hover:text-orange-600">Contact</a>
+          <a href="../index.html" class="inline-block mt-2 px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium">Academic Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+      <h1 class="text-4xl font-bold mb-8 gradient-text-warm text-center">About Me</h1>
+      
+      <!-- Main Introduction -->
+      <section class="content-section rounded-lg p-8 mb-8 shadow-lg">
+        <p class="text-lg mb-4 leading-relaxed">
+          I'm Jorys, a 20-year-old multicultural student of mathematics and physics. Currently pursuing an MSc in Mathematical and Theoretical Physics at the University of Oxford, 
+          I'm fascinated by the deep mathematical structures that govern our universe — from the elegant abstractions of category theory to the mind-bending implications of quantum gravity.
+        </p>
+        <p class="text-lg mb-4 leading-relaxed">
+          But this blog isn't just about equations and theorems. It's a window into my deeper thoughts, philosophical musings, and cultural reflections. 
+          Here, I explore the poetic elegance of differential geometry, the strength found in Black identity, the timeless mysteries of physics, 
+          and the art of teaching with soul.
+        </p>
+        <p class="text-lg leading-relaxed">
+          I believe mathematics is a language of liberation — a way to understand not just the universe, but ourselves. 
+          In these pages, I explore it freely, without the constraints of academic formality, letting curiosity and wonder guide the way.
+        </p>
+      </section>
+
+      <!-- Why This Blog -->
+      <section class="content-section rounded-lg p-8 mb-8 shadow-lg">
+        <h2 class="text-2xl font-bold mb-4 text-orange-700">Why "Jorys, The Mathematician"?</h2>
+        <p class="mb-4">
+          The name is both a declaration and an aspiration. In a world that often tries to put us in boxes, 
+          claiming the title "The Mathematician" is my way of asserting that this space — this way of thinking — belongs to me too.
+        </p>
+        <p class="mb-4">
+          It's also a reminder that mathematicians are human. We dream, we struggle, we create. We find beauty not just in proofs, 
+          but in poetry. We seek truth not just in theorems, but in the lived experiences that shape us.
+        </p>
+        <p>
+          This blog is where I bring all these pieces together — where rigor meets reflection, where abstraction meets autobiography.
+        </p>
+      </section>
+
+      <!-- What I Write About -->
+      <section class="content-section rounded-lg p-8 mb-8 shadow-lg">
+        <h2 class="text-2xl font-bold mb-4 text-orange-700">What You'll Find Here</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold mb-2 text-lg">🔢 Mathematics & Physics</h3>
+            <p class="text-sm">
+              From accessible explanations of complex concepts to personal reflections on the beauty of mathematical structures. 
+              I make the abstract tangible and the complex comprehensible.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2 text-lg">📚 Education & Outreach</h3>
+            <p class="text-sm">
+              Thoughts on teaching, learning, and making mathematics accessible to everyone. 
+              I believe in democratizing knowledge and showing that anyone can think deeply about the universe.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2 text-lg">✨ Personal Journey</h3>
+            <p class="text-sm">
+              Stories from my academic path — from finishing high school at 15 to studying at Oxford. 
+              The challenges, triumphs, and lessons learned along the way.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Personal Details -->
+      <section class="content-section rounded-lg p-8 mb-8 shadow-lg">
+        <h2 class="text-2xl font-bold mb-4 text-orange-700">A Bit More About Me</h2>
+        <ul class="space-y-2">
+          <li><strong>Age:</strong> 20 years old</li>
+          <li><strong>Nationality:</strong> French (Portuguese and Congolese heritage)</li>
+          <li><strong>Languages:</strong> French (native), English (fluent), Portuguese (conversational), Learning Mandarin</li>
+          <li><strong>Current Location:</strong> Créteil, France (preparing for Oxford)</li>
+          <li><strong>Academic Status:</strong> Incoming MSc student in Mathematical & Theoretical Physics (Oxford, Oct 2025)</li>
+          <li><strong>High School Graduation:</strong> Age 15</li>
+          <li><strong>Undergraduate:</strong> Valedictorian, dual BSc in Mathematics and Physics (UPEC)</li>
+          <li><strong>Athletic Achievements:</strong> 1st Dan Black Belt in Shotokan Karate, up to international level youth competitor in handball, karate and badminton</li>
+        </ul>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="text-center bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-8 shadow-lg">
+        <h2 class="text-2xl font-bold mb-4">Want to Know Even More?</h2>
+        <p class="mb-6">
+          Dive deeper into my story, my dreams, and what drives my passion for mathematics and life.
+        </p>
+        <a href="more.html" class="inline-block px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-medium">
+          Read More About Me
+        </a>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-yellow-100 to-orange-50 py-8 px-4 mt-12">
+      <div class="max-w-6xl mx-auto text-center">
+        <p class="text-sm text-gray-600">&copy; 2025 Jorys, The Mathematician. All rights reserved.</p>
+        <div class="mt-4 flex justify-center gap-6 text-sm">
+          <a href="index.html" class="text-orange-600 hover:underline">Blog Home</a>
+          <a href="../index.html" class="text-blue-600 hover:underline">Academic Site</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('active');
+      });
+    </script>
+  </body>
+</html>
