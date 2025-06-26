@@ -1,0 +1,132 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+
+% Page geometry
+\geometry{
+    a4paper,
+    left=25mm,
+    right=25mm,
+    top=30mm,
+    bottom=30mm
+}
+
+% Custom colors (warm palette from your blog)
+\definecolor{warmOrange}{RGB}{255,107,53}
+\definecolor{warmYellow}{RGB}{255,215,0}
+\definecolor{lightOrange}{RGB}{255,245,230}
+\definecolor{darkOrange}{RGB}{204,85,0}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkOrange,
+    urlcolor=darkOrange,
+    citecolor=darkOrange
+}
+
+% Custom boxes for highlights
+\newtcolorbox{highlightbox}{
+    colback=lightOrange,
+    colframe=warmOrange,
+    boxrule=0pt,
+    leftrule=4pt,
+    arc=0mm,
+    left=10pt,
+    right=10pt,
+    top=10pt,
+    bottom=10pt
+}
+
+% Custom theorem-like environments
+\newtheorem{insight}{Insight}[section]
+\newtheorem{observation}{Observation}[section]
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small Jorys, The Mathematician}
+\lhead{\small Mathematical Adventures}
+\cfoot{\thepage}
+
+% Title formatting
+\title{\textbf{\huge Discovering ``Directional'' Curvature:\\[0.5em]
+\Large A Sleep-Deprived Journey Through Differential Geometry}}
+\author{Jorys, The Mathematician}
+\date{Date • 8 min read}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent I thought I had rediscovered geodesic curvature, but I instead discovered a notion of ``directional'' curvature running on 5 hours of sleep and pure mathematical adrenaline. This is the story of how a late-night exploration of the Gauss-Bonnet theorem led to unexpected insights about the relationship between curvature and topology.
+\end{abstract}
+
+\section*{The Late-Night Beginning}
+
+Wednesday at 4 am, I called it a night when I couldn't figure out what the Gauss map was. Today, a bit before 9 am, I had a breakthrough when building towards Gauss-Bonnet. After having slept for the rest of the night on Wednesday, I got back at it and I got the Gauss map intuitively with fresh eyes. So today I decided to jump right into section 4.5 of Do Carmo's \textit{Differential Geometry} textbook which tackles the Gauss-Bonnet theorem---the guiding light of my internship.
+
+\section{From Gauss to Turning Tangents}
+
+It began by presenting the first version of the theorem, due to Gauss, stating the formula to understand the correction in the sum of the internal angles of a triangle on a curved surface from the usual $\pi$ brought by the curvature of the surface. The corrective term is simply the integral of the curvature over the triangle, which explains why the sum of the angles of a triangle on the surface on earth is greater than $\pi$, while lower than $\pi$ on the surface of an apple core. When the surface is flat, of course, we fall back on the known $\pi$ sum.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{apple_core_curvature.png}
+\caption{Negative curvature on an apple core surface results in triangle angles summing to less than $\pi$, while positive curvature on Earth's surface gives sums greater than $\pi$.}
+\end{figure}
+
+But this insight can be generalized to more complicated closed shapes, from loop-like to complicated surfaces. Let's begin with the loop-like shapes. A \textit{simple closed, piecewise, regular, parametrized curve} is basically a continuous loop, possibly with a finite number of vertices but not self-intersecting. The theorem of Turning Tangents is the analogue of the previous Gauss' theorem for these kinds of shapes on a surface. It states that the sum of how much the curve intrinsically bends on the surface with how much we suddenly change directions at vertices is $2\pi$ (the sign might change depending on the orientation but this will be the story of another post).
+
+\section{The Discovery of ``Intrinsic Curvature''}
+
+What I mean by the ``intrinsic curvature'' of the loop is that if we look at the situation from an external point of view, being in $\mathbb{R}^3$, the curvature of the loop will be due to both its own curvature and the curvature of the surface it relies on! But if we stay grounded on the surface, only the curvature of the loop itself matters, the same way you don't feel the curvature of the earth when you cycle down a street, but you feel the curvature of your path when you are taking a turn. 
+
+\begin{highlightbox}
+\textbf{Key Insight:} In technical terms, you don't feel the curvature when you are following a geodesic; I discovered later that what I had been calling ``intrinsic curvature'' was the notion of \textit{geodesic curvature}!
+\end{highlightbox}
+
+But the story goes on\ldots For a loop with no vertices, we would be done. Adding the effects of the geodesic curvature along the path would have made us circle back to our point of origin, then having made a rotation of $2\pi$. For more complicated shapes, with edges, we can see that these effects are not enough. It is because at some points, the vertices, we took sudden turns which don't account for the geodesic curvature. 
+
+You can see this as how a walking robot might turn: he would go in a straight line, rotate, and proceed to go in a straight line again. If he was to walk 10 m in an allée, turn around, walk back to his original point and turn back again, he would have completed the cycle, being in the exact same state (position and orientation) without having followed any curved path; here, the changes of directions would have taken all the credit.
+
+\section{The Unexpected Twist: ``Directional'' Curvature}
+
+For hybrid shapes like with curved parts and edges, the contributions of curvatures and turns add up to complete the cycle. When I then tried to test my understanding to the case of geodesic triangles, I realized that it was not the geodesic curvature that I had discovered, but some cousin notion of ``directional'' curvature. 
+
+\begin{observation}
+As the turning angles are $(\pi - \text{internal angle})$, we get that their sum is $3\pi - \sum(\text{internal angles})$. Using Gauss' theorem, this is equal to $2\pi - \int(\text{curvature})$. The $2\pi$ cancel out and we get that the integral (sum) of the curvature on the triangle is the sum of the directional curvature of the edges (and not intrinsic curvature, which would be 0 for geodesics), which makes it all make sense!
+\end{observation}
+
+\section{Looking Forward: Local and Global Gauss-Bonnet}
+
+This insight then extends towards the local Gauss-Bonnet theorem which states the same thing as the theorem of Turning Tangents for surfaces homeomorphic to a disk and taking into account their curvature, while the global Gauss-Bonnet theorem takes on more general surfaces and surprisingly connect them to their topology through a topological invariant name the Euler-Poincaré characteristic\ldots this will have to wait a bit to be explored here!
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{gauss_bonnet_visualization.png}
+\caption{The journey from local curvature to global topology: how the Gauss-Bonnet theorem bridges differential geometry and algebraic topology.}
+\end{figure}
+
+\section*{Reflections}
+
+\begin{highlightbox}
+Sometimes the best mathematical discoveries come not from perfect understanding, but from the confusion and clarity that emerges when working through problems with fresh (if sleep-deprived) eyes. What I initially thought was a rediscovery turned into something more interesting: a personal journey through the landscape of differential geometry that revealed connections I hadn't expected.
+\end{highlightbox}
+
+\vspace{1em}
+
+\noindent\textit{As I continue my internship exploring these beautiful connections between geometry and topology, I'm reminded that mathematics is as much about the journey of discovery as it is about the destination. Even when running on 5 hours of sleep and pure mathematical adrenaline, there's always something new to uncover in the elegant structures of differential geometry.}
+
+\end{document}
