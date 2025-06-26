@@ -1,132 +1,447 @@
-\documentclass[11pt]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{geometry}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{color}
-\usepackage{fancyhdr}
-\usepackage{lipsum}
-\usepackage{enumitem}
-\usepackage{tcolorbox}
-\usepackage{xcolor}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discovering "Directional" Curvature: A Sleep-Deprived Mathematical Journey | Jorys, The Mathematician</title>
+    <meta name="description" content="How I thought I rediscovered geodesic curvature but instead found a cousin notion while exploring the Gauss-Bonnet theorem on 5 hours of sleep.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
+    </script>
+    <style>
+      body {
+        background: linear-gradient(135deg, #fdf6e3 0%, #fcefe2 50%, #fff5e6 100%);
+        font-family: Georgia, 'Times New Roman', serif;
+        min-height: 100vh;
+      }
+      
+      .gradient-text-warm {
+        background: linear-gradient(135deg, #FF6B35, #FFD700);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .article-content {
+        font-size: 1.125rem;
+        line-height: 1.8;
+      }
+      
+      .article-content p {
+        margin-bottom: 1.5rem;
+      }
+      
+      .article-content blockquote {
+        border-left: 4px solid #FF6B35;
+        padding-left: 1.5rem;
+        font-style: italic;
+        color: #666;
+        margin: 2rem 0;
+        background: rgba(255, 107, 53, 0.05);
+        padding: 1rem 1.5rem;
+        border-radius: 0 8px 8px 0;
+      }
+      
+      .equation-box {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+      
+      .figure-container {
+        margin: 2rem 0;
+        text-align: center;
+      }
+      
+      .figure-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .figure-caption {
+        font-size: 0.9rem;
+        color: #666;
+        font-style: italic;
+        margin-top: 0.5rem;
+        padding: 0 1rem;
+      }
+      
+      .mobile-menu {
+        display: none;
+      }
+      
+      .mobile-menu.active {
+        display: block;
+      }
+      
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+        
+        .article-content {
+          font-size: 1rem;
+        }
+      }
+      
+      .highlight-box {
+        background: linear-gradient(135deg, #fff5f5 0%, #fef5e7 100%);
+        border-left: 4px solid #f59e0b;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+      
+      .physics-analogy {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border-left: 4px solid #0ea5e9;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+      
+      .insight-box {
+        background: linear-gradient(135deg, #f3e7ff 0%, #f0e0ff 100%);
+        border-left: 4px solid #8b5cf6;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-yellow-100 to-orange-50 shadow-md sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <a href="../index.html" class="text-2xl font-extrabold gradient-text-warm">Jorys, The Mathematician</a>
+          
+          <!-- Desktop Navigation -->
+          <nav class="desktop-nav flex space-x-6 items-center text-orange-800">
+            <a href="../index.html" class="hover:text-orange-600">Home</a>
+            <a href="../about.html" class="hover:text-orange-600">About Me</a>
+            <a href="../posts.html" class="hover:text-orange-600">All Posts</a>
+            <a href="../research.html" class="hover:text-orange-600">Research</a>
+            <a href="../contact.html" class="hover:text-orange-600">Contact</a>
+            <a href="../../index.html" class="px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium hover:bg-blue-800 transition-colors">Academic Site</a>
+          </nav>
+          
+          <!-- Mobile menu button -->
+          <button class="md:hidden p-2" id="mobile-menu-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-menu pb-4 text-orange-800" id="mobile-menu">
+          <a href="../index.html" class="block py-2 hover:text-orange-600">Home</a>
+          <a href="../about.html" class="block py-2 hover:text-orange-600">About Me</a>
+          <a href="../posts.html" class="block py-2 hover:text-orange-600">All Posts</a>
+          <a href="../research.html" class="block py-2 hover:text-orange-600">Research</a>
+          <a href="../contact.html" class="block py-2 hover:text-orange-600">Contact</a>
+          <a href="../../index.html" class="inline-block mt-2 px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium">Academic Site</a>
+        </nav>
+      </div>
+    </header>
 
-% Page geometry
-\geometry{
-    a4paper,
-    left=25mm,
-    right=25mm,
-    top=30mm,
-    bottom=30mm
-}
+    <main class="max-w-4xl mx-auto px-4 py-12">
+      <!-- Article Header -->
+      <article>
+        <header class="mb-12 text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text-warm">
+            Discovering "Directional" Curvature: A Sleep-Deprived Mathematical Journey
+          </h1>
+          <p class="text-xl text-gray-600 mb-6 max-w-3xl mx-auto">
+            How I thought I rediscovered geodesic curvature but instead found a cousin notion while exploring 
+            the Gauss-Bonnet theorem on 5 hours of sleep and pure mathematical adrenaline
+          </p>
+          <div class="text-sm text-gray-600 space-y-1">
+            <p>December 15, 2024 • 8 min read</p>
+            <div class="flex flex-wrap justify-center gap-2 mt-4">
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">Differential Geometry</span>
+              <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">Mathematics</span>
+              <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">Research</span>
+              <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs">Discovery</span>
+            </div>
+          </div>
+        </header>
 
-% Custom colors (warm palette from your blog)
-\definecolor{warmOrange}{RGB}{255,107,53}
-\definecolor{warmYellow}{RGB}{255,215,0}
-\definecolor{lightOrange}{RGB}{255,245,230}
-\definecolor{darkOrange}{RGB}{204,85,0}
+        <!-- Article Content -->
+        <div class="article-content">
+          <div class="highlight-box">
+            <p class="font-semibold mb-2">💡 The Eureka Moment</p>
+            <p>
+              Sometimes the most interesting mathematical discoveries come not from finding what you're looking for, 
+              but from realizing you've found something else entirely. This is the story of how sleep deprivation 
+              and mathematical obsession led me to a curious cousin of geodesic curvature.
+            </p>
+          </div>
 
-% Hyperref setup
-\hypersetup{
-    colorlinks=true,
-    linkcolor=darkOrange,
-    urlcolor=darkOrange,
-    citecolor=darkOrange
-}
+          <p>
+            I thought I had rediscovered geodesic curvature, but I instead discovered a notion of "directional" 
+            curvature running on 5 hours of sleep and pure mathematical adrenaline. Let me tell you about this story!
+          </p>
 
-% Custom boxes for highlights
-\newtcolorbox{highlightbox}{
-    colback=lightOrange,
-    colframe=warmOrange,
-    boxrule=0pt,
-    leftrule=4pt,
-    arc=0mm,
-    left=10pt,
-    right=10pt,
-    top=10pt,
-    bottom=10pt
-}
+          <p>
+            Wednesday at 4 am, I called it a night when I couldn't figure out what the Gauss map was. Today, 
+            a bit before 9 am, I had a breakthrough when building towards Gauss-Bonnet. After having slept for 
+            the rest of the night on Wednesday, I got back at it and I got the Gauss map intuitively with fresh eyes. 
+            So today I decided to jump right into section 4.5 of Do Carmo's Differential Geometry textbook which 
+            tackles the Gauss-Bonnet theorem — the guiding light of my internship.
+          </p>
 
-% Custom theorem-like environments
-\newtheorem{insight}{Insight}[section]
-\newtheorem{observation}{Observation}[section]
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">The First Glimpse: Gauss's Original Theorem</h2>
 
-% Header and footer
-\pagestyle{fancy}
-\fancyhf{}
-\rhead{\small Jorys, The Mathematician}
-\lhead{\small Mathematical Adventures}
-\cfoot{\thepage}
+          <p>
+            It began by presenting the first version of the theorem, due to Gauss, stating the formula to understand 
+            the correction in the sum of the internal angles of a triangle on a curved surface from the usual $\pi$ 
+            brought by the curvature of the surface. The corrective term is simply the integral of the curvature 
+            over the triangle, which explains why the sum of the angles of a triangle on the surface on earth is 
+            greater than $\pi$, while lower than $\pi$ on the surface of an apple core. When the surface is flat, 
+            of course, we fall back on the known $\pi$ sum.
+          </p>
 
-% Title formatting
-\title{\textbf{\huge Discovering ``Directional'' Curvature:\\[0.5em]
-\Large A Sleep-Deprived Journey Through Differential Geometry}}
-\author{Jorys, The Mathematician}
-\date{Date • 8 min read}
+          <div class="figure-container">
+            <img src="/assets/images/curved-surfaces-triangles.jpg" alt="Triangles on different curved surfaces" class="mx-auto">
+            <p class="figure-caption">
+              <strong>Figure 1:</strong> Triangles on surfaces with different curvatures. On a sphere (positive curvature), 
+              angles sum to more than π. On a saddle (negative curvature), they sum to less than π.
+            </p>
+          </div>
 
-\begin{document}
+          <div class="equation-box">
+            <p class="text-lg mb-2">Gauss's Formula for Triangles:</p>
+            <p class="text-xl">$$\sum_{i=1}^{3} \alpha_i = \pi + \iint_T K \, dA$$</p>
+            <p class="text-sm mt-2 text-gray-600">
+              Where $\alpha_i$ are the internal angles and $K$ is the Gaussian curvature
+            </p>
+          </div>
 
-\maketitle
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">The Generalization: Theorem of Turning Tangents</h2>
 
-\begin{abstract}
-\noindent I thought I had rediscovered geodesic curvature, but I instead discovered a notion of ``directional'' curvature running on 5 hours of sleep and pure mathematical adrenaline. This is the story of how a late-night exploration of the Gauss-Bonnet theorem led to unexpected insights about the relationship between curvature and topology.
-\end{abstract}
+          <p>
+            But this insight can be generalized to more complicated closed shapes, from loop-like to complicated surfaces. 
+            Let's begin with the loop-like shapes. A simple closed, piecewise, regular, parametrized curve is basically 
+            a continuous loop, possibly with a finite number of vertices but not self-intersecting. The theorem of 
+            Turning Tangents is the analogue of the previous Gauss' theorem for these kinds of shapes on a surface. 
+            It states that the sum of how much the curve intrinsically bends on the surface with how much we suddenly 
+            change directions at vertices is $2\pi$ (the sign might change depending on the orientation but this will 
+            be the story of another post).
+          </p>
 
-\section*{The Late-Night Beginning}
+          <div class="physics-analogy">
+            <h4 class="font-semibold mb-3">🎯 Intrinsic vs Extrinsic Curvature</h4>
+            <p>
+              What I mean by the "intrinsic curvature" of the loop is that if we look at the situation from an 
+              external point of view, being in $\mathbb{R}^3$, the curvature of the loop will be due to both its 
+              own curvature and the curvature of the surface it relies on! But if we stay grounded on the surface, 
+              only the curvature of the loop itself matters, the same way you don't feel the curvature of the earth 
+              when you cycle down a street, but you feel the curvature of your path when you are taking a turn.
+            </p>
+          </div>
 
-Wednesday at 4 am, I called it a night when I couldn't figure out what the Gauss map was. Today, a bit before 9 am, I had a breakthrough when building towards Gauss-Bonnet. After having slept for the rest of the night on Wednesday, I got back at it and I got the Gauss map intuitively with fresh eyes. So today I decided to jump right into section 4.5 of Do Carmo's \textit{Differential Geometry} textbook which tackles the Gauss-Bonnet theorem---the guiding light of my internship.
+          <p>
+            In technical terms, you don't feel the curvature when you are following a geodesic; I discovered later 
+            that what I had been calling "intrinsic curvature" was the notion of geodesic curvature!
+          </p>
 
-\section{From Gauss to Turning Tangents}
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">The Robot Analogy: Understanding Turning Angles</h2>
 
-It began by presenting the first version of the theorem, due to Gauss, stating the formula to understand the correction in the sum of the internal angles of a triangle on a curved surface from the usual $\pi$ brought by the curvature of the surface. The corrective term is simply the integral of the curvature over the triangle, which explains why the sum of the angles of a triangle on the surface on earth is greater than $\pi$, while lower than $\pi$ on the surface of an apple core. When the surface is flat, of course, we fall back on the known $\pi$ sum.
+          <p>
+            But the story goes on… For a loop with no vertices, we would be done. Adding the effects of the geodesic 
+            curvature along the path would have made us circle back to our point of origin, then having made a 
+            rotation of $2\pi$. For more complicated shapes, with edges, we can see that these effects are not enough. 
+            It is because at some points, the vertices, we took sudden turns which don't account for the geodesic curvature.
+          </p>
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{apple_core_curvature.png}
-\caption{Negative curvature on an apple core surface results in triangle angles summing to less than $\pi$, while positive curvature on Earth's surface gives sums greater than $\pi$.}
-\end{figure}
+          <blockquote>
+            You can see this as how a walking robot might turn: he would go in a straight line, rotate, and proceed 
+            to go in a straight line again. If he was to walk 10 m in an allée, turn around, walk back to his 
+            original point and turn back again, he would have completed the cycle, being in the exact same state 
+            (position and orientation) without having followed any curved path; here, the changes of directions 
+            would have taken all the credit.
+          </blockquote>
 
-But this insight can be generalized to more complicated closed shapes, from loop-like to complicated surfaces. Let's begin with the loop-like shapes. A \textit{simple closed, piecewise, regular, parametrized curve} is basically a continuous loop, possibly with a finite number of vertices but not self-intersecting. The theorem of Turning Tangents is the analogue of the previous Gauss' theorem for these kinds of shapes on a surface. It states that the sum of how much the curve intrinsically bends on the surface with how much we suddenly change directions at vertices is $2\pi$ (the sign might change depending on the orientation but this will be the story of another post).
+          <p>
+            For hybrid shapes like with curved parts and edges, the contributions of curvatures and turns add up 
+            to complete the cycle.
+          </p>
 
-\section{The Discovery of ``Intrinsic Curvature''}
+          <div class="equation-box">
+            <p class="text-lg mb-2">The Theorem of Turning Tangents:</p>
+            <p class="text-xl">$$\int_C \kappa_g \, ds + \sum_{i} \theta_i = 2\pi$$</p>
+            <p class="text-sm mt-2 text-gray-600">
+              Where $\kappa_g$ is the geodesic curvature and $\theta_i$ are the turning angles at vertices
+            </p>
+          </div>
 
-What I mean by the ``intrinsic curvature'' of the loop is that if we look at the situation from an external point of view, being in $\mathbb{R}^3$, the curvature of the loop will be due to both its own curvature and the curvature of the surface it relies on! But if we stay grounded on the surface, only the curvature of the loop itself matters, the same way you don't feel the curvature of the earth when you cycle down a street, but you feel the curvature of your path when you are taking a turn. 
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">The Discovery: "Directional" Curvature</h2>
 
-\begin{highlightbox}
-\textbf{Key Insight:} In technical terms, you don't feel the curvature when you are following a geodesic; I discovered later that what I had been calling ``intrinsic curvature'' was the notion of \textit{geodesic curvature}!
-\end{highlightbox}
+          <p>
+            When I then tried to test my understanding to the case of geodesic triangles, I realized that it was 
+            not the geodesic curvature that I had discovered, but some cousin notion of "directional" curvature. 
+            As the turning angles are $(\pi - \text{internal angle})$, we get that their sum is $3\pi - \sum(\text{internal angles})$. 
+            Using Gauss' theorem, this is equal to $2\pi - \iint K \, dA$. The $2\pi$ cancel out and we get that 
+            the integral (sum) of the curvature on the triangle is the sum of the directional curvature of the edges 
+            (and not intrinsic curvature, which would be 0 for geodesics), which makes it all make sense!
+          </p>
 
-But the story goes on\ldots For a loop with no vertices, we would be done. Adding the effects of the geodesic curvature along the path would have made us circle back to our point of origin, then having made a rotation of $2\pi$. For more complicated shapes, with edges, we can see that these effects are not enough. It is because at some points, the vertices, we took sudden turns which don't account for the geodesic curvature. 
+          <div class="insight-box">
+            <h4 class="font-semibold mb-3">✨ The Key Insight</h4>
+            <p>
+              What I had discovered wasn't geodesic curvature at all — it was a "directional" notion of curvature 
+              that relates the Gaussian curvature of a region to the turning behavior along its boundary. This 
+              relationship becomes crystal clear when you work through the mathematics of geodesic triangles!
+            </p>
+          </div>
 
-You can see this as how a walking robot might turn: he would go in a straight line, rotate, and proceed to go in a straight line again. If he was to walk 10 m in an allée, turn around, walk back to his original point and turn back again, he would have completed the cycle, being in the exact same state (position and orientation) without having followed any curved path; here, the changes of directions would have taken all the credit.
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">The Bigger Picture: Gauss-Bonnet and Beyond</h2>
 
-\section{The Unexpected Twist: ``Directional'' Curvature}
+          <p>
+            This insight then extends towards the local Gauss-Bonnet theorem which states the same thing as the 
+            theorem of Turning Tangents for surfaces homeomorphic to a disk and taking into account their curvature, 
+            while the global Gauss-Bonnet theorem takes on more general surfaces and surprisingly connect them to 
+            their topology through a topological invariant name the Euler-Poincaré characteristic… this will have 
+            to wait a bit to be explored here!
+          </p>
 
-For hybrid shapes like with curved parts and edges, the contributions of curvatures and turns add up to complete the cycle. When I then tried to test my understanding to the case of geodesic triangles, I realized that it was not the geodesic curvature that I had discovered, but some cousin notion of ``directional'' curvature. 
+          <div class="figure-container">
+            <img src="/assets/images/notebook-directional-curvature.jpg" alt="Gauss-Bonnet theorem visualization" class="mx-auto">
+            <p class="figure-caption">
+              <strong>Figure 2:</strong> What my note-taking looks like when I'm westrling with concepts trying to get the meaning out of them!
+            </p>
+          </div>
 
-\begin{observation}
-As the turning angles are $(\pi - \text{internal angle})$, we get that their sum is $3\pi - \sum(\text{internal angles})$. Using Gauss' theorem, this is equal to $2\pi - \int(\text{curvature})$. The $2\pi$ cancel out and we get that the integral (sum) of the curvature on the triangle is the sum of the directional curvature of the edges (and not intrinsic curvature, which would be 0 for geodesics), which makes it all make sense!
-\end{observation}
+          <h2 class="text-3xl font-bold mt-12 mb-6 text-orange-700">Reflections on Mathematical Discovery</h2>
 
-\section{Looking Forward: Local and Global Gauss-Bonnet}
+          <p>
+            Looking back on this sleep-deprived journey, I'm struck by how mathematical understanding often comes 
+            in unexpected ways. I set out to understand the Gauss-Bonnet theorem and ended up discovering a 
+            personal way of thinking about the relationship between different types of curvature.
+          </p>
 
-This insight then extends towards the local Gauss-Bonnet theorem which states the same thing as the theorem of Turning Tangents for surfaces homeomorphic to a disk and taking into account their curvature, while the global Gauss-Bonnet theorem takes on more general surfaces and surprisingly connect them to their topology through a topological invariant name the Euler-Poincaré characteristic\ldots this will have to wait a bit to be explored here!
+          <p>
+            The "directional" curvature I discovered might not be a new mathematical concept — it's likely just 
+            a particular way of interpreting known relationships. But the process of discovery, of building intuition 
+            through confusion and breakthrough, is what makes mathematics so thrilling. Sometimes you need to get 
+            lost to find a path that truly makes sense to you.
+          </p>
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{gauss_bonnet_visualization.png}
-\caption{The journey from local curvature to global topology: how the Gauss-Bonnet theorem bridges differential geometry and algebraic topology.}
-\end{figure}
+          <blockquote>
+            "In mathematics, the journey of understanding is often more valuable than the destination. Every 
+            mathematician builds their own mental map of the territory, and sometimes the most crooked paths 
+            lead to the clearest views."
+          </blockquote>
 
-\section*{Reflections}
+          <p>
+            As I continue my internship exploring the Gauss-Bonnet theorem, I carry with me this lesson: 
+            mathematical understanding isn't just about learning what's in the textbooks — it's about building 
+            your own bridges between concepts, even if those bridges take unexpected forms in the early morning 
+            hours fueled by pure mathematical adrenaline.
+          </p>
 
-\begin{highlightbox}
-Sometimes the best mathematical discoveries come not from perfect understanding, but from the confusion and clarity that emerges when working through problems with fresh (if sleep-deprived) eyes. What I initially thought was a rediscovery turned into something more interesting: a personal journey through the landscape of differential geometry that revealed connections I hadn't expected.
-\end{highlightbox}
+          <p class="text-center mt-8 font-italic text-gray-600">
+            <em>Next time, I'll dive deeper into the global Gauss-Bonnet theorem and its surprising connection 
+            to topology. But first, maybe I should get more than 5 hours of sleep...</em>
+          </p>
+        </div>
 
-\vspace{1em}
+        <!-- Author Bio -->
+        <div class="border-t border-gray-300 mt-12 pt-8">
+          <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-6">
+            <h3 class="font-bold text-lg mb-3">About the Author</h3>
+            <p class="text-sm mb-4">
+              This post chronicles a moment from my research internship in differential geometry. 
+              As a mathematician passionate about the intersection of geometry, topology, and physics, 
+              I find that the most meaningful insights often come from wrestling with concepts until 
+              they reveal their hidden connections.
+            </p>
+            <div class="flex gap-4">
+              <a href="../about.html" class="text-orange-600 hover:underline text-sm">More about me</a>
+              <a href="../../index.html" class="text-blue-600 hover:underline text-sm">Academic Work</a>
+            </div>
+          </div>
+        </div>
 
-\noindent\textit{As I continue my internship exploring these beautiful connections between geometry and topology, I'm reminded that mathematics is as much about the journey of discovery as it is about the destination. Even when running on 5 hours of sleep and pure mathematical adrenaline, there's always something new to uncover in the elegant structures of differential geometry.}
+        <!-- Related Posts -->
+        <div class="mt-12">
+          <h3 class="text-2xl font-bold mb-6">Explore More</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <a href="nobel-prize-physics-2024.html" class="block bg-white rounded-lg p-6 shadow hover:shadow-lg transition-shadow">
+              <h4 class="font-semibold mb-2">The 2024 Nobel Prize in Physics</h4>
+              <p class="text-sm text-gray-600">When neural networks met statistical physics — the beautiful bridge between AI and magnetism...</p>
+            </a>
+            <a href="../research.html" class="block bg-white rounded-lg p-6 shadow hover:shadow-lg transition-shadow">
+              <h4 class="font-semibold mb-2">Research, Simplified</h4>
+              <p class="text-sm text-gray-600">Explore my current research in mathematical physics, from quantum gravity to category theory...</p>
+            </a>
+          </div>
+        </div>
 
-\end{document}
+        <!-- Comments Section -->
+        <div class="mt-12 bg-white rounded-lg p-6 shadow">
+          <h3 class="text-xl font-bold mb-4">Share Your Mathematical Journey</h3>
+          <p class="text-sm text-gray-600 mb-4">
+            Have you ever discovered something while looking for something else? What unexpected mathematical 
+            insights have emerged from your own late-night study sessions? I'd love to hear your stories.
+          </p>
+          <form id="comment-form" class="space-y-4">
+            <div>
+              <input type="text" placeholder="Your name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-500">
+            </div>
+            <div>
+              <textarea placeholder="Share your mathematical discovery story..." rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-500"></textarea>
+            </div>
+            <button type="submit" class="px-6 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-medium">
+              Share Your Story
+            </button>
+          </form>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-yellow-100 to-orange-50 py-8 px-4 mt-12">
+      <div class="max-w-6xl mx-auto text-center">
+        <p class="text-sm text-gray-600">&copy; 2025 Jorys, The Mathematician. All rights reserved.</p>
+        <div class="mt-4 flex justify-center gap-6 text-sm">
+          <a href="../index.html" class="text-orange-600 hover:underline">Blog Home</a>
+          <a href="../posts.html" class="text-orange-600 hover:underline">All Posts</a>
+          <a href="../../index.html" class="text-blue-600 hover:underline">Academic Site</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('active');
+      });
+      
+      // Comment form
+      document.getElementById('comment-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for sharing your story! It will appear after moderation.');
+        this.reset();
+      });
+    </script>
+  </body>
+</html>
