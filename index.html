@@ -1,100 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jorys A. Mahamba — Mathematical Foundations of Information</title>
-  <meta name="description" content="Portfolio of Jorys A. Mahamba — MSc (Oxford) focusing on mathematical foundations of information for quantum machine learning, with a view toward potential applications in algorithmic finance.">
-  <meta name="color-scheme" content="light dark" />
-  <style>
-    /* ============ Design System ============ */
-    :root{
-      --bg: #0b0d10;
-      --paper: #0f1217;
-      --text: #e9edf1;
-      --muted: #a9b3be;
-      --accent: #0ea5e9;      /* cyan */
-      --accent-2:#263241;     /* subtle borders on dark */
-      --okblue:#1d4ed8;       /* Oxford-ish blue */
-      --ring: rgba(14,165,233,.35);
-      --shadow: 0 10px 30px rgba(2,10,20,.35);
-      --radius: 16px;
-      --maxw: 1100px;
-    }
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg:#f7f8fb;
-        --paper:#ffffff;
-        --text:#0b1220;
-        --muted:#5b6977;
-        --accent:#0ea5e9;
-        --accent-2:#e6e9ee;
-        --okblue:#1d4ed8;
-        --ring: rgba(14,165,233,.25);
-        --shadow: 0 10px 25px rgba(10,20,35,.08);
-      }
-    }
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";}
-    img{max-width:100%;display:block}
-    a{color:var(--okblue);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
-    .pill{display:inline-flex;gap:.5rem;align-items:center;padding:.4rem .75rem;border:1px solid var(--accent-2);border-radius:999px;color:var(--muted);font-size:.85rem}
-    .btn{display:inline-block;background:var(--accent);color:white;padding:.8rem 1rem;border-radius:12px;box-shadow:var(--shadow);font-weight:600;border:0}
-    .btn:hover{filter:brightness(1.05)}
-    .btn.outline{background:transparent;color:var(--text);border:1px solid var(--accent-2)}
-    .card{background:var(--paper);border:1px solid var(--accent-2);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .grid{display:grid;gap:1rem}
-    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    @media (max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
-    section{padding:64px 0}
-    h1,h2,h3{line-height:1.2;margin:0 0 .6rem}
-    h1{font-size:clamp(28px,4.5vw,40px)}
-    h2{font-size:clamp(22px,3.2vw,28px);margin-bottom:1rem}
-    h3{font-size:clamp(18px,2.6vw,22px);margin-top:.8rem}
-    p{margin:.5rem 0}
-    ul{margin:.5rem 0 0 1.1rem}
-    /* Header / Nav */
-    header{
-      position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(10px);
-      background:color-mix(in srgb, var(--bg) 75%, transparent);
-      border-bottom:1px solid var(--accent-2)
-    }
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{display:flex;align-items:center;gap:.75rem;font-weight:800}
-    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
-    nav a{margin-left:18px;color:var(--text)}
-    /* Hero */
-    .hero{padding:72px 0}
-    .hero-wrap{display:grid;gap:2rem;grid-template-columns:1.25fr .75fr;align-items:center}
-    @media (max-width:1000px){.hero-wrap{grid-template-columns:1fr}}
-    .avatar{width:180px;height:180px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:var(--shadow)}
-    .chip{display:inline-block;padding:.25rem .6rem;border-radius:999px;border:1px solid var(--accent-2);color:var(--muted);font-size:.8rem}
-    .meta{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
-    /* Feature list */
-    .features{display:grid;gap:1rem;grid-template-columns:repeat(3,minmax(0,1fr))}
-    @media (max-width:1000px){.features{grid-template-columns:1fr}}
-    .feature{padding:18px}
-    .feature h3{margin-bottom:.3rem}
-    /* Timeline */
-    .timeline{position:relative;margin-left:10px;padding-left:18px}
-    .timeline:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent-2)}
-    .t-item{position:relative;margin:0 0 18px}
-    .t-item:before{content:"";position:absolute;left:-20px;top:.4rem;width:10px;height:10px;background:var(--accent);border-radius:50%}
-    .t-item h4{margin:0}
-    .tag{display:inline-block;background:color-mix(in srgb, var(--accent) 18%, transparent);color:var(--text);border:1px solid var(--accent);padding:.15rem .5rem;border-radius:999px;font-size:.75rem;margin-right:.35rem}
-    /* Footer */
-    footer{padding:32px 0;border-top:1px solid var(--accent-2);color:var(--muted);font-size:.95rem}
-    /* Dark-mode toggle */
-    .toggle{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--accent-2);padding:.4rem .6rem;border-radius:999px;cursor:pointer}
-    .toggle input{appearance:none;width:36px;height:22px;border-radius:999px;background:var(--accent-2);position:relative;outline:0}
-    .toggle input:after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:var(--paper);transition:.2s}
-    .toggle input:checked{background:var(--accent)}
-    .toggle input:checked:after{transform:translateX(14px)}
-    html{scroll-behavior:smooth}
-    pre{background:var(--paper);border:1px solid var(--accent-2);padding:12px;border-radius:12px;overflow:auto}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jorys A. Mahamba — Mathematical Foundations of Information</title>
+<meta name="description" content="Portfolio of Jorys A. Mahamba — MSc (Oxford) focusing on mathematical foundations of information for quantum machine learning, with a view toward potential applications in algorithmic finance.">
+<meta name="color-scheme" content="light dark" />
+<style>
+/* ============ Design System ============ */
+:root{
+  --bg: #0b0d10;
+  --paper: #0f1217;
+  --text: #e9edf1;
+  --muted: #a9b3be;
+  --accent: #0ea5e9;
+  --accent-2:#263241;
+  --okblue:#1d4ed8;
+  --ring: rgba(14,165,233,.35);
+  --shadow: 0 10px 30px rgba(2,10,20,.35);
+  --radius: 16px;
+  --maxw: 1100px;
+}
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f7f8fb;
+    --paper:#ffffff;
+    --text:#0b1220;
+    --muted:#5b6977;
+    --accent:#0ea5e9;
+    --accent-2:#e6e9ee;
+    --okblue:#1d4ed8;
+    --ring: rgba(14,165,233,.25);
+    --shadow: 0 10px 25px rgba(10,20,35,.08);
+  }
+}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";}
+img{max-width:100%;display:block}
+a{color:var(--okblue);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.pill{display:inline-flex;gap:.5rem;align-items:center;padding:.4rem .75rem;border:1px solid var(--accent-2);border-radius:999px;color:var(--muted);font-size:.85rem}
+.btn{display:inline-block;background:var(--accent);color:white;padding:.8rem 1rem;border-radius:12px;box-shadow:var(--shadow);font-weight:600;border:0}
+.btn:hover{filter:brightness(1.05)}
+.btn.outline{background:transparent;color:var(--text);border:1px solid var(--accent-2)}
+.card{background:var(--paper);border:1px solid var(--accent-2);border-radius:var(--radius);box-shadow:var(--shadow)}
+.grid{display:grid;gap:1rem}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
+section{padding:64px 0}
+h1,h2,h3{line-height:1.2;margin:0 0 .6rem}
+h1{font-size:clamp(28px,4.5vw,40px)}
+h2{font-size:clamp(22px,3.2vw,28px);margin-bottom:1rem}
+h3{font-size:clamp(18px,2.6vw,22px);margin-top:.8rem}
+p{margin:.5rem 0}
+ul{margin:.5rem 0 0 1.1rem}
+/* Header / Nav */
+header{
+  position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(10px);
+  background:color-mix(in srgb, var(--bg) 75%, transparent);
+  border-bottom:1px solid var(--accent-2)
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:.75rem;font-weight:800}
+.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+nav a{margin-left:18px;color:var(--text)}
+/* Hero */
+.hero{padding:72px 0}
+.hero-wrap{display:grid;gap:2rem;grid-template-columns:1.25fr .75fr;align-items:center}
+@media (max-width:1000px){.hero-wrap{grid-template-columns:1fr}}
+.avatar{width:180px;height:180px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:var(--shadow)}
+.chip{display:inline-block;padding:.25rem .6rem;border-radius:999px;border:1px solid var(--accent-2);color:var(--muted);font-size:.8rem}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+/* Feature list */
+.features{display:grid;gap:1rem;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1000px){.features{grid-template-columns:1fr}}
+.feature{padding:18px}
+.feature h3{margin-bottom:.3rem}
+/* Timeline */
+.timeline{position:relative;margin-left:10px;padding-left:18px}
+.timeline:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent-2)}
+.t-item{position:relative;margin:0 0 18px}
+.t-item:before{content:"";position:absolute;left:-20px;top:.4rem;width:10px;height:10px;background:var(--accent);border-radius:50%}
+.t-item h4{margin:0}
+.tag{display:inline-block;background:color-mix(in srgb, var(--accent) 18%, transparent);color:var(--text);border:1px solid var(--accent);padding:.15rem .5rem;border-radius:999px;font-size:.75rem;margin-right:.35rem}
+/* Gallery */
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:12px}
+.filter-btn{padding:.45rem .75rem;border:1px solid var(--accent-2);border-radius:999px;background:transparent;color:var(--text);cursor:pointer}
+.filter-btn.active{background:var(--accent);color:white;border-color:var(--accent)}
+.gallery{display:grid;gap:.6rem;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1000px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.gallery{grid-template-columns:1fr}}
+.thumb{aspect-ratio:4/3;object-fit:cover;border-radius:12px;border:1px solid var(--accent-2)}
+.caption{font-size:.85rem;color:var(--muted);margin-top:.25rem}
+/* Lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}
+.lightbox.open{display:flex}
+.lb-img{max-width:min(96vw,1200px);max-height:85vh;border-radius:12px;border:1px solid var(--accent-2);box-shadow:var(--shadow)}
+.lb-meta{position:fixed;left:0;right:0;bottom:16px;display:flex;justify-content:center}
+.lb-caption{background:rgba(0,0,0,.6);color:#fff;padding:.4rem .75rem;border-radius:999px;font-size:.9rem}
+.lb-btn{position:fixed;top:50%;transform:translateY(-50%);font-size:28px;background:rgba(0,0,0,.5);color:#fff;border:0;width:44px;height:44px;border-radius:50%;cursor:pointer}
+.lb-prev{left:16px} .lb-next{right:16px}
+.lb-close{position:fixed;top:14px;right:14px;font-size:26px;background:rgba(0,0,0,.5);color:#fff;border:0;width:40px;height:40px;border-radius:50%;cursor:pointer}
+footer{padding:32px 0;border-top:1px solid var(--accent-2);color:var(--muted);font-size:.95rem}
+/* Dark-mode toggle */
+.toggle{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--accent-2);padding:.4rem .6rem;border-radius:999px;cursor:pointer}
+.toggle input{appearance:none;width:36px;height:22px;border-radius:999px;background:var(--accent-2);position:relative;outline:0}
+.toggle input:after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:var(--paper);transition:.2s}
+.toggle input:checked{background:var(--accent)}
+.toggle input:checked:after{transform:translateX(14px)}
+html{scroll-behavior:smooth}
+</style>
 </head>
 <body>
 <header>
@@ -106,6 +122,7 @@
       <a href="#timeline">Timeline</a>
       <a href="#experience">Experience</a>
       <a href="#sports">Sports</a>
+      <a href="#gallery">Sports Gallery</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -129,6 +146,10 @@
       <div class="meta">
         <a class="btn" href="YOUR_CV_LINK.pdf" target="_blank" rel="noopener">Download Academic CV</a>
         <a class="btn outline" href="#contact">Email Me</a>
+        <label class="toggle" title="Toggle dark mode">
+          <input id="themeToggle" type="checkbox" aria-label="Toggle dark mode">
+          <span>Dark mode</span>
+        </label>
       </div>
     </div>
     <div>
@@ -157,6 +178,14 @@
         <p>Apply the framework to five major quantum-mechanical problems (including the measurement problem), developing thought experiments such as Schrödinger’s cat recast informationally.</p>
       </div>
     </div>
+
+    <div class="card" style="margin-top:1rem;padding:18px">
+      <h3 style="margin-top:0">Dissertation (Oxford, 2025–2026)</h3>
+      <p><b>Title.</b> <em>Mathematical Foundations of Information for Quantum Machine Learning</em></p>
+      <p><b>Subtitle.</b> <em>With a View Toward Potential Applications in Algorithmic Finance</em></p>
+      <p><b>Objectives.</b> Definition/formalism of information; retrieve known results; quantum-foundations perspective; scale/boundaries in information geometry; models for real-time data in algorithmic finance.</p>
+      <p><b>Outcomes.</b> Theory paper (framework + retrieved results), technical note on kernels, seminar/poster.</p>
+    </div>
   </div>
 </section>
 
@@ -164,14 +193,14 @@
   <div class="container">
     <h2>Timeline (Oct 2025 — Jun 2026)</h2>
     <div class="card" style="padding:18px">
-      <ul>
-        <li><b>Oct–Nov:</b> Literature review; definition/formalism of information; initial mapping to quantum problems.</li>
-        <li><b>Dec–Jan:</b> Develop axiomatic framework; retrieve known results; refine thought experiments.</li>
-        <li><b>Feb:</b> Extend to information geometry and measure-theoretic aspects; derive kernels incorporating scale and boundaries.</li>
-        <li><b>Mar–Apr:</b> Integrate quantum foundations; apply to five quantum-mechanical problems; analyze models.</li>
-        <li><b>May:</b> Bridge to algorithmic finance with real-time big data flow and processing models.</li>
-        <li><b>Jun:</b> Finalize dissertation; synthesize theory and models; prepare conference abstract or preprint.</li>
-      </ul>
+      <div class="timeline">
+        <div class="t-item"><h4>Oct–Nov</h4><p>Deep literature review; precise definition/formalism of information; initial mapping to five quantum problems.</p></div>
+        <div class="t-item"><h4>Dec–Jan</h4><p>Develop axiomatic framework; begin retrieving known results (classical/quantum entropies, divergences, kernels); refine thought experiments.</p></div>
+        <div class="t-item"><h4>Feb</h4><p>Extend to information geometry and measure-theoretic aspects; derive kernels and feature maps incorporating scale and boundaries.</p></div>
+        <div class="t-item"><h4>Mar–Apr</h4><p>Integrate quantum-foundations; apply the framework to five quantum problems; analyze models indicating clarification.</p></div>
+        <div class="t-item"><h4>May</h4><p>Bridge to algorithmic finance: implement models for real-time big data flow and processing; test applicability on high-dimensional data.</p></div>
+        <div class="t-item"><h4>Jun</h4><p>Finalize dissertation; synthesize theory and models; prepare conference abstract or preprint.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -194,7 +223,7 @@
       </div>
       <div class="card" style="padding:18px">
         <h3>Teaching</h3>
-        <p>Graduate TA at CentraleSupélec (Math for MSc DSBA: linear algebra, probability, optimization). Learning Assistant \& Tutor at UPEC (measure theory, metric spaces, differential calculus; 70+ hours).</p>
+        <p>Graduate TA at CentraleSupélec (Math for MSc DSBA: linear algebra, probability, optimization). Learning Assistant &amp; Tutor at UPEC (measure theory, metric spaces, differential calculus; 70+ hours).</p>
       </div>
     </div>
   </div>
@@ -220,6 +249,58 @@
   </div>
 </section>
 
+<!-- ======================== SPORTS GALLERY ======================== -->
+<section id="gallery">
+  <div class="container">
+    <h2>Sports Gallery</h2>
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="Karate">Karate</button>
+      <button class="filter-btn" data-filter="Handball">Handball</button>
+      <button class="filter-btn" data-filter="Badminton">Badminton</button>
+      <button class="filter-btn" data-filter="Coaching">Coaching</button>
+    </div>
+
+    <div class="gallery" id="galleryGrid">
+      <!-- Karate -->
+      <figure class="card" data-group="Karate"><img class="thumb" src="7yo city champ karate.jpg" alt="7yo city champ karate"><figcaption class="caption">Early trophies — city champ (Karate)</figcaption></figure>
+      <figure class="card" data-group="Karate"><img class="thumb" src="child karate.jpg" alt="child karate"><figcaption class="caption">First steps on the tatami</figcaption></figure>
+      <figure class="card" data-group="Karate"><img class="thumb" src="gold medal departmental championship 2018.jpg" alt="gold medal departmental championship 2018"><figcaption class="caption">Departmental Champion (2018)</figcaption></figure>
+      <figure class="card" data-group="Karate"><img class="thumb" src="karate black belt.jpg" alt="karate black belt"><figcaption class="caption">Black Belt (1st Dan) at 16</figcaption></figure>
+      <figure class="card" data-group="Karate"><img class="thumb" src="high kick karate.jpg" alt="high kick karate"><figcaption class="caption">Kumite action</figcaption></figure>
+      <figure class="card" data-group="Karate"><img class="thumb" src="gold medal french corpo cup karate.jpg" alt="gold medal french corpo cup karate"><figcaption class="caption">French Corpo Cup — Gold</figcaption></figure>
+      <figure class="card" data-group="Karate"><img class="thumb" src="gold medal military french cup 2024.jpg" alt="gold medal military french cup 2024"><figcaption class="caption">Military French Cup — Gold (2024)</figcaption></figure>
+      <figure class="card" data-group="Karate"><img class="thumb" src="team karate 2025 medals french military chp.jpg" alt="team karate 2025 medals french military chp"><figcaption class="caption">French Military Championship — team medals (2025)</figcaption></figure>
+      <figure class="card" data-group="Coaching"><img class="thumb" src="teaching karate from frontjpg.jpg" alt="teaching karate from front"><figcaption class="caption">Coaching session — front</figcaption></figure>
+      <figure class="card" data-group="Coaching"><img class="thumb" src="teaching karate from back.jpg" alt="teaching karate from back"><figcaption class="caption">Coaching session — back</figcaption></figure>
+      <figure class="card" data-group="Karate"><img class="thumb" src="last military french chp 3rd place with sister.jpg" alt="last military french chp 3rd place with sister"><figcaption class="caption">Military French Cup — podium with my sister</figcaption></figure>
+
+      <!-- Handball -->
+      <figure class="card" data-group="Handball"><img class="thumb" src="handball shot u18.jpg" alt="handball shot u18"><figcaption class="caption">U18 — jump shot</figcaption></figure>
+      <figure class="card" data-group="Handball"><img class="thumb" src="handball free kick.jpg" alt="handball free kick"><figcaption class="caption">Free-throw over the wall</figcaption></figure>
+      <figure class="card" data-group="Handball"><img class="thumb" src="handball u18 team.jpg" alt="handball u18 team"><figcaption class="caption">U18 team</figcaption></figure>
+      <figure class="card" data-group="Handball"><img class="thumb" src="team handball u15.jpg" alt="team handball u15"><figcaption class="caption">Team title (U15)</figcaption></figure>
+      <figure class="card" data-group="Handball"><img class="thumb" src="french championship final entry u18 handball.jpg" alt="french championship final entry u18 handball"><figcaption class="caption">French Championship — Final entry</figcaption></figure>
+      <figure class="card" data-group="Handball"><img class="thumb" src="essec handball game 1.jpg" alt="essec handball game 1"><figcaption class="caption">ESSEC Varsity — in play</figcaption></figure>
+      <figure class="card" data-group="Handball"><img class="thumb" src="essec handball game 2.jpg" alt="essec handball game 2"><figcaption class="caption">ESSEC match (sequence)</figcaption></figure>
+      <figure class="card" data-group="Handball"><img class="thumb" src="essec handball game 3.jpg" alt="essec handball game 3"><figcaption class="caption">ESSEC match (sequence)</figcaption></figure>
+      <figure class="card" data-group="Handball"><img class="thumb" src="essec handball.jpg" alt="essec handball"><figcaption class="caption">ESSEC medals/podium</figcaption></figure>
+      <figure class="card" data-group="Handball"><img class="thumb" src="handball shot u11.jpg" alt="handball shot u11"><figcaption class="caption">Match play (U11)</figcaption></figure>
+      <figure class="card" data-group="Handball"><img class="thumb" src="handball shot u15.jpg" alt="handball shot u15"><figcaption class="caption">Match play (U15)</figcaption></figure>
+      <figure class="card" data-group="Handball"><img class="thumb" src="handball shot u18 piv.jpg" alt="handball shot u18 piv"><figcaption class="caption">Match play — pivot (U18)</figcaption></figure>
+      <figure class="card" data-group="Handball"><img class="thumb" src="handball trophy u11.jpg" alt="handball trophy u11"><figcaption class="caption">Trophy (U11)</figcaption></figure>
+      <figure class="card" data-group="Handball"><img class="thumb" src="handball trophy u15.jpg" alt="handball trophy u15"><figcaption class="caption">Trophy (U15)</figcaption></figure>
+      <figure class="card" data-group="Handball"><img class="thumb" src="trophy handball u15.jpg" alt="trophy handball u15"><figcaption class="caption">Tournament trophy (U15)</figcaption></figure>
+      <!-- (Keeping the exact typo file) -->
+      <figure class="card" data-group="Handball"><img class="thumb" src="andball game u18.jpg" alt="andball game u18"><figcaption class="caption">Game (U18)</figcaption></figure>
+
+      <!-- Badminton -->
+      <figure class="card" data-group="Badminton"><img class="thumb" src="badminston silver medal regional chp.jpg" alt="badminston silver medal regional chp"><figcaption class="caption">Regional Silver (U13)</figcaption></figure>
+      <figure class="card" data-group="Badminton"><img class="thumb" src="badminton playing.jpg" alt="badminton playing"><figcaption class="caption">Jump smash (training)</figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="container">
     <h2>Contact & Links</h2>
@@ -229,12 +310,12 @@
           <p><b>Email.</b> <a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></p>
           <p><b>GitHub.</b> <a href="https://github.com/jorysmahamba" target="_blank" rel="noopener">github.com/jorysmahamba</a></p>
           <p><b>LinkedIn.</b> <a href="https://www.linkedin.com/in/jorys-mahamba" target="_blank" rel="noopener">linkedin.com/in/jorys-mahamba</a></p>
-          <p><b>CV.</b> <a href="YOUR_CV_LINK.pdf" target="_blank" rel="noopener">Download PDF</a></p>
+          <p><b>CV.</b> <a class="btn" href="YOUR_CV_LINK.pdf" target="_blank" rel="noopener">Download PDF</a></p>
         </div>
         <div>
           <h3>Focus Areas</h3>
           <ul>
-            <li>Definition & formalism of information; retrieving known results</li>
+            <li>Definition &amp; formalism of information; retrieving known results</li>
             <li>Quantum foundations (five key problems; thought experiments)</li>
             <li>Models for real-time, high-dimensional data in algorithmic finance</li>
           </ul>
@@ -242,15 +323,127 @@
         </div>
       </div>
     </div>
-
-    <footer class="container" style="padding:32px 0;color:var(--muted);font-size:.95rem">
-      <span>© <span id="y"></span> Jorys A. Mahamba — Built with pure HTML/CSS. Hosted on GitHub Pages.</span>
+    <footer class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+        <span>© <span id="y"></span> Jorys A. Mahamba</span>
+        <span style="color:var(--muted)">Built with pure HTML/CSS. Hosted on GitHub Pages.</span>
+      </div>
     </footer>
   </div>
 </section>
 
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Person",
+  "name":"Jorys A. Mahamba",
+  "affiliation":{"@type":"CollegeOrUniversity","name":"University of Oxford"},
+  "jobTitle":"MSc Student (Mathematical & Theoretical Physics)",
+  "knowsAbout":[
+    "Mathematical foundations of information",
+    "Quantum information",
+    "Information geometry",
+    "Category theory",
+    "Machine learning"
+  ],
+  "url":"https://YOUR_GITHUB_PAGES_DOMAIN/",
+  "sameAs":[
+    "https://github.com/jorysmahamba",
+    "https://www.linkedin.com/in/jorys-mahamba"
+  ]
+}
+</script>
+
+<!-- Tiny JS: year + dark mode + gallery lightbox & filters -->
 <script>
+// Year
 document.getElementById('y').textContent = new Date().getFullYear();
+
+// Theme persistence
+const toggle = document.getElementById('themeToggle');
+const saved = localStorage.getItem('prefers-dark');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+if(saved === 'true' || (saved === null && prefersDark)) toggle.checked = true;
+const applyTheme = () => {
+  const dark = toggle.checked;
+  document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+  localStorage.setItem('prefers-dark', dark ? 'true' : 'false');
+};
+applyTheme();
+toggle.addEventListener('change', applyTheme);
+
+// Lightbox
+const gallery = document.getElementById('galleryGrid');
+const lightbox = document.createElement('div');
+lightbox.className = 'lightbox';
+lightbox.innerHTML = `
+  <button class="lb-close" aria-label="Close">×</button>
+  <button class="lb-btn lb-prev" aria-label="Previous">‹</button>
+  <img class="lb-img" alt="" />
+  <button class="lb-btn lb-next" aria-label="Next">›</button>
+  <div class="lb-meta"><div class="lb-caption"></div></div>
+`;
+document.body.appendChild(lightbox);
+const lbImg = lightbox.querySelector('.lb-img');
+const lbCap = lightbox.querySelector('.lb-caption');
+let items = [];
+let idx = 0;
+
+function openLB(i){
+  idx = i;
+  const fig = items[idx];
+  const img = fig.querySelector('img');
+  lbImg.src = img.getAttribute('src');
+  lbImg.alt = img.alt || '';
+  const cap = fig.querySelector('.caption');
+  lbCap.textContent = cap ? cap.textContent : '';
+  lightbox.classList.add('open');
+}
+function closeLB(){ lightbox.classList.remove('open'); }
+function nextLB(){ openLB((idx+1)%items.length); }
+function prevLB(){ openLB((idx-1+items.length)%items.length); }
+
+function refreshItems(){
+  items = Array.from(gallery.querySelectorAll('figure.card'))
+    .filter(el => el.style.display !== 'none');
+}
+refreshItems();
+
+gallery.addEventListener('click', e=>{
+  const fig = e.target.closest('figure.card');
+  if(!fig) return;
+  refreshItems();
+  const all = Array.from(gallery.querySelectorAll('figure.card'))
+    .filter(el => el.style.display !== 'none');
+  const i = all.indexOf(fig);
+  if(i>=0) openLB(i);
+});
+lightbox.querySelector('.lb-close').onclick = closeLB;
+lightbox.querySelector('.lb-next').onclick = nextLB;
+lightbox.querySelector('.lb-prev').onclick = prevLB;
+lightbox.addEventListener('click', e=>{ if(e.target === lightbox) closeLB(); });
+window.addEventListener('keydown', e=>{
+  if(!lightbox.classList.contains('open')) return;
+  if(e.key === 'Escape') closeLB();
+  if(e.key === 'ArrowRight') nextLB();
+  if(e.key === 'ArrowLeft') prevLB();
+});
+
+// Filters
+const filterBtns = document.querySelectorAll('.filter-btn');
+filterBtns.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    filterBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    const figs = gallery.querySelectorAll('figure.card');
+    figs.forEach(fig=>{
+      fig.style.display = (f==='all' || fig.dataset.group===f) ? '' : 'none';
+    });
+    refreshItems();
+  });
+});
 </script>
 </body>
 </html>
