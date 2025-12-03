@@ -245,6 +245,16 @@
             color: #555;
         }
 
+        .disclaimer-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
         /* Latex style for math */
         .math {
             font-family: "Times New Roman", Times, serif;
@@ -428,17 +438,14 @@
                 <span class="blog-date">July 2025</span>
                 <div class="tags"><span>Topology</span> <span>Geometry</span> <span>Euler Characteristic</span></div>
                 
-                <p>
-                    The Euler-Poincaré characteristic is a fundamental topological invariant defined as <span class="math">χ = V - E + F</span> for a triangulated surface. A remarkable property of this invariant is its independence from the choice of triangulation, depending only on the topological type of the surface. For a closed orientable surface of genus <span class="math">g</span>, it is given by <span class="math">χ(S) = 2 - 2g</span>.
-                </p>
-                
-                <div class="blog-excerpt">
-                    <strong>Abstract:</strong> I present an intuitive decomposition method for computing the Euler-Poincaré characteristic of orientable surfaces of arbitrary genus. By decomposing higher genus surfaces into fundamental building blocks, which we term zero-pieces, one-pieces, and two-pieces, we derive the classical formula through explicit triangulation. This approach provides geometric intuition for the topological invariance of the Euler characteristic and may offer a pedagogical framework for understanding surface topology.
+                <div class="disclaimer-box">
+                    <strong>Author's Note:</strong> This post is a collection of notes I wrote while trying to understand the Euler characteristic on my own, prior to having sufficient knowledge to make everything precise in topology. It focuses on geometric intuition rather than rigor. Please read it as a conceptual vision rather than a formal mathematical treatise.
                 </div>
                 
-                <p>
-                    I conclude with a geometric interpretation of <span class="math">χ</span> as measuring the balance between degrees of freedom and topological constraints. This perspective suggests a classification of surfaces into "free" (<span class="math">χ > 0</span>), "balanced" (<span class="math">χ = 0</span>), and "obstructed" (<span class="math">χ < 0</span>) categories.
-                </p>
+                <div class="blog-excerpt">
+                    <strong>Abstract:</strong> I present a constructive decomposition method for computing the Euler-Poincaré characteristic of orientable surfaces of arbitrary genus. By decomposing higher genus surfaces into fundamental building blocks—which I term zero-pieces, one-pieces, and two-pieces—I derive the classical formula $\chi = 2 - 2g$ through explicit triangulation. This approach provides geometric intuition for the topological invariance of the Euler characteristic. I conclude with a geometric interpretation of $\chi$ as measuring the balance between degrees of freedom and topological constraints, inspired by the inflation dynamics of surfaces.
+                </div>
+                
                 <a href="euler-poincare.html" class="btn" target="_blank"><i class="fas fa-file-pdf"></i> Read Full Paper</a>
             </article>
 
@@ -447,18 +454,19 @@
                 <h3>The Nobel Prize in Physics 2024: A Celebration of Machine Learning's Foundations in Physics</h3>
                 <span class="blog-date">October 2024</span>
                 <div class="tags"><span>Machine Learning</span> <span>Statistical Physics</span> <span>Nobel Prize</span></div>
+
+                <div class="disclaimer-box">
+                    This article was written and reviewed for publication by the French Mathematical Society in the "Gazette" but was never published.
+                </div>
                 
                 <p>
                     The 2024 Nobel Prize in Physics was awarded to Professors John J. Hopfield and Geoffrey E. Hinton for foundational discoveries enabling machine learning with artificial neural networks. This award highlights the profound role of physics—specifically statistical mechanics—in the development of modern AI.
                 </p>
                 
                 <div class="blog-excerpt">
-                    <strong>Overview:</strong> In this article, I review the basics of Hopfield Networks—what they are, how they work, and why they are building blocks of modern machine learning architectures. I explore the deep analogy with the Ising model from statistical physics, which unveils the relationship between neural networks and physical systems (such as spin glasses).
+                    <strong>Overview:</strong> In this article, I review the basics of Hopfield Networks—what they are, how they work, and why they are building blocks of modern machine learning architectures. I explore the deep analogy with the Ising model from statistical physics, which unveils the relationship between neural networks and physical systems.
                 </div>
                 
-                <p>
-                    Hopfield's work framed neural networks as systems minimizing an energy function, a concept directly borrowed from thermodynamics. By integrating concepts from mathematics, physics, and neuroscience, these energy-based models laid the groundwork for the deep learning revolution we are currently experiencing.
-                </p>
                 <a href="The_Nobel_Prize_in_Physics_2024__A_Celebration_of_Machine_Learning_s_Foundations_in_Physics__Gazette_SMF_.pdf" class="btn" target="_blank"><i class="fas fa-file-pdf"></i> Read Full Article</a>
             </article>
         </section>
