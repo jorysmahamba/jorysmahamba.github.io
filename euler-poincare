@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Euler-Poincaré Characteristic | Jorys Mahamba</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- MathJax for rendering LaTeX math -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+
+    <style>
+        /* Reusing your existing CSS variables and base styles */
+        :root {
+            --primary-color: #002147;
+            --secondary-color: #333;
+            --accent-color: #1a5c96;
+            --bg-color: #f9f9f9;
+            --text-color: #444;
+            --sidebar-width: 280px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar (Same styling as index.html) */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--primary-color);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            z-index: 1000;
+        }
+
+        .profile-section { text-align: center; margin-bottom: 2rem; }
+        .profile-img {
+            width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.2); margin-bottom: 1rem; background-color: #ddd;
+        }
+        .profile-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .profile-title { font-size: 0.9rem; opacity: 0.8; font-weight: 300; }
+        
+        .nav-links { list-style: none; margin-top: 1rem; }
+        .nav-links li { margin-bottom: 0.5rem; }
+        /* Adjusted nav links to point back to index.html */
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover { color: white; background-color: rgba(255,255,255,0.1); }
+        
+        .social-links { margin-top: auto; display: flex; justify-content: center; gap: 15px; }
+        .social-links a { color: white; font-size: 1.2rem; opacity: 0.7; transition: opacity 0.3s; }
+        .social-links a:hover { opacity: 1; }
+
+        /* Article Content Styling */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 4rem 10%; /* More padding for reading */
+            background-color: white;
+            min-height: 100vh;
+            max-width: 1200px;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 2rem;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .article-meta {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .disclaimer-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .abstract {
+            font-style: italic;
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p { margin-bottom: 1.2rem; text-align: justify; }
+
+        /* Mathematical Environments */
+        .theorem, .proposition, .lemma, .definition, .remark, .proof {
+            margin-bottom: 1.5rem;
+        }
+
+        .env-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            display: inline;
+        }
+
+        .proof .env-title {
+            font-style: italic;
+            color: var(--text-color);
+        }
+
+        .qed {
+            float: right;
+            color: var(--text-color);
+        }
+
+        /* Figures */
+        .figure-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .figure-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .figure-item {
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .figure-item img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .figure-caption {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .math-operator {
+            font-size: 2rem;
+            margin: 0 1rem;
+        }
+
+        ul { margin-bottom: 1.2rem; padding-left: 2rem; }
+        li { margin-bottom: 0.5rem; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .sidebar { display: none; } /* Hide sidebar on mobile for readability, or use toggle logic */
+            .main-content { margin-left: 0; padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Simplified Sidebar for Navigation Back -->
+    <nav class="sidebar">
+        <div class="profile-section">
+            <img src="profile.jpg" alt="Jorys Mahamba" class="profile-img" onerror="this.src='https://via.placeholder.com/150?text=JM'">
+            <div class="profile-name">Jorys A. Mahamba</div>
+            <div class="profile-title">MSc Student<br>University of Oxford</div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html#home"><i class="fas fa-arrow-left"></i> Back to Main Site</a></li>
+            <li><a href="index.html#blog" class="active">Blog</a></li>
+        </ul>
+
+        <div class="social-links">
+            <a href="mailto:jorys.mahamba@stx.ox.ac.uk"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/jorys-mahamba"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        
+        <header class="article-header">
+            <h1 class="article-title">The Euler-Poincaré Characteristic of Surfaces: A Constructive Approach and Geometric Interpretation</h1>
+            <div class="article-meta">Jorys A. Mahamba &bull; October 11, 2025</div>
+            
+            <div class="disclaimer-box">
+                <strong>Author's Note:</strong> This post is a collection of notes I wrote while trying to understand the Euler characteristic on my own, prior to having sufficient knowledge to make everything precise in topology. It focuses on geometric intuition rather than rigor. Please read it as a conceptual vision rather than a formal mathematical treatise.
+            </div>
+
+            <div class="abstract">
+                <strong>Abstract:</strong> I present a constructive decomposition method for computing the Euler-Poincaré characteristic of orientable surfaces of arbitrary genus. By decomposing higher genus surfaces into fundamental building blocks—which I term zero-pieces, one-pieces, and two-pieces—I derive the classical formula $\chi = 2 - 2g$ through explicit triangulation. This approach provides geometric intuition for the topological invariance of the Euler characteristic. I conclude with a geometric interpretation of $\chi$ as measuring the balance between degrees of freedom and topological constraints, inspired by the inflation dynamics of surfaces.
+            </div>
+        </header>
+
+        <section>
+            <h2>1. Introduction</h2>
+            <p>
+                The Euler-Poincaré characteristic is a fundamental topological invariant that captures essential information about the structure of surfaces. For a triangulated surface, it is defined as:
+                $$ \chi = V - E + F $$
+                where $V$, $E$, and $F$ denote the number of vertices, edges, and faces, respectively. A remarkable property of this invariant is its independence from the choice of triangulation, depending only on the topological type of the surface.
+            </p>
+
+            <div class="theorem">
+                <span class="env-title">Theorem (Euler-Poincaré Formula).</span> 
+                For a closed orientable surface $S$ of genus $g$, the Euler-Poincaré characteristic is given by:
+                $$ \chi(S) = 2 - 2g $$
+            </div>
+
+            <p>
+                While this formula is well-established, I present here a constructive approach that elucidates the geometric origin of the linear relationship between genus and the Euler-Poincaré characteristic. My method systematically decomposes surfaces of arbitrary genus into fundamental building blocks, providing explicit triangulations that reveal why each additional hole decreases $\chi$ by exactly 2.
+            </p>
+        </section>
+
+        <section>
+            <h2>2. The Sphere</h2>
+            <p>I begin with the sphere $S^2$, which serves as the foundation for understanding higher genus surfaces.</p>
+
+            <div class="proposition">
+                <span class="env-title">Proposition 2.1.</span> The sphere has Euler-Poincaré characteristic $\chi(S^2) = 2$.
+            </div>
+
+            <div class="proof">
+                <span class="env-title">Argument.</span> The sphere is homeomorphic to the boundary of a tetrahedron, which provides a natural triangulation.
+                
+                <div class="figure-container">
+                    <div class="figure-row">
+                        <div class="figure-item">
+                            <img src="images euler/sphere.png" alt="Sphere">
+                            <div class="figure-caption">(A) Sphere $S^2$</div>
+                        </div>
+                        <div class="math-operator">$\cong$</div>
+                        <div class="figure-item">
+                            <img src="images euler/tetrahedron.png" alt="Tetrahedron">
+                            <div class="figure-caption">(B) Tetrahedron</div>
+                        </div>
+                    </div>
+                </div>
+
+                <p>
+                    The tetrahedral triangulation yields $V = 4$ vertices, $E = 6$ edges, and $F = 4$ faces. Therefore,
+                    $$ \chi(S^2) = 4 - 6 + 4 = 2. \quad \blacksquare $$
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. The Torus</h2>
+            <p>The torus $T^2$ admits a particularly elegant description through its fundamental polygon representation.</p>
+
+            <div class="proposition">
+                <span class="env-title">Proposition 3.1.</span> The torus has Euler-Poincaré characteristic $\chi(T^2) = 0$.
+            </div>
+
+            <div class="proof">
+                <span class="env-title">Argument.</span> The torus can be represented as a square with opposite edges identified.
+                
+                <div class="figure-container">
+                    <div class="figure-row">
+                        <div class="figure-item">
+                            <img src="images euler/torus.png" alt="Torus">
+                            <div class="figure-caption">(A) Torus $T^2$</div>
+                        </div>
+                        <div class="math-operator">$\cong$</div>
+                        <div class="figure-item">
+                            <img src="images euler/square torus.png" alt="Fundamental Polygon">
+                            <div class="figure-caption">(B) Fundamental polygon</div>
+                        </div>
+                    </div>
+                </div>
+
+                <p>The identification process proceeds in two stages. First, identifying the red edges yields a cylinder:</p>
+                
+                <div class="figure-container">
+                    <div class="figure-item">
+                        <img src="images euler/cylinder torus.png" alt="Cylinder">
+                        <div class="figure-caption">Construction of the torus from its fundamental polygon</div>
+                    </div>
+                </div>
+
+                <p>We then identify the two green ends to form a torus. To compute $\chi(T^2)$, I triangulate the fundamental polygon:</p>
+
+                <div class="figure-container">
+                    <div class="figure-item">
+                        <img src="images euler/torus triangulation.png" alt="Triangulation">
+                        <div class="figure-caption">Triangulation of the torus</div>
+                    </div>
+                </div>
+
+                <p>The triangulation consists of:</p>
+                <ul>
+                    <li>Faces: $\{ABC, ADC\}$, giving $F = 2$</li>
+                    <li>Edges: After identification, $AB \equiv DC$ and $AD \equiv BC$, yielding edges $\{AB, AD, AC\}$, so $E = 3$</li>
+                    <li>Vertices: The identifications force $A \equiv B \equiv C \equiv D$, resulting in $V = 1$</li>
+                </ul>
+                <p>Therefore, $\chi(T^2) = 1 - 3 + 2 = 0$. <span class="qed">$\blacksquare$</span></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Surfaces of Genus 2</h2>
+            <p>For surfaces of genus $g \geq 2$, I introduce a decomposition approach that reveals the structural reason behind the formula.</p>
+
+            <div class="definition">
+                <span class="env-title">Definition (Surface Decomposition).</span> A surface of genus $g \geq 2$ can be decomposed into:
+                <ul>
+                    <li><strong>Zero-pieces:</strong> Junctions with no holes.</li>
+                    <li><strong>One-pieces:</strong> Cylinders with one hole.</li>
+                    <li><strong>Two-pieces:</strong> Cylinders with two holes.</li>
+                </ul>
+            </div>
+
+            <div class="figure-container">
+                <div class="figure-row">
+                    <div class="figure-item">
+                        <img src="images euler/genus 2.png" alt="Genus 2">
+                    </div>
+                    <div class="math-operator">$\cong$</div>
+                    <div class="figure-item">
+                        <img src="images euler/h genus 2.png" alt="H-shape">
+                    </div>
+                </div>
+                <div class="figure-caption">Topological equivalences for genus 2 surface</div>
+            </div>
+
+            <p>The H-shaped representation decomposes into fundamental pieces:</p>
+
+            <div class="figure-container">
+                <div class="figure-row">
+                    <div class="figure-item"><img src="images euler/cylinder hole.png" alt="One-piece"><div class="figure-caption">One-piece</div></div>
+                    <div class="math-operator">+</div>
+                    <div class="figure-item"><img src="images euler/junction.png" alt="Zero-piece"><div class="figure-caption">Zero-piece</div></div>
+                    <div class="math-operator">+</div>
+                    <div class="figure-item"><img src="images euler/cylinder hole 2.png" alt="One-piece"><div class="figure-caption">One-piece</div></div>
+                </div>
+            </div>
+
+            <div class="lemma">
+                <span class="env-title">Lemma.</span> The partial Euler-Poincaré characteristics of the building blocks are:
+                <ul>
+                    <li>Zero-piece: $\chi_0 = 0$</li>
+                    <li>One-piece: $\chi_1 = -1$</li>
+                </ul>
+            </div>
+
+            <div class="proof">
+                <span class="env-title">Justification.</span>
+                <p><strong>(1) One-piece ($\chi_1 = -1$):</strong></p>
+                <div class="figure-container">
+                    <div class="figure-item"><img src="images euler/one-piece triangulation.png" alt="One-piece Triangulation"></div>
+                </div>
+                <p>Through careful counting of identifications (top/bottom, left/right, and the hole boundary), we find 12 faces, 17 edges, and 4 vertices. Thus $\chi_1 = 12 - 17 + 4 = -1$.</p>
+
+                <p><strong>(2) Zero-piece ($\chi_0 = 0$):</strong></p>
+                <div class="figure-container">
+                    <div class="figure-item"><img src="images euler/zero-piece triangulation.png" alt="Zero-piece Triangulation"></div>
+                </div>
+                <p>The zero-piece contributes 2 faces. Its boundary edges identify with holes of adjacent pieces, adding 2 new edges but no new vertices (as they are shared). Thus $\chi_0 = 2 - 2 + 0 = 0$. <span class="qed">$\blacksquare$</span></p>
+            </div>
+
+            <p>For the genus 2 surface: $\chi(\Sigma_2) = 2\chi_1 + \chi_0 = 2(-1) + 0 = -2$.</p>
+        </section>
+
+        <section>
+            <h2>5. Surfaces of Genus 3</h2>
+            <p>The pattern becomes clearer with genus 3 surfaces. They decompose into 2 one-pieces (end caps), 2 zero-pieces (junctions), and 1 <strong>two-piece</strong> (middle section).</p>
+
+            <div class="figure-container">
+                <div class="figure-row">
+                    <div class="figure-item"><img src="images euler/genus 3.png" alt="Genus 3"></div>
+                    <div class="math-operator">$\cong$</div>
+                    <div class="figure-item"><img src="images euler/h genus 3.png" alt="H Genus 3"></div>
+                </div>
+            </div>
+
+            <div class="lemma">
+                <span class="env-title">Lemma (Two-piece Characteristic).</span> For surfaces of genus $g \geq 3$, the two-piece component (cylinder with two holes) has $\chi_2 = -2$.
+            </div>
+
+            <div class="proof">
+                <span class="env-title">Justification.</span>
+                <div class="figure-container">
+                    <div class="figure-item"><img src="images euler/two-piece triangulation.png" alt="Two-piece"></div>
+                </div>
+                <p>The triangulation yields 22 faces, 31 edges, and 7 vertices. Therefore, $\chi_2 = 22 - 31 + 7 = -2$.</p>
+            </div>
+
+            <p>This result reveals a fundamental pattern: each additional hole in a building block contributes $-1$ to its partial characteristic.</p>
+        </section>
+
+        <section>
+            <h2>6. Generalization</h2>
+            <div class="theorem">
+                <span class="env-title">Theorem.</span> For a closed orientable surface $\Sigma_g$ of genus $g \geq 2$, the decomposition yields:
+                <ul>
+                    <li>2 one-pieces</li>
+                    <li>$(g-1)$ zero-pieces</li>
+                    <li>$(g-2)$ two-pieces</li>
+                </ul>
+                The Euler-Poincaré characteristic is $\chi(\Sigma_g) = 2 - 2g$.
+            </div>
+
+            <div class="proof">
+                <span class="env-title">Calculation.</span>
+                $$ \chi(\Sigma_g) = 2\chi_1 + (g-1)\chi_0 + (g-2)\chi_2 $$
+                $$ = 2(-1) + (g-1)(0) + (g-2)(-2) $$
+                $$ = -2 - 2g + 4 = 2 - 2g. \quad \blacksquare $$
+            </div>
+        </section>
+
+        <section>
+            <h2>7. Geometric Interpretation: The Inflation Perspective</h2>
+            <p>
+                I conclude with a geometric interpretation that provides intuition for these values. Following the spirit of geometric flows, consider an "inflation" of the surface. Imagine inflating the surface like a balloon, allowing it to expand in all available directions.
+            </p>
+
+            <div class="remark">
+                <span class="env-title">Inflation Dynamics.</span> For a surface $S$ embedded in $\mathbb{R}^3$, the behavior of the outward flow is connected to the sign of $\chi(S)$:
+                <ul>
+                    <li><strong>Sphere ($\chi = 2 > 0$):</strong> Every point has positive mean curvature. The surface expands indefinitely in two dimensions.</li>
+                    <li><strong>Torus ($\chi = 0$):</strong> The outer region has positive curvature (+2), while the inner region has negative curvature (-2). These cancel out. The negative curvature creates a "singularity" where flow converges, preventing indefinite expansion.</li>
+                    <li><strong>Higher genus ($\chi < 0$):</strong> Each additional hole introduces another region of negative curvature. Multiple singularities dominate, with more regions contracting than expanding.</li>
+                </ul>
+            </div>
+
+            <p>
+                This suggests interpreting $\chi$ as measuring the balance between <strong>degrees of freedom</strong> and <strong>topological constraints</strong>.
+            </p>
+            <ul>
+                <li><strong>Degrees of freedom ($\phi$):</strong> Every surface possesses 2 degrees of freedom for expansion.</li>
+                <li><strong>Topological constraints ($\xi$):</strong> Each hole introduces 2 constraints.</li>
+            </ul>
+            <p>Thus, $\chi = \phi - \xi$. This yields a natural classification:</p>
+            
+            <div class="figure-container">
+                <table border="1" cellpadding="10" style="border-collapse: collapse; margin: 0 auto;">
+                    <tr><th>Surface Type</th><th>Classification</th><th>$\chi$</th></tr>
+                    <tr><td>Sphere</td><td>Free (freedom > constraints)</td><td>$> 0$</td></tr>
+                    <tr><td>Torus</td><td>Balanced (freedom = constraints)</td><td>$= 0$</td></tr>
+                    <tr><td>Higher genus</td><td>Constrained (freedom < constraints)</td><td>$< 0$</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2>Acknowledgments</h2>
+            <p>
+                I would like to thank Ilaria Mondello for our initial discussion on the torus and her insight to consider its fundamental polygon, which constituted the spark that made these ideas light. I also want to thank my father who suggested that I think more deeply about the sign of the Euler-Poincaré characteristic.
+            </p>
+        </section>
+
+    </div>
+</body>
+</html>
