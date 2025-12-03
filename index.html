@@ -242,6 +242,7 @@
             border-left: 3px solid var(--accent-color);
             background: #fcfcfc;
             padding: 1rem;
+            color: #555;
         }
 
         /* Latex style for math */
@@ -309,8 +310,8 @@
         <div class="profile-section">
             <!-- Replace 'assets/profile.jpg' with your actual image file -->
             <img src="assets/profile.jpg" alt="Jorys Mahamba" class="profile-img" onerror="this.src='https://via.placeholder.com/150?text=JM'">
-            <div class="profile-name">Jorys Mahamba</div>
-            <div class="profile-title">MSc Student<br>University of Oxford</div>
+            <div class="profile-name">Jorys A. Mahamba</div>
+            <div class="profile-title">MSc in Mathematical and Theoretical Physics<br>University of Oxford</div>
         </div>
 
         <ul class="nav-links">
@@ -323,9 +324,8 @@
 
         <div class="social-links">
             <a href="mailto:jorys.mahamba@stx.ox.ac.uk"><i class="fas fa-envelope"></i></a>
-            <!-- Add your LinkedIn or Google Scholar if available -->
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="www.linkedin.com/in/jorys-mahamba"><i class="fab fa-linkedin"></i></a>
+            <!--a href="#"><i class="fab fa-github"></i></a-->
         </div>
     </nav>
 
@@ -339,13 +339,13 @@
                 Hello, I am <strong>Jorys Mahamba</strong>, a student in the MSc in Mathematical and Theoretical Physics at the <strong>University of Oxford</strong> (St. Cross College).
             </p>
             <p>
-                My academic journey is driven by a profound curiosity about the intersection of mathematics and physics. I am particularly interested in <strong>Algebraic Geometry</strong>, <strong>Moduli Spaces</strong>, and <strong>Mirror Symmetry</strong>. I aim to explore how mathematical structures illuminate the fundamental principles of the universe and how physical intuition can drive mathematical creation.
+                My academic journey is driven by a profound curiosity about the intersection of mathematics and physics. I am a mathematician at heart, somewhat aware the biggest challenges in theoretical physics, and particularly interested in <strong>Algebraic Geometry</strong>, <strong>Moduli Spaces</strong>, and <strong>Mirror Symmetry</strong>. I aim to explore how mathematical structures illuminate the fundamental principles of the universe and how physical intuition can drive mathematical discovery
             </p>
             <p>
-                Before Oxford, I graduated top of my class in a Dual BSc in Mathematics and Physics at Université Paris-Est Créteil (UPEC) and completed intensive studies in <em>Classes Préparatoires aux Grandes Écoles</em> (CPGE) in France.
+                Before Oxford, I graduated top of my class in a Dual BSc in Mathematics and Physics at Université Paris-Est Créteil (UPEC) and completed intensive studies in <em>Classes Préparatoires aux Grandes Écoles PC*</em> (CPGE) at Lycée Marcelin Berthelot (LMB) in France.
             </p>
             <p>
-                On this website, you will find my research projects, writing samples, teaching experience, and occasional blog posts on topics in mathematics and physics.
+                On this website, you will find my research projects, some writing samples, teaching experience, and occasional blog posts on topics in mathematics (and potentially some physics).
             </p>
         </section>
 
@@ -358,9 +358,9 @@
                 <div class="meta">MSc Preparation / Independent Study (2025)</div>
                 <div class="tags"><span>Algebraic Geometry</span> <span>Mirror Symmetry</span> <span>Gromov-Witten Invariants</span></div>
                 <p>
-                    A rigorous exposition of the mathematical proof of mirror symmetry for hypersurfaces of genus zero, following the Clay Mathematics Institute monograph. This work serves as a personal knowledge base for my upcoming MSc dissertation at Oxford. It covers topics from Riemann surfaces to stable maps and quantum cohomology.
+                    This document serves as a Personal Knowledge Base in order to write my dissertation on the mathematical proof of mirror symmetry in the case of hypersurfaces of genus zero, following the Clay Mathematics Institue monograph on <i>Mirror Symmetry</i>. Its purpose is to be a rigorous exposition of the material covered in \cite{CMI} self-contained with respect to my mathematical knowledge before starting this project. As I learn better by writing things down, this work will help me to understand deeply and in a mathematically rigorous way the material I will have to cover for my dissertation. It will also help me when writing by serving as a centralized resource to which I can come back whenever needed.
                 </p>
-                <a href="assets/Mirror_Symmetry_PKB.pdf" class="btn" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                <a href="Mirror_Symmetry_PKB.pdf" class="btn" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
             </div>
 
             <div class="research-item">
@@ -368,17 +368,17 @@
                 <div class="meta">Research Internship, LAMA UPEC (2025)</div>
                 <div class="tags"><span>Differential Geometry</span> <span>Topology</span></div>
                 <p>
-                    A comprehensive survey bridging the gap between local geometry and global topology. This report progresses from the one-dimensional analogue for plane curves to the full formulation for smooth surfaces, including a detailed homological proof of the topological invariance of the Euler characteristic.
+                    The Gauss-Bonnet theorem stands as a cornerstone of differential geometry, revealing a profound link between local curvature and global topology. This report surveys the theorem's progression from the classical result for plane curves—where the total curvature of a simple closed curve equals <span class="math">2π</span>—to its full formulation for smooth surfaces. By establishing the topological invariance of the Euler characteristic through homological methods and proving Gauss's <em>Theorema Egregium</em>, we demonstrate that the integral of Gaussian curvature over a compact, orientable surface is determined solely by its topology: <span class="math">∫<sub>X</sub> K dA = 2πχ(X)</span>. This work synthesizes these developments to provide a detailed, pedagogical proof of both the local and global versions of the theorem.
                 </p>
-                <a href="assets/Gauss_Bonnet_Theorem.pdf" class="btn" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                <a href="Gauss_Bonnet_Theorem.pdf" class="btn" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
             </div>
 
             <div class="research-item">
                 <h3>Mathematical Exploration of Phase Transitions in the Ising Model</h3>
                 <div class="meta">Research Internship, LAMA UPEC (2024)</div>
-                <div class="tags"><span>Statistical Physics</span> <span>Probability Theory</span> <span>Ising Model</span></div>
+                <div class="tags"><span>Probability Theory</span> <span>Statistical Physics</span></div>
                 <p>
-                    An investigation into the Ising model in 1D and 2D, demonstrating the existence of a phase transition in the two-dimensional case using Peierls' argument. This work aims to bridge abstract mathematical formulations with tangible physical phenomena.
+                    This work provides a rigorous mathematical introduction to the Ising model, a fundamental tool in statistical physics for understanding ferromagnetism. Moving beyond standard textbook treatments, this report focuses on the sharp contrast between one and two dimensions. We prove the absence of a phase transition in the 1D model and demonstrate its existence in the 2D case using Peierls' argument. The goal of this exposition is to bridge the gap between abstract probability theory and tangible physical phenomena, offering a self-contained resource for students seeking a deeper, mathematically precise understanding of statistical mechanics and phase transitions.
                 </p>
                 <a href="assets/Ising_Model_Report.pdf" class="btn" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
             </div>
@@ -412,7 +412,7 @@
                 <h3>Karate Instructor</h3>
                 <div class="meta">Shotokan Karate</div>
                 <p>
-                    As a 1st Dan Black Belt, I have assisted in coaching children at local clubs, preparing them for kyu examinations and competitions.
+                    In fact, my love for teaching goes beyond academia. As a 1st Dan Black Belt, I have assisted in coaching children at my local club, prepared and judged kyu examinations and coached in National competitions.
                 </p>
             </div>
         </section>
@@ -420,39 +420,46 @@
         <!-- BLOG SECTION -->
         <section id="blog" class="section">
             <h1>Blog</h1>
-            <p>Expository notes, thoughts on physics, and summaries of my readings.</p>
+            <p>Expository notes, thoughts on physics, and summaries of my research interests.</p>
 
-            <!-- Blog Post 1 -->
+            <!-- Blog Post 1: Euler Characteristic -->
             <article class="blog-post">
-                <h3>Bridging Topology and Geometry: The Gauss-Bonnet Theorem</h3>
-                <span class="blog-date">September 7, 2025</span>
-                <div class="tags"><span>Geometry</span> <span>Topology</span></div>
+                <h3>The Euler-Poincaré Characteristic of Surfaces: A Constructive Approach and Geometric Interpretation</h3>
+                <span class="blog-date">July 2025</span>
+                <div class="tags"><span>Topology</span> <span>Geometry</span> <span>Euler Characteristic</span></div>
                 
                 <p>
-                    The Gauss-Bonnet theorem stands as a cornerstone of differential geometry, revealing an unexpected and profound relationship between the local curvature of a surface and its global topological properties. At its heart lies a simple yet striking formula: for any smooth, compact, orientable surface <span class="math">X</span>, the integral of the Gaussian curvature <span class="math">K</span> over the entire surface equals <span class="math">2π</span> times the Euler characteristic <span class="math">χ(X)</span>.
+                    The Euler-Poincaré characteristic is a fundamental topological invariant defined as <span class="math">χ = V - E + F</span> for a triangulated surface. A remarkable property of this invariant is its independence from the choice of triangulation, depending only on the topological type of the surface. For a closed orientable surface of genus <span class="math">g</span>, it is given by <span class="math">χ(S) = 2 - 2g</span>.
                 </p>
                 
                 <div class="blog-excerpt">
-                    <strong>Abstract:</strong> This post explores the theorem progressing from its one-dimensional analogue for plane curves to its full formulation for smooth surfaces. We establish two critical foundations: the topological invariance of the Euler characteristic through homological methods and Gauss's Theorema Egregium.
+                    <strong>Abstract:</strong> I present an intuitive decomposition method for computing the Euler-Poincaré characteristic of orientable surfaces of arbitrary genus. By decomposing higher genus surfaces into fundamental building blocks, which we term zero-pieces, one-pieces, and two-pieces, we derive the classical formula through explicit triangulation. This approach provides geometric intuition for the topological invariance of the Euler characteristic and may offer a pedagogical framework for understanding surface topology.
                 </div>
                 
                 <p>
-                    This equality bridges two seemingly disparate mathematical realms: the infinitesimal geometry encoded in curvature and the global topology captured by the Euler characteristic. My recent writing sample provides a detailed proof of this theorem, filling gaps often left implicit in standard treatments.
+                    I conclude with a geometric interpretation of <span class="math">χ</span> as measuring the balance between degrees of freedom and topological constraints. This perspective suggests a classification of surfaces into "free" (<span class="math">χ > 0</span>), "balanced" (<span class="math">χ = 0</span>), and "obstructed" (<span class="math">χ < 0</span>) categories.
                 </p>
-                <a href="assets/Gauss_Bonnet_Theorem.pdf" class="btn" target="_blank">Read Full Paper (PDF)</a>
+                <a href="assets/Euler_Poincare.pdf" class="btn" target="_blank"><i class="fas fa-file-pdf"></i> Read Full Paper</a>
             </article>
 
-            <!-- Blog Post 2 -->
+            <!-- Blog Post 2: Nobel Prize / Hopfield -->
             <article class="blog-post">
-                <h3>Hopfield Networks: An Exposition</h3>
+                <h3>The Nobel Prize in Physics 2024: A Celebration of Machine Learning's Foundations in Physics</h3>
                 <span class="blog-date">October 2024</span>
-                <div class="tags"><span>Machine Learning</span> <span>Statistical Physics</span></div>
+                <div class="tags"><span>Machine Learning</span> <span>Statistical Physics</span> <span>Nobel Prize</span></div>
+                
                 <p>
-                    Following the Nobel Prize attributed to Professor Hopfield, I wrote an expository article connecting my studies in Machine Learning to my previous work on the Ising model. Hopfield networks serve as a fascinating bridge between the physics of spin glasses (Ising model) and associative memory in neural networks.
+                    The 2024 Nobel Prize in Physics was awarded to Professors John J. Hopfield and Geoffrey E. Hinton for foundational discoveries enabling machine learning with artificial neural networks. This award highlights the profound role of physics—specifically statistical mechanics—in the development of modern AI.
                 </p>
+                
+                <div class="blog-excerpt">
+                    <strong>Overview:</strong> In this article, I review the basics of Hopfield Networks—what they are, how they work, and why they are building blocks of modern machine learning architectures. I explore the deep analogy with the Ising model from statistical physics, which unveils the relationship between neural networks and physical systems (such as spin glasses).
+                </div>
+                
                 <p>
-                    <em>(Full article coming soon)</em>
+                    Hopfield's work framed neural networks as systems minimizing an energy function, a concept directly borrowed from thermodynamics. By integrating concepts from mathematics, physics, and neuroscience, these energy-based models laid the groundwork for the deep learning revolution we are currently experiencing.
                 </p>
+                <a href="assets/Nobel_Physics_2024.pdf" class="btn" target="_blank"><i class="fas fa-file-pdf"></i> Read Full Article</a>
             </article>
         </section>
 
@@ -474,16 +481,16 @@
 
             <div class="research-item">
                 <h3>Badminton</h3>
-                <p>Competed up to international level in youth categories (Finalist in Netherlands, Quarter-finalist in Belgium).</p>
+                <p>Competed up to international level in youth categories: Finalist in Doubles at the u12 Carlton Tournament (Netherlands), and Quarter-finalist in Single at the u13 Victor JOT (Belgium).</p>
             </div>
 
             <h2>Interests</h2>
             <ul class="misc-list">
-                <li><strong>Poetry:</strong> Admirer of Paul Valéry and Victor Hugo.</li>
+                <li><strong>Poetry:</strong> I enjoy reading some Paul Valéry or Victor Hugo from times to times.</li>
                 <li><strong>Philosophy:</strong> Particularly interested in Nietzsche.</li>
-                <li><strong>Music:</strong> Rap music, especially for poetic lyricism directed toward social justice.</li>
-                <li><strong>Strategy:</strong> Chess (avid spectator and casual player).</li>
-                <li><strong>Anime/Manga:</strong> One Piece, Naruto, Death Note, SNK, HxH.</li>
+                <li><strong>Music:</strong> Rap music, especially for poetic lyricism directed toward social justice (Kendrick Lamar, Dave, Kery James, ...).</li>
+                <li><strong>Strategy:</strong> Chess (avid spectator but incompetent player).</li>
+                <li><strong>Manga/Anime:</strong> Hardcore One Piece theorist, but I also enjoy other classics like Naruto, Death Note, SNK, HxH. Currently into One Punch Man and Sakamoto Days.</li>
             </ul>
         </section>
 
