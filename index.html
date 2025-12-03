@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jorys Mahamba | Mathematician & Physicist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #002147; /* Oxford Blue */
+            --secondary-color: #333;
+            --accent-color: #1a5c96;
+            --bg-color: #f9f9f9;
+            --text-color: #444;
+            --sidebar-width: 280px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--primary-color);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            z-index: 1000;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.2);
+            margin-bottom: 1rem;
+            background-color: #ddd; /* Placeholder color */
+        }
+
+        .profile-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-title {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .social-links {
+            margin-top: auto;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 3rem 4rem;
+            background-color: white;
+            min-height: 100vh;
+        }
+
+        /* Mobile Toggle */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 2000;
+            cursor: pointer;
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* Research Items */
+        .research-item {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .research-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .tags span {
+            background-color: #f0f4f8;
+            color: var(--primary-color);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Blog Styling */
+        .blog-post {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .blog-date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .blog-excerpt {
+            margin-top: 1rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent-color);
+            background: #fcfcfc;
+            padding: 1rem;
+        }
+
+        /* Latex style for math */
+        .math {
+            font-family: "Times New Roman", Times, serif;
+            font-style: italic;
+        }
+
+        /* Misc List */
+        .misc-list {
+            list-style: none;
+        }
+
+        .misc-list li {
+            margin-bottom: 1rem;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .misc-list li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                width: 250px;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 2rem 1.5rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Menu Button -->
+    <button class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="profile-section">
+            <!-- Replace 'assets/profile.jpg' with your actual image file -->
+            <img src="assets/profile.jpg" alt="Jorys Mahamba" class="profile-img" onerror="this.src='https://via.placeholder.com/150?text=JM'">
+            <div class="profile-name">Jorys Mahamba</div>
+            <div class="profile-title">MSc Student<br>University of Oxford</div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a onclick="showSection('home')" id="link-home" class="active">Home</a></li>
+            <li><a onclick="showSection('research')" id="link-research">Research</a></li>
+            <li><a onclick="showSection('teaching')" id="link-teaching">Teaching</a></li>
+            <li><a onclick="showSection('blog')" id="link-blog">Blog</a></li>
+            <li><a onclick="showSection('misc')" id="link-misc">Miscellaneous</a></li>
+        </ul>
+
+        <div class="social-links">
+            <a href="mailto:jorys.mahamba@stx.ox.ac.uk"><i class="fas fa-envelope"></i></a>
+            <!-- Add your LinkedIn or Google Scholar if available -->
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        
+        <!-- HOME SECTION -->
+        <section id="home" class="section active">
+            <h1>Welcome</h1>
+            <p>
+                Hello, I am <strong>Jorys Mahamba</strong>, a student in the MSc in Mathematical and Theoretical Physics at the <strong>University of Oxford</strong> (St. Cross College).
+            </p>
+            <p>
+                My academic journey is driven by a profound curiosity about the intersection of mathematics and physics. I am particularly interested in <strong>Algebraic Geometry</strong>, <strong>Moduli Spaces</strong>, and <strong>Mirror Symmetry</strong>. I aim to explore how mathematical structures illuminate the fundamental principles of the universe and how physical intuition can drive mathematical creation.
+            </p>
+            <p>
+                Before Oxford, I graduated top of my class in a Dual BSc in Mathematics and Physics at Université Paris-Est Créteil (UPEC) and completed intensive studies in <em>Classes Préparatoires aux Grandes Écoles</em> (CPGE) in France.
+            </p>
+            <p>
+                On this website, you will find my research projects, writing samples, teaching experience, and occasional blog posts on topics in mathematics and physics.
+            </p>
+        </section>
+
+        <!-- RESEARCH SECTION -->
+        <section id="research" class="section">
+            <h1>Research & Writing</h1>
+            
+            <div class="research-item">
+                <h3>Mirror Symmetry: Mathematics Proof - Personal Knowledge Base</h3>
+                <div class="meta">MSc Preparation / Independent Study (2025)</div>
+                <div class="tags"><span>Algebraic Geometry</span> <span>Mirror Symmetry</span> <span>Gromov-Witten Invariants</span></div>
+                <p>
+                    A rigorous exposition of the mathematical proof of mirror symmetry for hypersurfaces of genus zero, following the Clay Mathematics Institute monograph. This work serves as a personal knowledge base for my upcoming MSc dissertation at Oxford. It covers topics from Riemann surfaces to stable maps and quantum cohomology.
+                </p>
+                <a href="assets/Mirror_Symmetry_PKB.pdf" class="btn" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
+            </div>
+
+            <div class="research-item">
+                <h3>The Gauss-Bonnet Theorem: From Curves to Surfaces</h3>
+                <div class="meta">Research Internship, LAMA UPEC (2025)</div>
+                <div class="tags"><span>Differential Geometry</span> <span>Topology</span></div>
+                <p>
+                    A comprehensive survey bridging the gap between local geometry and global topology. This report progresses from the one-dimensional analogue for plane curves to the full formulation for smooth surfaces, including a detailed homological proof of the topological invariance of the Euler characteristic.
+                </p>
+                <a href="assets/Gauss_Bonnet_Theorem.pdf" class="btn" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
+            </div>
+
+            <div class="research-item">
+                <h3>Mathematical Exploration of Phase Transitions in the Ising Model</h3>
+                <div class="meta">Research Internship, LAMA UPEC (2024)</div>
+                <div class="tags"><span>Statistical Physics</span> <span>Probability Theory</span> <span>Ising Model</span></div>
+                <p>
+                    An investigation into the Ising model in 1D and 2D, demonstrating the existence of a phase transition in the two-dimensional case using Peierls' argument. This work aims to bridge abstract mathematical formulations with tangible physical phenomena.
+                </p>
+                <a href="assets/Ising_Model_Report.pdf" class="btn" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
+            </div>
+        </section>
+
+        <!-- TEACHING SECTION -->
+        <section id="teaching" class="section">
+            <h1>Teaching Experience</h1>
+            <p>I have a strong passion for teaching and have been actively involved in tutoring peers and younger students throughout my academic career.</p>
+
+            <div class="research-item">
+                <h3>Academic Tutor - ESSEC & CentraleSupélec</h3>
+                <div class="meta">2024 - 2025</div>
+                <p>
+                    Assisted students from non-technical backgrounds with foundational mathematics, including <strong>Linear Algebra</strong>, <strong>Calculus</strong>, and <strong>Probability Theory</strong>.
+                </p>
+            </div>
+
+            <div class="research-item">
+                <h3>Teaching Assistant - Université Paris-Est Créteil (UPEC)</h3>
+                <div class="meta">2023 - 2024</div>
+                <p>
+                    <strong>Undergraduate Courses:</strong> Designed and delivered a full course in Elementary Probability Theory for second-year Dual BSc students.
+                </p>
+                <p>
+                    <strong>Peer Tutoring:</strong> Conducted problem-solving sessions for third-year BSc Mathematics students in <strong>Metric Spaces</strong>, <strong>Measure Theory</strong>, and <strong>Probability</strong>.
+                </p>
+            </div>
+            
+            <div class="research-item">
+                <h3>Karate Instructor</h3>
+                <div class="meta">Shotokan Karate</div>
+                <p>
+                    As a 1st Dan Black Belt, I have assisted in coaching children at local clubs, preparing them for kyu examinations and competitions.
+                </p>
+            </div>
+        </section>
+
+        <!-- BLOG SECTION -->
+        <section id="blog" class="section">
+            <h1>Blog</h1>
+            <p>Expository notes, thoughts on physics, and summaries of my readings.</p>
+
+            <!-- Blog Post 1 -->
+            <article class="blog-post">
+                <h3>Bridging Topology and Geometry: The Gauss-Bonnet Theorem</h3>
+                <span class="blog-date">September 7, 2025</span>
+                <div class="tags"><span>Geometry</span> <span>Topology</span></div>
+                
+                <p>
+                    The Gauss-Bonnet theorem stands as a cornerstone of differential geometry, revealing an unexpected and profound relationship between the local curvature of a surface and its global topological properties. At its heart lies a simple yet striking formula: for any smooth, compact, orientable surface <span class="math">X</span>, the integral of the Gaussian curvature <span class="math">K</span> over the entire surface equals <span class="math">2π</span> times the Euler characteristic <span class="math">χ(X)</span>.
+                </p>
+                
+                <div class="blog-excerpt">
+                    <strong>Abstract:</strong> This post explores the theorem progressing from its one-dimensional analogue for plane curves to its full formulation for smooth surfaces. We establish two critical foundations: the topological invariance of the Euler characteristic through homological methods and Gauss's Theorema Egregium.
+                </div>
+                
+                <p>
+                    This equality bridges two seemingly disparate mathematical realms: the infinitesimal geometry encoded in curvature and the global topology captured by the Euler characteristic. My recent writing sample provides a detailed proof of this theorem, filling gaps often left implicit in standard treatments.
+                </p>
+                <a href="assets/Gauss_Bonnet_Theorem.pdf" class="btn" target="_blank">Read Full Paper (PDF)</a>
+            </article>
+
+            <!-- Blog Post 2 -->
+            <article class="blog-post">
+                <h3>Hopfield Networks: An Exposition</h3>
+                <span class="blog-date">October 2024</span>
+                <div class="tags"><span>Machine Learning</span> <span>Statistical Physics</span></div>
+                <p>
+                    Following the Nobel Prize attributed to Professor Hopfield, I wrote an expository article connecting my studies in Machine Learning to my previous work on the Ising model. Hopfield networks serve as a fascinating bridge between the physics of spin glasses (Ising model) and associative memory in neural networks.
+                </p>
+                <p>
+                    <em>(Full article coming soon)</em>
+                </p>
+            </article>
+        </section>
+
+        <!-- MISCELLANEOUS SECTION -->
+        <section id="misc" class="section">
+            <h1>Miscellaneous</h1>
+            <p>Beyond mathematics and physics, I have always believed in pursuing excellence in sports and cultivating a wide range of cultural interests.</p>
+
+            <h2>Sports</h2>
+            <div class="research-item">
+                <h3>Shotokan Karate</h3>
+                <p>1st Dan Black Belt since age 16. Competed at the national level (Top 8 in France, U15 French Cup winner). I continue to practice and assist in coaching.</p>
+            </div>
+            
+            <div class="research-item">
+                <h3>Handball</h3>
+                <p>Currently playing with the Oxford University Handball team (aiming for All Blue distinction). Previously reached national semi-finals (U18 French Championship) and played at a pre-professional level with US Créteil Handball.</p>
+            </div>
+
+            <div class="research-item">
+                <h3>Badminton</h3>
+                <p>Competed up to international level in youth categories (Finalist in Netherlands, Quarter-finalist in Belgium).</p>
+            </div>
+
+            <h2>Interests</h2>
+            <ul class="misc-list">
+                <li><strong>Poetry:</strong> Admirer of Paul Valéry and Victor Hugo.</li>
+                <li><strong>Philosophy:</strong> Particularly interested in Nietzsche.</li>
+                <li><strong>Music:</strong> Rap music, especially for poetic lyricism directed toward social justice.</li>
+                <li><strong>Strategy:</strong> Chess (avid spectator and casual player).</li>
+                <li><strong>Anime/Manga:</strong> One Piece, Naruto, Death Note, SNK, HxH.</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Update sidebar active state
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.getElementById('link-' + sectionId).classList.add('active');
+
+            // Close mobile menu if open
+            const sidebar = document.querySelector('.sidebar');
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('open');
+            }
+        }
+
+        function toggleMenu() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
